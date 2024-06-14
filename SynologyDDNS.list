@@ -1,0 +1,6 @@
+# > 群晖 DDNS
+DOMAIN,account.synology.com,DIRECT // 群晖DDNS
+DOMAIN,ddns.synology.com,DIRECT // 群晖DDNS
+DOMAIN,checkport.synology.com,DIRECT // 群晖DDNS
+DOMAIN,checkipv6.synology.com,DIRECT // 群晖DDNS
+DOMAIN,checkip.synology.com,DIRECT // 群晖DDNS
