@@ -25,3 +25,6 @@ DOMAIN-SUFFIX,sandai.net
 DOMAIN-SUFFIX,springsunday.net
 DOMAIN-SUFFIX,tjupt.org
 DOMAIN-SUFFIX,totheglory.im
+
+DOMAIN-SUFFIX,smtp
+URL-REGEX,(Subject|HELO|SMTP)
