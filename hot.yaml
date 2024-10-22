@@ -1,5 +1,6 @@
 # NAME: 今日热榜
 # AUTHOR: blackmatrix7
 payload:
-  - DOMAIN,tophub.today
-  - DOMAIN,rousi.zip
+ - DOMAIN,tophub.today
+ - DOMAIN,rousi.zip
+ - DOMAIN-SUFFIX,nicept.net
