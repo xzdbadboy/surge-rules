@@ -1,14 +1,14 @@
-# 本仓库版本：从 Rabbit-Spec AIGC 规则中移除 Claude/Anthropic 专属域名
-# 处理日期：2026-10-13；Claude 规则请单独引用本仓库 claude.list
+# 本仓库版本：Rabbit-Spec AIGC 静态副本，已恢复 Claude/Anthropic 专属域名
+# 处理日期：2026-10-13；已恢复此前移除的 5 条 Claude/Anthropic 规则
 # 上游来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
-# 保留原作者与上游更新时间；此文件为过滤后的静态副本，不会自动同步
+# 保留原作者与上游更新时间；此文件为静态副本，不会自动同步
 # 共享认证、统计、CDN 及其他 AI 服务规则保持不变
 
 # NAME: 深巷有喵的「AIGC」规则
 # AUTHOR: Rabbit-Spec
 # REPO: https://github.com/Rabbit-Spec/Surge
 # UPDATED: 2026.10.13 09:56:00
-# TOTAL: 97
+# TOTAL: 102
 
 # ======= 手动维护规则 ========
 # Cursor
@@ -46,6 +46,7 @@ DOMAIN-SUFFIX,ai.com
 DOMAIN-SUFFIX,aicode.googleapis.com
 DOMAIN-SUFFIX,aistudio.google.com
 DOMAIN-SUFFIX,algolia.net
+DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,api.revenuecat.com
 DOMAIN-SUFFIX,api.statsig.com
 DOMAIN-SUFFIX,apis.google.com
@@ -57,6 +58,10 @@ DOMAIN-SUFFIX,chat.com
 DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,chatgpt.livekit.cloud
 DOMAIN-SUFFIX,chatgpt.site
+DOMAIN-SUFFIX,clau.de
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,claudeusercontent.com
 DOMAIN-SUFFIX,client-api.arkoselabs.com
 DOMAIN-SUFFIX,clients6.google.com
 DOMAIN-SUFFIX,clipdrop.co
