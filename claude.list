@@ -1,0 +1,30 @@
+# 名称：Claude 核心规则集（Claude Code CLI、网页、桌面端）
+# 整理日期：2026-10-13
+# 格式：Surge RULE-SET，不含策略列；在主配置中指定策略组
+# 官方来源：https://code.claude.com/docs/en/network-config
+# 桌面端来源：https://code.claude.com/docs/en/desktop#network-access-requirements
+# 说明：仅保留官方核心域名，按后缀覆盖去重；人工整理，尚未接入自动同步
+# 不包含共享字体/CDN、插件安装依赖、第三方统计、可选遥测、关键词或进程兜底
+# 第三方模型网关、企业单点登录、自定义 MCP 和访问的外部网站需另补域名
+
+# Anthropic API、Console、MCP 连接器及网页/桌面端静态资源
+# 覆盖 api、console、mcp-proxy、assets-proxy、a-api、a-cdn、s-cdn 等子域名
+DOMAIN-SUFFIX,anthropic.com
+
+# Claude 网页、账号认证、桌面端资源、原生安装/更新及在线预览
+# 覆盖 downloads.claude.ai、assets.claude.ai、*.livepreview.claude.ai 等
+DOMAIN-SUFFIX,claude.ai
+
+# Claude 登录入口、Console OAuth 令牌交换/刷新、产品及文档
+# 覆盖 platform.claude.com、code.claude.com 等
+DOMAIN-SUFFIX,claude.com
+
+# 桌面端在线预览等服务
+DOMAIN-SUFFIX,claude.app
+
+# Claude 用户内容、Artifact 文件及 Chrome 扩展 WebSocket 桥接
+# 已覆盖 bridge.claudeusercontent.com 和 *.frame.claudeusercontent.com
+DOMAIN-SUFFIX,claudeusercontent.com
+
+# 网页/桌面端 MCP 交互组件，覆盖动态生成的子域名
+DOMAIN-SUFFIX,claudemcpcontent.com
