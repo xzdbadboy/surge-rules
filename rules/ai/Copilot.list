@@ -1,0 +1,12 @@
+# 名称：GitHub Copilot
+# 来源：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github-copilot.list
+# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# FORMAT: Surge RULE-SET
+# 说明：GitHub Copilot dedicated endpoints; excludes generic api.github.com and telemetry. Microsoft Copilot is a different service.
+# 证据：https://docs.github.com/en/copilot/reference/copilot-allowlist-reference
+
+DOMAIN,copilot-proxy.githubusercontent.com
+DOMAIN,copilot-workspace.githubnext.com
+DOMAIN,copilotprodattachments.blob.core.windows.net
+DOMAIN-SUFFIX,githubcopilot.com

@@ -1,0 +1,13 @@
+# 名称：Cursor
+# 来源：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cursor.list
+# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# FORMAT: Surge RULE-SET
+# 说明：Cursor dedicated domains, including editor APIs, CDN and VM namespace.
+# 证据：https://cursor.com/
+
+DOMAIN-SUFFIX,cursor-cdn.com
+DOMAIN-SUFFIX,cursor.com
+DOMAIN-SUFFIX,cursor.sh
+DOMAIN-SUFFIX,cursorapi.com
+DOMAIN-SUFFIX,cursorvm.com

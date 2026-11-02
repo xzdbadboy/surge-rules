@@ -1,0 +1,765 @@
+{
+  "config_sha256": "6d8b7c8627bc160e521fd08719e17c86ec9af7f43feab493d1680c9fe236415e",
+  "outputs": {
+    "rules/ai/Antigravity.list": {
+      "evidence": [
+        "https://antigravity.google/"
+      ],
+      "rule_count": 4,
+      "rule_sources": {
+        "DOMAIN,antigravity-pa.googleapis.com": [
+          "meta_google_ai"
+        ],
+        "DOMAIN,antigravity.googleapis.com": [
+          "meta_google_ai"
+        ],
+        "DOMAIN-SUFFIX,antigravity-unleash.goog": [
+          "meta_google_ai"
+        ],
+        "DOMAIN-SUFFIX,antigravity.google": [
+          "meta_google_ai"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN": 2,
+        "DOMAIN-SUFFIX": 2
+      },
+      "service": "antigravity",
+      "sha256": "f2b80faecd13dbd4c1302b60e7afd932fcf19b44c896c1dbfe4a86cb9acd0783",
+      "source_urls": [
+        "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list",
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/ChatGPT.list": {
+      "evidence": [
+        "https://help.openai.com/en/articles/9247338-network-recommendations-for-chatgpt-errors-on-web-and-apps"
+      ],
+      "rule_count": 15,
+      "rule_sources": {
+        "DOMAIN,openaiapi-site.azureedge.net": [
+          "meta_openai",
+          "rabbit_ai"
+        ],
+        "DOMAIN,openaiassets.blob.core.windows.net": [
+          "meta_openai"
+        ],
+        "DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net": [
+          "meta_openai",
+          "rabbit_ai"
+        ],
+        "DOMAIN,openaicom.imgix.net": [
+          "meta_openai",
+          "rabbit_ai"
+        ],
+        "DOMAIN,openaicomproductionae4b.blob.core.windows.net": [
+          "meta_openai",
+          "rabbit_ai"
+        ],
+        "DOMAIN,production-openaicom-storage.azureedge.net": [
+          "meta_openai",
+          "rabbit_ai"
+        ],
+        "DOMAIN-SUFFIX,chat.com": [
+          "meta_openai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,chatgpt.com": [
+          "meta_openai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,chatgpt.livekit.cloud": [
+          "meta_openai",
+          "rabbit_ai"
+        ],
+        "DOMAIN-SUFFIX,oaistatic.com": [
+          "meta_openai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,oaistatsig.com": [
+          "meta_openai"
+        ],
+        "DOMAIN-SUFFIX,oaiusercontent.com": [
+          "meta_openai",
+          "rabbit_ai"
+        ],
+        "DOMAIN-SUFFIX,openai.com": [
+          "meta_openai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net": [
+          "meta_openai"
+        ],
+        "DOMAIN-SUFFIX,openai.org": [
+          "meta_openai"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN": 6,
+        "DOMAIN-SUFFIX": 9
+      },
+      "service": "chatgpt",
+      "sha256": "38572bc20746eed27a7ee0986b1ec011a6b19b996efb9180191190ef95a44fdf",
+      "source_urls": [
+        "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.list",
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/Claude.list": {
+      "evidence": [
+        "https://code.claude.com/docs/en/network-config",
+        "https://code.claude.com/docs/en/desktop"
+      ],
+      "rule_count": 7,
+      "rule_sources": {
+        "DOMAIN-SUFFIX,anthropic.com": [
+          "local",
+          "meta_anthropic",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,clau.de": [
+          "meta_anthropic",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,claude.ai": [
+          "local",
+          "meta_anthropic",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,claude.app": [
+          "local",
+          "meta_anthropic"
+        ],
+        "DOMAIN-SUFFIX,claude.com": [
+          "local",
+          "meta_anthropic",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,claudemcpcontent.com": [
+          "local",
+          "meta_anthropic"
+        ],
+        "DOMAIN-SUFFIX,claudeusercontent.com": [
+          "local",
+          "meta_anthropic",
+          "rabbit_ai"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN-SUFFIX": 7
+      },
+      "service": "claude",
+      "sha256": "93d7c3e5d671574d39d8b6389ac2199e1393e9e87e499c9dcc842605d1a5ade3",
+      "source_urls": [
+        "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/anthropic.list",
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/Copilot.list": {
+      "evidence": [
+        "https://docs.github.com/en/copilot/reference/copilot-allowlist-reference"
+      ],
+      "rule_count": 4,
+      "rule_sources": {
+        "DOMAIN,copilot-proxy.githubusercontent.com": [
+          "meta_copilot"
+        ],
+        "DOMAIN,copilot-workspace.githubnext.com": [
+          "meta_copilot"
+        ],
+        "DOMAIN,copilotprodattachments.blob.core.windows.net": [
+          "meta_copilot"
+        ],
+        "DOMAIN-SUFFIX,githubcopilot.com": [
+          "meta_copilot"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN": 3,
+        "DOMAIN-SUFFIX": 1
+      },
+      "service": "copilot",
+      "sha256": "808f2a7d69b61194a475d2b66c639d9d557874e23ff787b4a97f80c0c8a71bee",
+      "source_urls": [
+        "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github-copilot.list",
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/Cursor.list": {
+      "evidence": [
+        "https://cursor.com/"
+      ],
+      "rule_count": 5,
+      "rule_sources": {
+        "DOMAIN-SUFFIX,cursor-cdn.com": [
+          "meta_cursor"
+        ],
+        "DOMAIN-SUFFIX,cursor.com": [
+          "meta_cursor",
+          "rabbit_ai"
+        ],
+        "DOMAIN-SUFFIX,cursor.sh": [
+          "meta_cursor",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,cursorapi.com": [
+          "meta_cursor"
+        ],
+        "DOMAIN-SUFFIX,cursorvm.com": [
+          "meta_cursor"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN-SUFFIX": 5
+      },
+      "service": "cursor",
+      "sha256": "d2743c6f1eb5fed4a338c758c5117bf56c6ae6df062a04ba642bd80be95ae39e",
+      "source_urls": [
+        "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cursor.list",
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/DeepSeek.list": {
+      "evidence": [
+        "https://api-docs.deepseek.com/"
+      ],
+      "rule_count": 2,
+      "rule_sources": {
+        "DOMAIN-SUFFIX,deepseek.com": [
+          "meta_deepseek"
+        ],
+        "DOMAIN-SUFFIX,deepseeksvc.com": [
+          "meta_deepseek"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN-SUFFIX": 2
+      },
+      "service": "deepseek",
+      "sha256": "acad7b05d77e474b54b1f9364ad5f8b2065895827a438c31d097e69df59115a2",
+      "source_urls": [
+        "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/deepseek.list",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/Dify.list": {
+      "evidence": [
+        "https://dify.ai/"
+      ],
+      "rule_count": 1,
+      "rule_sources": {
+        "DOMAIN-SUFFIX,dify.ai": [
+          "rabbit_ai",
+          "sukka_ai"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN-SUFFIX": 1
+      },
+      "service": "dify",
+      "sha256": "8d1f8740152583a5290a22255914afee91d1c980c4ecfa9d75ba88fbfaf335c1",
+      "source_urls": [
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/Gemini.list": {
+      "evidence": [
+        "https://gemini.google.com/"
+      ],
+      "rule_count": 10,
+      "rule_sources": {
+        "DOMAIN,aisandbox-pa.googleapis.com": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN,geller-pa.googleapis.com": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN,geminiweb-pa.clients.google.com": [
+          "meta_google_ai"
+        ],
+        "DOMAIN,geminiweb-pa.clients6.google.com": [
+          "meta_google_ai"
+        ],
+        "DOMAIN,proactivebackend-pa.googleapis.com": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN,robinfrontend-pa.googleapis.com": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,bard.google.com": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,gemini.google": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,gemini.google.com": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,gemini.gstatic.com": [
+          "meta_google_ai"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN": 6,
+        "DOMAIN-SUFFIX": 4
+      },
+      "service": "gemini",
+      "sha256": "0d68582e2a3e540b576811e0466ec45e087b87d65442e39fc600a2214882996c",
+      "source_urls": [
+        "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list",
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/GoogleAIShared.list": {
+      "evidence": [
+        "https://github.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/google-gemini.list"
+      ],
+      "rule_count": 5,
+      "rule_sources": {
+        "DOMAIN,aicode.googleapis.com": [
+          "meta_google_ai",
+          "rabbit_ai"
+        ],
+        "DOMAIN,aida.googleapis.com": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN,cloudaicompanion.googleapis.com": [
+          "meta_google_ai"
+        ],
+        "DOMAIN,cloudcode-pa.googleapis.com": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN,daily-cloudcode-pa.googleapis.com": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN": 5
+      },
+      "service": "google_ai_shared",
+      "sha256": "de539b1d1e0ad8614fb84ca054fef1bf42cd1c0ab9e2101546ca4e6ac32b11db",
+      "source_urls": [
+        "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list",
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/GoogleAIStudio.list": {
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs"
+      ],
+      "rule_count": 11,
+      "rule_sources": {
+        "DOMAIN,ai.google.dev": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN,alkalicore-pa.clients6.google.com": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN,alkalimakersuite-pa.clients6.google.com": [
+          "meta_google_ai",
+          "rabbit_ai"
+        ],
+        "DOMAIN,appsgenaiserver-pa.clients.google.com": [
+          "meta_google_ai"
+        ],
+        "DOMAIN,appsgenaiserver-pa.clients6.google.com": [
+          "meta_google_ai"
+        ],
+        "DOMAIN,appsgenaiserver-pa.googleapis.com": [
+          "meta_google_ai"
+        ],
+        "DOMAIN,webchannel-alkalimakersuite-pa.clients6.google.com": [
+          "meta_google_ai"
+        ],
+        "DOMAIN-SUFFIX,ai.studio": [
+          "meta_google_ai"
+        ],
+        "DOMAIN-SUFFIX,aistudio.google.com": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,generativelanguage.googleapis.com": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,makersuite.google.com": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN": 7,
+        "DOMAIN-SUFFIX": 4
+      },
+      "service": "google_ai_studio",
+      "sha256": "d54d854551735929af0ebd29ca2a59907d3681dc26cadd85161c04ff6109655e",
+      "source_urls": [
+        "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list",
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/Grok.list": {
+      "evidence": [
+        "https://docs.x.ai/"
+      ],
+      "rule_count": 3,
+      "rule_sources": {
+        "DOMAIN-SUFFIX,grok.com": [
+          "meta_xai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,grok.x.com": [
+          "meta_xai"
+        ],
+        "DOMAIN-SUFFIX,x.ai": [
+          "meta_xai",
+          "rabbit_ai",
+          "sukka_ai"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN-SUFFIX": 3
+      },
+      "service": "grok",
+      "sha256": "385c58595013e3e71488ec16e1f54b46a7c9e94f608542bc7ca897cb5ef8294b",
+      "source_urls": [
+        "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/xai.list",
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/Groq.list": {
+      "evidence": [
+        "https://console.groq.com/docs/"
+      ],
+      "rule_count": 1,
+      "rule_sources": {
+        "DOMAIN-SUFFIX,groq.com": [
+          "rabbit_ai",
+          "sukka_ai"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN-SUFFIX": 1
+      },
+      "service": "groq",
+      "sha256": "4c7ee02d6d746d2d85b98377fc9dec9136b3be5c5ec47fb8e4660e9b62f3972b",
+      "source_urls": [
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/MetaAI.list": {
+      "evidence": [
+        "https://www.meta.ai/"
+      ],
+      "rule_count": 1,
+      "rule_sources": {
+        "DOMAIN-SUFFIX,meta.ai": [
+          "rabbit_ai",
+          "sukka_ai"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN-SUFFIX": 1
+      },
+      "service": "meta_ai",
+      "sha256": "b43e4bef53d679a9e8d270cfcabf20083cc7730274cd6e1c8200b8970bfa89f6",
+      "source_urls": [
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/Muse.list": {
+      "evidence": [
+        "https://manual.nssurge.com/rules/process.html"
+      ],
+      "rule_count": 1,
+      "rule_sources": {
+        "PROCESS-NAME,/Applications/Muse.app/": [
+          "local"
+        ]
+      },
+      "rule_types": {
+        "PROCESS-NAME": 1
+      },
+      "service": "muse",
+      "sha256": "3c054d4d2c1ee2b1f6b3c66223a1a27dc0d4076acee374069d31b5ad882f084f",
+      "source_urls": []
+    },
+    "rules/ai/NotebookLM.list": {
+      "evidence": [
+        "https://notebooklm.google.com/"
+      ],
+      "rule_count": 4,
+      "rule_sources": {
+        "DOMAIN,notebooklm-pa.googleapis.com": [
+          "meta_google_ai"
+        ],
+        "DOMAIN,notebooklm.googleapis.com": [
+          "meta_google_ai"
+        ],
+        "DOMAIN-SUFFIX,notebooklm.google": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,notebooklm.google.com": [
+          "meta_google_ai",
+          "rabbit_ai",
+          "sukka_ai"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN": 2,
+        "DOMAIN-SUFFIX": 2
+      },
+      "service": "notebooklm",
+      "sha256": "4976544b608fb52893431a67b51d802decd04eef3d3b96506fa52db709aa9ac7",
+      "source_urls": [
+        "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list",
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/OpenRouter.list": {
+      "evidence": [
+        "https://openrouter.ai/docs/"
+      ],
+      "rule_count": 1,
+      "rule_sources": {
+        "DOMAIN,openrouter.ai": [
+          "rabbit_ai",
+          "sukka_ai"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN": 1
+      },
+      "service": "openrouter",
+      "sha256": "d8043dd9153d9147542bcc8b3ace24e3e4f39f800eed9d84733991c393b0266a",
+      "source_urls": [
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/Perplexity.list": {
+      "evidence": [
+        "https://docs.perplexity.ai/"
+      ],
+      "rule_count": 3,
+      "rule_sources": {
+        "DOMAIN-SUFFIX,perplexity.ai": [
+          "meta_perplexity",
+          "rabbit_ai",
+          "sukka_ai"
+        ],
+        "DOMAIN-SUFFIX,perplexity.com": [
+          "meta_perplexity"
+        ],
+        "DOMAIN-SUFFIX,pplx.ai": [
+          "meta_perplexity"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN-SUFFIX": 3
+      },
+      "service": "perplexity",
+      "sha256": "32f8a51a236c1a2b1b2023a944a240d9560538cfdbfe0f9591c486d4fb70845f",
+      "source_urls": [
+        "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/perplexity.list",
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/Sora.list": {
+      "evidence": [
+        "https://sora.com/"
+      ],
+      "rule_count": 1,
+      "rule_sources": {
+        "DOMAIN-SUFFIX,sora.com": [
+          "meta_openai",
+          "rabbit_ai",
+          "sukka_ai"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN-SUFFIX": 1
+      },
+      "service": "sora",
+      "sha256": "935df373045ebdba0a7fe1c7090b29b60aed01a3cd6dcd9be146906ad28e9a31",
+      "source_urls": [
+        "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.list",
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    },
+    "rules/ai/Windsurf.list": {
+      "evidence": [
+        "https://docs.windsurf.com/"
+      ],
+      "rule_count": 4,
+      "rule_sources": {
+        "DOMAIN-SUFFIX,codeium.com": [
+          "meta_windsurf"
+        ],
+        "DOMAIN-SUFFIX,codeiumdata.com": [
+          "meta_windsurf"
+        ],
+        "DOMAIN-SUFFIX,windsurf.build": [
+          "meta_windsurf"
+        ],
+        "DOMAIN-SUFFIX,windsurf.com": [
+          "meta_windsurf"
+        ]
+      },
+      "rule_types": {
+        "DOMAIN-SUFFIX": 4
+      },
+      "service": "windsurf",
+      "sha256": "96f1c8cb0135c4cef05ec7c03c1fc32801ca622a9bb222161c3118180fe4628c",
+      "source_urls": [
+        "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/windsurf.list",
+        "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+      ]
+    }
+  },
+  "schema_version": 1,
+  "sources": {
+    "meta_anthropic": {
+      "format": "geosite",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE",
+      "path": "geo/geosite/anthropic.list",
+      "raw_sha256": "743d2793433a2bd280c1bb5c82ce5389fc1c7668b4edf9101090a27a1d2f4c81",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/anthropic.list"
+    },
+    "meta_copilot": {
+      "format": "geosite",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE",
+      "path": "geo/geosite/github-copilot.list",
+      "raw_sha256": "daca722f3b2103d5f09a6b62a83d6d063f87e64b54982ad3c9fd093b79dfc644",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github-copilot.list"
+    },
+    "meta_cursor": {
+      "format": "geosite",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE",
+      "path": "geo/geosite/cursor.list",
+      "raw_sha256": "1fa1a8434c9c232b2790274feb664673744bc58ced2c9d9804e27a729baa2139",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cursor.list"
+    },
+    "meta_deepseek": {
+      "format": "geosite",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE",
+      "path": "geo/geosite/deepseek.list",
+      "raw_sha256": "fcb7018ebebc5716a7c8351c14c07455ebc68cbadb0a0954ffe6ac4d46bc8502",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/deepseek.list"
+    },
+    "meta_google_ai": {
+      "format": "geosite",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE",
+      "path": "geo/geosite/google-gemini.list",
+      "raw_sha256": "d7a51a33dccab26a25260836f23b02cc283590cd5384fcf93de82c3331ce56a9",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list"
+    },
+    "meta_openai": {
+      "format": "geosite",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE",
+      "path": "geo/geosite/openai.list",
+      "raw_sha256": "8a4f1b16302f882117d3c106d2ac21f108acbd4714dd7373d403745c0f338aa8",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.list"
+    },
+    "meta_perplexity": {
+      "format": "geosite",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE",
+      "path": "geo/geosite/perplexity.list",
+      "raw_sha256": "f07ed9821d704b8a42efcf9f7965e1a1418a9c5a12f35dcbdfbe3d4925d69201",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/perplexity.list"
+    },
+    "meta_windsurf": {
+      "format": "geosite",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE",
+      "path": "geo/geosite/windsurf.list",
+      "raw_sha256": "5eafdd340e81b5a3edd35d1e6793883f64e1320b9ba3800880460e758034e2ce",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/windsurf.list"
+    },
+    "meta_xai": {
+      "format": "geosite",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE",
+      "path": "geo/geosite/xai.list",
+      "raw_sha256": "558bd1eecd925c0033f61b6c96a35d32aad380effdb1d4143d24d1ada20bb13d",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/xai.list"
+    },
+    "rabbit_ai": {
+      "format": "surge",
+      "path": "Rules/AIGC.list",
+      "raw_sha256": "ecc2da6d83d9ac9091f829b9d2b64b35eb53917f2aac55e12bee0baa23aabc1c",
+      "repository": "Rabbit-Spec/Surge",
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
+    },
+    "sukka_ai": {
+      "format": "surge",
+      "license_url": "https://github.com/SukkaW/Surge/blob/master/LICENSE",
+      "path": "Source/non_ip/ai.conf",
+      "raw_sha256": "fdd9b5bebf65d755cefff467d151386d8e6fce74a7f706f564c6b1fbbee48375",
+      "repository": "SukkaW/Surge",
+      "url": "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf"
+    }
+  }
+}

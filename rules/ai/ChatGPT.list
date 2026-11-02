@@ -1,0 +1,23 @@
+# 名称：ChatGPT / OpenAI
+# 来源：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.list
+# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# FORMAT: Surge RULE-SET
+# 说明：ChatGPT web, OpenAI API and dedicated assets; Sora is a separate list. Shared payment, CAPTCHA and telemetry providers excluded.
+# 证据：https://help.openai.com/en/articles/9247338-network-recommendations-for-chatgpt-errors-on-web-and-apps
+
+DOMAIN,openaiapi-site.azureedge.net
+DOMAIN,openaiassets.blob.core.windows.net
+DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
+DOMAIN,openaicom.imgix.net
+DOMAIN,openaicomproductionae4b.blob.core.windows.net
+DOMAIN,production-openaicom-storage.azureedge.net
+DOMAIN-SUFFIX,chat.com
+DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,chatgpt.livekit.cloud
+DOMAIN-SUFFIX,oaistatic.com
+DOMAIN-SUFFIX,oaistatsig.com
+DOMAIN-SUFFIX,oaiusercontent.com
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net
+DOMAIN-SUFFIX,openai.org

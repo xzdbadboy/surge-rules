@@ -1,0 +1,12 @@
+# 名称：Windsurf / Codeium
+# 来源：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/windsurf.list
+# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# FORMAT: Surge RULE-SET
+# 说明：Windsurf and former Codeium dedicated APIs and domains.
+# 证据：https://docs.windsurf.com/
+
+DOMAIN-SUFFIX,codeium.com
+DOMAIN-SUFFIX,codeiumdata.com
+DOMAIN-SUFFIX,windsurf.build
+DOMAIN-SUFFIX,windsurf.com
