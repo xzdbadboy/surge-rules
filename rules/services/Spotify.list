@@ -1,0 +1,41 @@
+# 名称：Spotify
+# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Spotify.list
+# FORMAT: Surge RULE-SET
+# 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
+# 证据：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Spotify.list
+
+DOMAIN,audio4-ak-spotify-com.akamaized.net
+DOMAIN,cdn-spotify-experiments.conductrics.com
+DOMAIN,heads-ak-spotify-com.akamaized.net
+DOMAIN,spotify.map.fastly.net
+DOMAIN,spotify.map.fastlylb.net
+DOMAIN-SUFFIX,audio-ak-spotify-com.akamaized.net
+DOMAIN-SUFFIX,byspotify.com
+DOMAIN-SUFFIX,heads4-ak-spotify-com.akamaized.net
+DOMAIN-SUFFIX,lifeatspotify.com
+DOMAIN-SUFFIX,pscdn.co
+DOMAIN-SUFFIX,scdn.co
+DOMAIN-SUFFIX,spoti.fi
+DOMAIN-SUFFIX,spotify-com.akamaized.net
+DOMAIN-SUFFIX,spotify-everywhere.com
+DOMAIN-SUFFIX,spotify.app.link
+DOMAIN-SUFFIX,spotify.com
+DOMAIN-SUFFIX,spotify.com.edgesuite.net
+DOMAIN-SUFFIX,spotify.design
+DOMAIN-SUFFIX,spotify.link
+DOMAIN-SUFFIX,spotifycdn.com
+DOMAIN-SUFFIX,spotifycdn.net
+DOMAIN-SUFFIX,spotifycharts.com
+DOMAIN-SUFFIX,spotifycodes.com
+DOMAIN-SUFFIX,spotifyforbrands.com
+DOMAIN-SUFFIX,spotifyforvendors.com
+DOMAIN-SUFFIX,spotifyjobs.com
+DOMAIN-SUFFIX,spotilocal.com
+DOMAIN-SUFFIX,tospotify.com
+DOMAIN-KEYWORD,-spotify-
+DOMAIN-KEYWORD,-spotify-com
+DOMAIN-KEYWORD,spotify
+DOMAIN-KEYWORD,spotify.com
+IP-CIDR,35.186.224.47/32,no-resolve
+USER-AGENT,Spotify*
+PROCESS-NAME,com.spotify.music
