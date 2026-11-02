@@ -1,0 +1,8 @@
+# 名称：Groq
+# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# FORMAT: Surge RULE-SET
+# 说明：Groq inference service; distinct from Grok / xAI.
+# 证据：https://console.groq.com/docs/
+
+DOMAIN-SUFFIX,groq.com

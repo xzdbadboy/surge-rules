@@ -1,0 +1,7 @@
+# 名称：Muse
+# 来源：本地维护（人工规则，无更新时间）
+# FORMAT: Surge RULE-SET
+# 说明：macOS only; confirmed application path, remote domain identity unconfirmed. App bundle prefix requires Surge Mac 6.0.0+. No guessed domains.
+# 证据：https://manual.nssurge.com/rules/process.html
+
+PROCESS-NAME,/Applications/Muse.app/
