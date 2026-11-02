@@ -1,0 +1,292 @@
+{
+  "version": 1,
+  "sources": {
+    "meta_openai": {
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.list",
+      "format": "geosite",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "path": "geo/geosite/openai.list",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE"
+    },
+    "meta_anthropic": {
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/anthropic.list",
+      "format": "geosite",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "path": "geo/geosite/anthropic.list",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE"
+    },
+    "meta_xai": {
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/xai.list",
+      "format": "geosite",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "path": "geo/geosite/xai.list",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE"
+    },
+    "meta_google_ai": {
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list",
+      "format": "geosite",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "path": "geo/geosite/google-gemini.list",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE"
+    },
+    "meta_copilot": {
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github-copilot.list",
+      "format": "geosite",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "path": "geo/geosite/github-copilot.list",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE"
+    },
+    "meta_cursor": {
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cursor.list",
+      "format": "geosite",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "path": "geo/geosite/cursor.list",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE"
+    },
+    "meta_windsurf": {
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/windsurf.list",
+      "format": "geosite",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "path": "geo/geosite/windsurf.list",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE"
+    },
+    "meta_perplexity": {
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/perplexity.list",
+      "format": "geosite",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "path": "geo/geosite/perplexity.list",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE"
+    },
+    "meta_deepseek": {
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/deepseek.list",
+      "format": "geosite",
+      "repository": "MetaCubeX/meta-rules-dat",
+      "path": "geo/geosite/deepseek.list",
+      "license_url": "https://github.com/MetaCubeX/meta-rules-dat/blob/master/LICENSE"
+    },
+    "sukka_ai": {
+      "url": "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf",
+      "format": "surge",
+      "repository": "SukkaW/Surge",
+      "path": "Source/non_ip/ai.conf",
+      "license_url": "https://github.com/SukkaW/Surge/blob/master/LICENSE"
+    },
+    "rabbit_ai": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/AIGC.list"
+    }
+  },
+  "services": {
+    "muse": {
+      "name": "Muse",
+      "output": "rules/ai/Muse.list",
+      "mode": "filtered",
+      "listSources": [],
+      "allowed_suffixes": [],
+      "allowed_domains": [],
+      "local_rules": ["PROCESS-NAME,/Applications/Muse.app/"],
+      "description": "macOS only; confirmed application path, remote domain identity unconfirmed. App bundle prefix requires Surge Mac 6.0.0+. No guessed domains.",
+      "evidence": ["https://manual.nssurge.com/rules/process.html"]
+    },
+    "chatgpt": {
+      "name": "ChatGPT / OpenAI",
+      "output": "rules/ai/ChatGPT.list",
+      "mode": "filtered",
+      "listSources": ["meta_openai", "sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["openai.com", "openai.org", "chatgpt.com", "chat.com", "oaistatic.com", "oaiusercontent.com", "oaistatsig.com", "chatgpt.livekit.cloud", "openai.com.cdn.cloudflare.net"],
+      "allowed_domains": ["openaiapi-site.azureedge.net", "openaiassets.blob.core.windows.net", "openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net", "openaicom.imgix.net", "openaicomproductionae4b.blob.core.windows.net", "production-openaicom-storage.azureedge.net"],
+      "local_rules": [],
+      "description": "ChatGPT web, OpenAI API and dedicated assets; Sora is a separate list. Shared payment, CAPTCHA and telemetry providers excluded.",
+      "evidence": ["https://help.openai.com/en/articles/9247338-network-recommendations-for-chatgpt-errors-on-web-and-apps"]
+    },
+    "claude": {
+      "name": "Claude / Anthropic / Claude Code",
+      "output": "rules/ai/Claude.list",
+      "mode": "filtered",
+      "listSources": ["meta_anthropic", "sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["anthropic.com", "claude.ai", "claude.com", "claude.app", "claudeusercontent.com", "claudemcpcontent.com", "clau.de"],
+      "allowed_domains": [],
+      "local_rules": ["DOMAIN-SUFFIX,anthropic.com", "DOMAIN-SUFFIX,claude.ai", "DOMAIN-SUFFIX,claude.com", "DOMAIN-SUFFIX,claude.app", "DOMAIN-SUFFIX,claudeusercontent.com", "DOMAIN-SUFFIX,claudemcpcontent.com"],
+      "description": "Claude web, desktop and Claude Code share Anthropic domains; domains cannot distinguish these clients. Retains previously reviewed local core domains.",
+      "evidence": ["https://code.claude.com/docs/en/network-config", "https://code.claude.com/docs/en/desktop"]
+    },
+    "grok": {
+      "name": "Grok / xAI",
+      "output": "rules/ai/Grok.list",
+      "mode": "filtered",
+      "listSources": ["meta_xai", "sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["grok.com", "x.ai", "grok.x.com"],
+      "allowed_domains": [],
+      "local_rules": [],
+      "description": "Grok web and xAI API; does not route all of X/Twitter or Grokipedia.",
+      "evidence": ["https://docs.x.ai/"]
+    },
+    "gemini": {
+      "name": "Gemini",
+      "output": "rules/ai/Gemini.list",
+      "mode": "filtered",
+      "listSources": ["meta_google_ai", "sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["gemini.google", "gemini.google.com", "gemini.gstatic.com", "bard.google.com"],
+      "allowed_domains": ["geminiweb-pa.clients.google.com", "geminiweb-pa.clients6.google.com", "robinfrontend-pa.googleapis.com", "aisandbox-pa.googleapis.com", "geller-pa.googleapis.com", "proactivebackend-pa.googleapis.com"],
+      "local_rules": [],
+      "description": "Gemini web endpoints only; Google AI Studio, NotebookLM, Antigravity and shared developer APIs are separate.",
+      "evidence": ["https://gemini.google.com/"]
+    },
+    "google_ai_studio": {
+      "name": "Google AI Studio / Gemini API",
+      "output": "rules/ai/GoogleAIStudio.list",
+      "mode": "filtered",
+      "listSources": ["meta_google_ai", "sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["aistudio.google.com", "makersuite.google.com", "ai.studio", "generativelanguage.googleapis.com"],
+      "allowed_domains": ["ai.google.dev", "alkalicore-pa.clients6.google.com", "alkalimakersuite-pa.clients6.google.com", "webchannel-alkalimakersuite-pa.clients6.google.com", "appsgenaiserver-pa.clients.google.com", "appsgenaiserver-pa.clients6.google.com", "appsgenaiserver-pa.googleapis.com"],
+      "local_rules": [],
+      "description": "AI Studio and Gemini API. API callers share these endpoints regardless of their local application.",
+      "evidence": ["https://ai.google.dev/gemini-api/docs"]
+    },
+    "notebooklm": {
+      "name": "NotebookLM",
+      "output": "rules/ai/NotebookLM.list",
+      "mode": "filtered",
+      "listSources": ["meta_google_ai", "sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["notebooklm.google", "notebooklm.google.com"],
+      "allowed_domains": ["notebooklm-pa.googleapis.com", "notebooklm.googleapis.com"],
+      "local_rules": [],
+      "description": "NotebookLM dedicated web and API endpoints.",
+      "evidence": ["https://notebooklm.google.com/"]
+    },
+    "antigravity": {
+      "name": "Antigravity",
+      "output": "rules/ai/Antigravity.list",
+      "mode": "filtered",
+      "listSources": ["meta_google_ai", "sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["antigravity.google", "antigravity-unleash.goog"],
+      "allowed_domains": ["antigravity-pa.googleapis.com", "antigravity.googleapis.com"],
+      "local_rules": [],
+      "description": "Antigravity dedicated endpoints. Also use GoogleAIShared for shared Cloud Code APIs.",
+      "evidence": ["https://antigravity.google/"]
+    },
+    "google_ai_shared": {
+      "name": "Google AI Shared Developer APIs",
+      "output": "rules/ai/GoogleAIShared.list",
+      "mode": "filtered",
+      "listSources": ["meta_google_ai", "sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": [],
+      "allowed_domains": ["cloudcode-pa.googleapis.com", "daily-cloudcode-pa.googleapis.com", "cloudaicompanion.googleapis.com", "aicode.googleapis.com", "aida.googleapis.com"],
+      "local_rules": [],
+      "description": "Shared Google AI development backends used by Antigravity, Gemini CLI and other Google developer clients. Assign a compatible common policy.",
+      "evidence": ["https://github.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/google-gemini.list"]
+    },
+    "copilot": {
+      "name": "GitHub Copilot",
+      "output": "rules/ai/Copilot.list",
+      "mode": "filtered",
+      "listSources": ["meta_copilot", "sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["githubcopilot.com"],
+      "allowed_domains": ["copilot-proxy.githubusercontent.com", "copilot-workspace.githubnext.com", "copilotprodattachments.blob.core.windows.net"],
+      "local_rules": [],
+      "description": "GitHub Copilot dedicated endpoints; excludes generic api.github.com and telemetry. Microsoft Copilot is a different service.",
+      "evidence": ["https://docs.github.com/en/copilot/reference/copilot-allowlist-reference"]
+    },
+    "cursor": {
+      "name": "Cursor",
+      "output": "rules/ai/Cursor.list",
+      "mode": "filtered",
+      "listSources": ["meta_cursor", "sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["cursor.com", "cursor.sh", "cursorapi.com", "cursor-cdn.com", "cursorvm.com"],
+      "allowed_domains": [],
+      "local_rules": [],
+      "description": "Cursor dedicated domains, including editor APIs, CDN and VM namespace.",
+      "evidence": ["https://cursor.com/"]
+    },
+    "windsurf": {
+      "name": "Windsurf / Codeium",
+      "output": "rules/ai/Windsurf.list",
+      "mode": "filtered",
+      "listSources": ["meta_windsurf", "sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["windsurf.com", "windsurf.build", "codeium.com", "codeiumdata.com"],
+      "allowed_domains": [],
+      "local_rules": [],
+      "description": "Windsurf and former Codeium dedicated APIs and domains.",
+      "evidence": ["https://docs.windsurf.com/"]
+    },
+    "perplexity": {
+      "name": "Perplexity",
+      "output": "rules/ai/Perplexity.list",
+      "mode": "filtered",
+      "listSources": ["meta_perplexity", "sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["perplexity.ai", "perplexity.com", "pplx.ai"],
+      "allowed_domains": [],
+      "local_rules": [],
+      "description": "Perplexity dedicated search and API domains.",
+      "evidence": ["https://docs.perplexity.ai/"]
+    },
+    "deepseek": {
+      "name": "DeepSeek",
+      "output": "rules/ai/DeepSeek.list",
+      "mode": "filtered",
+      "listSources": ["meta_deepseek", "rabbit_ai"],
+      "allowed_suffixes": ["deepseek.com", "deepseeksvc.com"],
+      "allowed_domains": [],
+      "local_rules": [],
+      "description": "DeepSeek dedicated domains. A separate list does not imply it needs proxying; DIRECT is supported.",
+      "evidence": ["https://api-docs.deepseek.com/"]
+    },
+    "openrouter": {
+      "name": "OpenRouter",
+      "output": "rules/ai/OpenRouter.list",
+      "mode": "filtered",
+      "listSources": ["sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["openrouter.ai"],
+      "allowed_domains": [],
+      "local_rules": [],
+      "description": "OpenRouter dedicated domain; no unrelated gateway or relay domains.",
+      "evidence": ["https://openrouter.ai/docs/"]
+    },
+    "sora": {
+      "name": "Sora",
+      "output": "rules/ai/Sora.list",
+      "mode": "filtered",
+      "listSources": ["meta_openai", "sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["sora.com"],
+      "allowed_domains": [],
+      "local_rules": [],
+      "description": "Sora dedicated domain. OpenAI authentication and assets remain in ChatGPT.list.",
+      "evidence": ["https://sora.com/"]
+    },
+    "meta_ai": {
+      "name": "Meta AI",
+      "output": "rules/ai/MetaAI.list",
+      "mode": "filtered",
+      "listSources": ["sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["meta.ai"],
+      "allowed_domains": [],
+      "local_rules": [],
+      "description": "Meta AI dedicated domain; does not route all Facebook or Instagram traffic.",
+      "evidence": ["https://www.meta.ai/"]
+    },
+    "dify": {
+      "name": "Dify",
+      "output": "rules/ai/Dify.list",
+      "mode": "filtered",
+      "listSources": ["sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["dify.ai"],
+      "allowed_domains": [],
+      "local_rules": [],
+      "description": "Dify public service only; self-hosted Dify and user-defined providers require local rules.",
+      "evidence": ["https://dify.ai/"]
+    },
+    "groq": {
+      "name": "Groq",
+      "output": "rules/ai/Groq.list",
+      "mode": "filtered",
+      "listSources": ["sukka_ai", "rabbit_ai"],
+      "allowed_suffixes": ["groq.com"],
+      "allowed_domains": [],
+      "local_rules": [],
+      "description": "Groq inference service; distinct from Grok / xAI.",
+      "evidence": ["https://console.groq.com/docs/"]
+    }
+  }
+}

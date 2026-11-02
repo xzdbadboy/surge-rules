@@ -5,3 +5,7 @@ CLAUDE.md
 # macOS system files
 ._*
 .DS_Store
+
+# Python sync tooling
+__pycache__/
+*.py[cod]
