@@ -1,20 +1,24 @@
-name: Validate AI service rules
+name: Validate routing rules
 
 on:
   pull_request:
     paths:
-      - config/rule_sources.json
-      - scripts/sync_rules.py
+      - config/**
+      - scripts/**
       - tests/**
       - rules/**
+      - examples/**
+      - '*.list'
       - .github/workflows/**
   push:
     branches: [main]
     paths:
-      - config/rule_sources.json
-      - scripts/sync_rules.py
+      - config/**
+      - scripts/**
       - tests/**
       - rules/**
+      - examples/**
+      - '*.list'
       - .github/workflows/**
   workflow_dispatch:
 
@@ -36,5 +40,8 @@ jobs:
           python-version: '3.12'
       - name: Run offline tests
         run: python3 -m unittest discover -s tests -v
-      - name: Validate configuration, rules and hashes without network access
-        run: python3 scripts/sync_rules.py --validate
+      - name: Validate configuration, rules, aliases and profile without network access
+        run: |
+          python3 scripts/sync_rules.py --validate
+          python3 scripts/build_compat.py --validate
+          python3 scripts/validate_profile.py --smoke

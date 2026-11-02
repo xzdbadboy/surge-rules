@@ -1,73 +1,78 @@
 # Surge 代理规则库
 
-Surge 代理客户端的自定义规则和配置文件集合。
+按服务分类维护的 Surge 规则。自动同步 42 份规则（19 类 AI、21 类其他服务、2 类安全拦截），手工规则集中维护，旧根目录地址保留为自动生成的兼容入口。
 
-## AI 服务独立规则（自动更新）
+## 目录
 
-新增 19 类服务的独立规则生成配置：Muse、ChatGPT、Claude、Grok、Gemini、Google AI Studio、NotebookLM、Antigravity、Google AI 共用开发接口、GitHub Copilot、Cursor、Windsurf、Perplexity、DeepSeek、OpenRouter、Sora、Meta AI、Dify、Groq。首次成功运行同步命令后，生成下述规则与来源清单；仅添加工作流文件不代表已发布或已启用定时任务。
+| 位置 | 用途 | 维护方式 |
+| --- | --- | --- |
+| [rules/ai](rules/ai/) | Muse、ChatGPT、Claude、Grok、Gemini、Copilot、Cursor、Windsurf 等 19 类 AI | 受服务专属域名范围约束，自动同步 |
+| [rules/services](rules/services/) | Apple、Microsoft、Google、GitHub、Telegram、WeChat、Oracle、流媒体等 21 类 | 从指定上游规范化同步，GoogleVoice 额外限域 |
+| [rules/security](rules/security/) | Sukka 广告 / 隐私 / 恶意域名拦截 | 自动转换为 Surge RULE-SET |
+| [rules/custom](rules/custom/) | Metatube、Plex、PT、群晖 DDNS、小说、自建 API 等自定义规则 | 手工维护，自动校验 |
+| [examples/Rule.template.conf](examples/Rule.template.conf) | 完整 `[Rule]` 通用模板 | 手工维护，检查链接与关键匹配顺序 |
+| [config/rule_sources.json](config/rule_sources.json) | 上游、服务范围与输出路径 | 同步配置 |
+| [config/compatibility.json](config/compatibility.json) | 根目录旧文件名到规范规则的映射 | 兼容配置 |
+| [rules/manifest.json](rules/manifest.json) | 配置 / 来源 / 输出 SHA-256 和规则数量 | 自动生成 |
+| [archive/legacy-2026-11-02](archive/legacy-2026-11-02/) | 整理前的旧 AI 集合及其他历史副本 | 仅供回溯，不建议加载 |
 
-- [规则目录](rules/ai/)：Surge `RULE-SET` 格式，策略由你的主配置分别指定。
-- [接入示例和维护说明](docs/ai-rules.md)：包含完整可复制的 Surge 片段、规则顺序和服务边界。
-- [上游选型记录](docs/upstreams.md)：MetaCubeX、Sukka、Rabbit-Spec 的文件提交证据与来源。
-- [同步工作流](.github/workflows/sync-ai-rules.yml)：每 6 小时抓取，有内容变化才提交，也支持手动运行。
-- [来源清单](rules/manifest.json)：配置与来源 SHA-256、各文件规则数量、逐条来源。
-- [第三方声明](THIRD_PARTY_NOTICES.md)：保留上游出处及许可证副本。
+根目录 `.list` 地址仍可使用，但不要直接修改生成的兼容入口，应修改其头部标记的 canonical 源文件。没有使用 GitHub Raw 不能正确加载的软链接或重定向文件。
 
-AI 规则只从已审查的专属域名范围中提取，不将全 Google / GitHub、共享认证支付平台、整个 ASN 或泛进程自动归入 AI。Muse 暂无可靠公共域名源，使用独立的 macOS 应用目录进程规则，需要 Surge Mac 6.0.0+。
+## 使用
 
-根目录原有规则保留兼容，仍为人工维护，**不在新的自动更新范围内**。启用独立 AI 规则后，应移除主配置中旧的聚合 AIGC、旧 ChatGPT 及失效 MetaMuse 引用，详见接入说明。
+参照 [完整通用模板](examples/Rule.template.conf)，将其中的 `[Rule]` 段替换到自己的 Surge 配置。模板不含节点和策略组定义；请保留现有策略组，并替换 tailnet 示例后缀、添加自己的服务器 IP。模板使用的策略名称沿用既有配置。
 
-## 项目说明
+所有新目录中的 `.list` 均使用 **Surge RULE-SET 格式**。China 和广告域名集已经从 Domainset 转换，所以也应使用 `RULE-SET`，而不是 `DOMAIN-SET`：
 
-本仓库包含了用于 Surge 代理的各种规则列表（`.list`）和配置文件（`.yaml`），用于管理网络流量的路由转发。规则按照服务类型和使用场景进行组织。
+```ini
+RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/security/RejectDomain.list,REJECT
+RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/ai/ChatGPT.list,ChatGPT
+RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/ai/Grok.list,智能助理
+RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/services/Spotify.list,Spotify
+RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/services/China.list,DIRECT
+```
 
-## 规则文件
+模板的关键顺序为：Tailnet → 异常地址防护 / 固定服务器 / 内网 → QUIC 与安全拦截 → Muse 进程策略 → 自定义服务及独立 AI → 专用平台 / 流媒体 → Google / 通用代理 → 国内域名 / 内网 / 国内 CIDR → FINAL。Spotify 位于 GlobalMedia 之前，Copilot 专属端点位于 GitHub 之前。
 
-### 服务特定规则
+Muse 目前只匹配 `/Applications/Muse.app/` 应用目录内进程，需要 **Surge Mac 6.0.0+**；没有猜测其域名。其他服务的域名规则不能判断每个请求来自哪个本地 Agent；Google AI 共用开发接口另列，第三方网关 / MCP / 插件仍需补充自己的域名。详见 [AI 接入说明](docs/ai-rules.md)。
 
-| 文件 | 大小 | 说明 |
-|------|------|------|
-| **GoogleVoice.list** | 178B | Google Voice 路由规则 |
-| **OpenAI.list** | 1.4K | OpenAI 服务路由规则 |
-| **Plex.list** | 121B | Plex 媒体服务器规则 |
-| **PrivateTracker.list** | 4.1K | 私密追踪器服务规则 |
-| **MtProviders.list** | 1.4K | MT 提供商规则 |
-| **Parsec.list** | 34B | Parsec 云游戏服务规则 |
-| **oracle.list** | 861B | Oracle Cloud 服务规则 |
-| **talkatone.list** | 418B | Talkatone VoIP 服务规则 |
-| **xptv.list** | 179B | XPTV 流媒体规则 |
-| **SynologyDDNS.list** | 157B | 群晖 DDNS 规则 |
-| **WebsiteProxy.list** | 75B | 常规网站代理规则 |
-| **Speacial.list** | 1.4K | 特殊服务规则 |
+## 每 6 小时自动更新
 
-### 配置文件
+[Sync routing rules 工作流](.github/workflows/sync-ai-rules.yml) 于北京时间每天 **02:17、08:17、14:17、20:17** 检查更新，支持手动运行。手动运行可选择功能分支，在合并前生成并校验全部产物；定时任务运行于默认分支。GitHub 调度可能延迟。
 
-| 文件 | 说明 |
-|------|------|
-| **hot.yaml** | 热加载配置文件 |
+流程：测试 → 抓取所有源 → 按正确格式解析 / 筛选 / 去重 → 生成规则 → 重建根目录兼容入口 → 离线校验与模板冒烟 → 仅提交变化的产物。
 
-## 使用方法
+- 抓取失败、HTML、空文件、非法格式或空服务集合会使本轮失败，不提交半成品。
+- AI 仅从审查过的域名范围提取，不自动纳入宽关键词、整个 ASN、共享登录支付平台或泛进程。
+- 其他服务采用上游镜像模式，保留原有共享域名、IP / ASN 等服务范围，不等于做过与 AI 同样的收窄；专用规则应放在这些通用集合之前。
+- 规则不写运行时间；来源或规则均无变化时不重复提交。来源 SHA-256 的变化可能只来自上游注释更新。
+- 广告等大型镜像只保存紧凑来源关系；AI 继续保存逐条来源，避免清单膨胀。
+- 手工源、历史归档、个人节点与策略组不会被上游内容覆盖。同步任务会重建根目录兼容文件。
 
-1. 将规则文件导入到 Surge 配置中
-2. 在 Surge 配置文件中引入所需的 `.list` 规则文件
-3. 根据需要配置路由策略
-4. 测试验证代理规则是否正常工作
+## 本地维护
 
-## 规则格式
+依赖 Python 3.10+ 标准库；Actions 使用 Python 3.12。
 
-规则遵循 Surge 兼容的格式标准，常见的规则类型包括：
-- 域名路由
-- IP 路由
-- 进程路由
-- DNS 策略配置
+```bash
+python3 scripts/sync_rules.py
+python3 scripts/build_compat.py
+python3 scripts/sync_rules.py --validate
+python3 scripts/build_compat.py --validate
+python3 scripts/validate_profile.py --smoke
+python3 -m unittest discover -s tests
+```
 
-## 版本信息
+`sync_rules.py --check` 联网比较、不写文件：0 无变化、2 有变化、1 失败。`build_compat.py --check` 同样返回 0 / 2 / 1，但完全离线。修改手动规则后也需重建并提交相应兼容入口。
 
-- 最后更新：2026-06-21
-- 适用于 Surge 4.x 及更高版本
+## 本次整理
 
-## 注意事项
+- 自定义列表迁入 [rules/custom](rules/custom/)，清除相同条目，保留已有站点和进程规则；`Speacial` 的规范文件名为 [Special.list](rules/custom/Special.list)，旧根文件名和策略组名不变。
+- Metatube 中的 `DOMAIN,ec.sod.co.jp/prime` 修正为主机名 `ec.sod.co.jp`。
+- 根目录与上游 GoogleVoice 目前都误指向 Google Lens，现限域并固定官方 voice.google.com 入口，排除 Lens；原内容已归档。
+- 原 Oracle 中的自定义宽关键词保留在 [OracleLegacy.list](rules/custom/OracleLegacy.list)，旧根地址继续兼容；新模板只用标准 Oracle 服务集，未默认启用这些宽关键词。
+- Talkatone 的本地 `tktn.be` 补充保留在 [TalkatoneExtras.list](rules/custom/TalkatoneExtras.list)。
+- 旧 ChatGPT / OpenAI / Claude 根地址指向新的对应 AI 内容。旧 AIGC 地址为经过审查的 AI 列表兼容并集，排除 Muse 进程和 DeepSeek；新配置优先逐服务引用。
+- 原 [hot.yaml](hot.yaml) 是 Clash `payload` 规则文件，不是 Surge 热加载配置；保留原地址与历史副本，不作为本次 Surge 模板的输入。
+- PT 中的 `announce` / `torrent` / `tracker`、Special 中的进程和 Tailnet 匹配保留原意。模板中的 Tailnet / LAN 优先直连；不要把这些定制规则当作通用纯域名列表使用。
 
-- 定期检查并更新规则以确保兼容性
-- 在生产环境使用前充分测试规则
-- 保留工作配置的备份副本
+上游选型见 [来源记录](docs/upstreams.md)，整理与分流变化见 [迁移说明](docs/rules-migration.md)，署名和许可见 [第三方声明](THIRD_PARTY_NOTICES.md)。离线检查及模板冒烟不代表已在真实 Surge 客户端测试所有服务。

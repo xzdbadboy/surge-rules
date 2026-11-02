@@ -54,7 +54,7 @@ RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/ai/D
 RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/ai/Groq.list,智能助理
 ```
 
-接入上述片段后，删除或注释旧的顶部 Muse `PROCESS-NAME` 行、旧根目录 `ChatGPT.list` / `AIGC.list` 引用，以及已 404 的 MetaMuse 引用，避免旧大集合继续接管未匹配的共享服务。根目录历史文件保留兼容，**不在新的自动更新范围**。
+接入上述片段后，删除或注释旧的顶部 Muse `PROCESS-NAME` 行、旧根目录 `ChatGPT.list` / `AIGC.list` 引用，以及已 404 的 MetaMuse 引用，避免重复分流。根目录历史 AI 地址已改为自动生成的安全兼容内容；新配置仍建议使用独立服务文件。其他服务、拦截规则和完整顺序见 [完整 Rule 模板](../examples/Rule.template.conf) 与 [迁移说明](rules-migration.md)。
 
 如果只用其中几个服务，只引用对应文件即可。运行在网关或 iOS 上时无法依赖本机 Muse 进程规则；其他服务的域名规则仍可使用。进程规则只覆盖 Surge 能识别到的应用目录内进程，应用转交给目录外程序或独立代理的流量不保证被识别为 Muse。
 
@@ -73,14 +73,14 @@ RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/ai/G
 
 ## 自动更新
 
-[同步工作流](../.github/workflows/sync-ai-rules.yml) 每 6 小时运行一次：UTC `00:17 / 06:17 / 12:17 / 18:17`，对应北京时间 `08:17 / 14:17 / 20:17 / 次日02:17`。GitHub 的计划任务可能延迟，并非准点定时器。也可在 Actions 页面选择 **Sync AI service rules → Run workflow**。
+[同步工作流](../.github/workflows/sync-ai-rules.yml) 每 6 小时运行一次：UTC `00:17 / 06:17 / 12:17 / 18:17`，对应北京时间 `08:17 / 14:17 / 20:17 / 次日02:17`。GitHub 的计划任务可能延迟，并非准点定时器。也可在 Actions 页面选择 **Sync routing rules → Run workflow**。
 
 流程为：离线测试 → 抓取全部来源 → 解析 / 范围过滤 / 去重 → 离线校验 → 仅提交自动生成的规则和清单。
 
 - URL 超时、404、HTML、空内容、未知格式、非法域名或服务集合为空时，整轮失败，不写入规则、不提交。
 - 全部来源抓取和校验通过后才写文件；单文件用原子替换。磁盘写入异常不保证多个文件之间的事务，但工作流失败后不会提交半成品。
 - 规则不写运行时间，规则和来源内容均无变化时不产生提交。清单保留上游原始 SHA-256，因此上游只改注释也可能更新清单。
-- 同步只写 `rules/ai/` 和 `rules/manifest.json`，不会改节点、策略组、历史根目录规则或 Surge 本机配置。
+- 同步写入 `rules/ai/`、`rules/services/`、`rules/security/` 和来源清单，并重建根目录兼容 `.list`；不改手工源、节点、策略组或 Surge 本机配置。
 - GitHub Actions `GITHUB_TOKEN` 仅同步 job 使用 `contents: write`，无须另存 PAT；PR 校验流程只有读取权限，不执行联网更新。
 - 若默认分支禁止 bot 直接推送，需要调整同步为 PR 模式或按仓库保护策略放行；公开仓库连续 60 天没有活动时，GitHub 可能停用计划任务，需在 Actions 中恢复。
 
@@ -91,6 +91,7 @@ RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/ai/G
 ```bash
 # 在仓库根目录：抓取并生成
 python3 scripts/sync_rules.py
+python3 scripts/build_compat.py
 
 # 联网检查，不修改文件：0 无变化；2 有变化；1 失败
 python3 scripts/sync_rules.py --check
@@ -102,4 +103,4 @@ python3 scripts/sync_rules.py --validate
 python3 -m unittest discover -s tests -v
 ```
 
-[manifest](../rules/manifest.json) 包含配置及上游摘要、各文件规则数量、每条规则的来源和证据。若要更改服务允许范围、加自己的网关域名或调整 Muse 路径，应编辑配置、运行生成器并提交配置与产物。`--check` 不负责重写输出；`--validate` 不访问外网，也不证明真实客户端网络连通。
+[manifest](../rules/manifest.json) 包含配置及上游摘要、各文件规则数量、AI 逐条来源和镜像的紧凑来源关系。若要更改服务允许范围、加自己的网关域名或调整 Muse 路径，应编辑配置、运行生成器并提交配置与产物。`--check` 不负责重写输出；`--validate` 不访问外网，也不证明真实客户端网络连通。

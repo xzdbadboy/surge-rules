@@ -175,7 +175,11 @@ def _looks_like_html(text: str) -> bool:
 
 
 def _validate_domain(value: str, *, allow_wildcard: bool = False) -> str:
-    """校验并规范化一个域名，返回小写形式。"""
+    """校验并规范化一个域名，返回小写形式。
+
+    支持合法单标签 TLD（如 ``cn`` / ``msleep`` / 品牌 gTLD ``apple``），这与
+    Surge 把 ``DOMAIN-SUFFIX,cn`` 视作对整个 ``.cn`` 后缀的匹配一致。
+    """
     if not isinstance(value, str):
         raise ParseError(f"域名必须是字符串: {value!r}")
     v = value.strip().lower()
@@ -192,8 +196,19 @@ def _validate_domain(value: str, *, allow_wildcard: bool = False) -> str:
     if len(v) > 253:
         raise ParseError(f"域名过长: {value!r}")
     labels = v.split(".")
-    if len(labels) < 2:
-        raise ParseError(f"域名缺少顶级域: {value!r}")
+    if len(labels) == 1:
+        # 单标签 TLD：合法，但至少两个字符，且不以连字符开头/结尾
+        # （TLD 不会只有 1 个字符；xn-- 形式的 IDN TLD 仍是合法 ASCII 标签）。
+        label = labels[0]
+        if (
+            len(label) < 2
+            or len(label) > 63
+            or not _LABEL_RE.match(label)
+            or label.startswith("-")
+            or label.endswith("-")
+        ):
+            raise ParseError(f"非法单标签域名 {value!r}")
+        return v
     for label in labels:
         if not label or len(label) > 63 or not _LABEL_RE.match(label):
             if allow_wildcard and label and set(label) <= {"*"}:
@@ -202,15 +217,49 @@ def _validate_domain(value: str, *, allow_wildcard: bool = False) -> str:
     return v
 
 
+# DOMAIN-WILDCARD 标签允许 * / ? / [] 与常规域名标签字符混合（如 ads-*.foo.com）。
+_WILDCARD_LABEL_RE = re.compile(r"^[a-z0-9_*?\[\]-]+$")
+
+
+def _validate_wildcard_domain(value: str) -> str:
+    """校验 Surge ``DOMAIN-WILDCARD`` 值，支持 *、? 与字符类 [] 混合。
+
+    真实上游形如 ``ads-*.tiktok.com``、``beacons*.gvt?.com``、``*.ad.*.host``，
+    不能因含通配符就把合法规则判为非法。只拒绝会破坏规则行语法的字符。
+    """
+    if not isinstance(value, str):
+        raise ParseError(f"DOMAIN-WILDCARD 必须是字符串: {value!r}")
+    v = value.strip().lower()
+    if not v:
+        raise ParseError("空 DOMAIN-WILDCARD")
+    if "/" in v:
+        raise ParseError(f"非法 DOMAIN-WILDCARD（含路径 '/'）: {value!r}")
+    if any(c in v for c in (":", "#", ";", "\\", " ", "\t", ",")):
+        raise ParseError(f"非法 DOMAIN-WILDCARD（含非法字符）: {value!r}")
+    if v.startswith(".") or v.endswith(".") or ".." in v:
+        raise ParseError(f"非法 DOMAIN-WILDCARD（点位置错误）: {value!r}")
+    if len(v) > 253:
+        raise ParseError(f"DOMAIN-WILDCARD 过长: {value!r}")
+    labels = v.split(".")
+    if len(labels) < 2:
+        raise ParseError(f"DOMAIN-WILDCARD 域名缺少顶级域: {value!r}")
+    for label in labels:
+        if not label or len(label) > 63 or not _WILDCARD_LABEL_RE.match(label):
+            raise ParseError(f"非法通配标签 {label!r}: {value!r}")
+        if label.count("[") != label.count("]"):
+            raise ParseError(f"DOMAIN-WILDCARD 字符类括号不匹配: {value!r}")
+    return v
+
+
 def _validate_keyword(value: str) -> str:
+    """校验 DOMAIN-KEYWORD。Surge 允许任意非空关键词（含短词如 ad/ads、带点如 .foo.）。"""
     v = value.strip()
     if not v:
         raise ParseError("空 DOMAIN-KEYWORD")
-    # 全局宽关键词：过短，或不含点且过短（如 'com'/'net'/'http'）会导致过度匹配。
-    if len(v) < 3:
-        raise ParseError(f"全局宽关键词（过短）: {value!r}")
-    if "." not in v and len(v) <= 4:
-        raise ParseError(f"全局宽关键词（疑似公共后缀/泛词）: {value!r}")
+    # 不再用长度 heuristic 把合法的短广告关键词（ad/ads/xn 等）一律拒绝；
+    # 只拒绝会破坏规则行语法的字符。
+    if any(c in v for c in ("/", "\\", "#", ";", ",")) or any(c.isspace() for c in v):
+        raise ParseError(f"非法 DOMAIN-KEYWORD: {value!r}")
     return v.lower()
 
 
@@ -285,7 +334,7 @@ def _parse_rule(content: str, *, source_id: str = "<inline>") -> Rule:
                 raise ParseError(f"[{source_id}] {rtype} 不允许的选项/策略列 {opt!r}: {content!r}")
         return Rule(rtype, value, opts)
     if rtype == "DOMAIN-WILDCARD":
-        value = _validate_domain(need_two(), allow_wildcard=True)
+        value = _validate_wildcard_domain(need_two())
         return Rule(rtype, value)
     if rtype == "DOMAIN-KEYWORD":
         return Rule(rtype, _validate_keyword(need_two()))
@@ -683,18 +732,42 @@ def _in_scope(domain: str, suffixes: Iterable[str], exact_domains: Iterable[str]
     return domain.lower() in set(exact_domains)
 
 
+def _iter_parent_suffixes(value: str, include_self: bool):
+    """按标签逐级产出候选后缀（O(标签数)），供 set 命中查询使用。
+
+    ``api.example.com, include_self=True`` -> ``api.example.com``, ``example.com``, ``com``；
+    ``include_self=False`` 时跳过自身，仅产出严格父后缀。
+    """
+    labels = value.split(".")
+    start = 0 if include_self else 1
+    for i in range(start, len(labels)):
+        yield ".".join(labels[i:])
+
+
 def _prune_covered(rules: Mapping[str, Tuple[Rule, set]]) -> Dict[str, Tuple[Rule, set]]:
-    """同服务内：suffix 覆盖可裁剪 domain 与更窄 suffix。"""
-    suffix_values = {r.value for r, _ in rules.values() if r.type == "DOMAIN-SUFFIX"}
+    """同服务内裁剪被更宽后缀覆盖的规则，复杂度 O(规则数 × 标签数)。
+
+    旧实现对每条规则遍历全部 suffix 集合，遇 146k 级列表会退化为 O(N^2) 卡死；
+    这里按“选项组合”各建一次 suffix set，然后每条规则只沿自身标签逐级生成候选
+    后缀做 O(1) 查询。
+
+    只有选项完全相同才允许裁剪：``extended-matching`` 等选项会改变匹配语义，
+    不同选项的规则必须同时保留，避免错误扩大/缩小覆盖范围。
+    """
+    suffix_by_opts: Dict[Tuple[str, ...], set] = {}
+    for rule, _ in rules.values():
+        if rule.type == "DOMAIN-SUFFIX":
+            suffix_by_opts.setdefault(rule.options, set()).add(rule.value)
+
     kept: Dict[str, Tuple[Rule, set]] = {}
     for key, (rule, origins) in rules.items():
         if rule.type == "DOMAIN":
-            if any(rule.value == s or rule.value.endswith("." + s) for s in suffix_values):
+            suffixes = suffix_by_opts.get(rule.options)
+            if suffixes and any(s in suffixes for s in _iter_parent_suffixes(rule.value, True)):
                 continue
         elif rule.type == "DOMAIN-SUFFIX":
-            if any(
-                s != rule.value and rule.value.endswith("." + s) for s in suffix_values
-            ):
+            suffixes = suffix_by_opts.get(rule.options)
+            if suffixes and any(s in suffixes for s in _iter_parent_suffixes(rule.value, False)):
                 continue
         kept[key] = (rule, origins)
     return kept
@@ -710,7 +783,7 @@ def _add_rule(store: Dict[str, Tuple[Rule, set]], rule: Rule, origin: str) -> No
 
 def select_rules(
     config: Mapping, svc_id: str, svc: Mapping, parsed: Mapping[str, List[Rule]]
-) -> Tuple[List[Rule], Dict[str, List[str]]]:
+) -> Tuple[List[Rule], Optional[Dict[str, List[str]]]]:
     mode = svc["mode"]
     store: Dict[str, Tuple[Rule, set]] = {}
 
@@ -746,7 +819,14 @@ def select_rules(
         store.values(), key=lambda item: (_TYPE_ORDER[item[0].type], item[0].value, item[0].options)
     )
     rules = [rule for rule, _ in ordered]
-    provenance = {rule.key(): sorted(origins) for rule, origins in ordered}
+    # mirror 单源/多源镜像关系明确，不需要逐条来源映射（146k 条会撑爆 manifest）；
+    # filtered 仍保留逐条 rule_sources 以记录白名单命中的上游来源。
+    if mode == "filtered":
+        provenance: Optional[Dict[str, List[str]]] = {
+            rule.key(): sorted(origins) for rule, origins in ordered
+        }
+    else:
+        provenance = None
     return rules, provenance
 
 
@@ -840,15 +920,23 @@ def build_outputs(
         path = svc["output"]
         files[path] = content
         data = content.encode("utf-8")
-        manifest_outputs[path] = {
+        out_entry: Dict[str, object] = {
             "service": svc_id,
+            "mode": svc["mode"],
             "sha256": sha256_hex(data),
             "rule_count": len(rules),
             "rule_types": _rule_types(rules),
-            "rule_sources": provenance,
             "source_urls": _source_urls(config, svc),
             "evidence": list(svc.get("evidence", []) or []),
         }
+        if svc["mode"] == "filtered":
+            out_entry["rule_sources"] = provenance
+        else:
+            # 紧凑 provenance：镜像单源关系明确，记录来源集合与本地规则数，
+            # 不逐条存 source 映射（避免 146k 条 key 撑大 manifest）。
+            out_entry["source_ids"] = sorted(svc.get("listSources", []))
+            out_entry["local_rule_count"] = len(svc.get("local_rules", []))
+        manifest_outputs[path] = out_entry
 
     manifest_text = json.dumps(manifest, indent=2, ensure_ascii=False, sort_keys=True) + "\n"
     files[MANIFEST_REL_PATH] = manifest_text
@@ -1082,15 +1170,26 @@ def run_validate(config_path: Path, project_root: Path) -> int:
                 )
             if _rule_types(rules) != info.get("rule_types"):
                 raise SyncError(f"{rel} 的 rule_types 与 manifest 不一致")
-            provenance = info.get("rule_sources")
-            if not isinstance(provenance, dict):
-                raise SyncError(f"{rel} 的 rule_sources 缺失或类型错误")
-            if set(provenance) != {r.key() for r in rules}:
-                raise SyncError(f"{rel} 的 provenance keys 与实际规则不一致")
+            if "mode" in info and info.get("mode") != svc["mode"]:
+                raise SyncError(f"{rel} 的 mode {info.get('mode')!r} 与配置 {svc['mode']!r} 不一致")
             if info.get("source_urls") != _source_urls(config, svc):
                 raise SyncError(f"{rel} 的 source_urls 与配置不一致")
             if svc["mode"] == "filtered":
+                provenance = info.get("rule_sources")
+                if not isinstance(provenance, dict):
+                    raise SyncError(f"{rel} 的 rule_sources 缺失或类型错误")
+                if set(provenance) != {r.key() for r in rules}:
+                    raise SyncError(f"{rel} 的 provenance keys 与实际规则不一致")
                 _validate_filtered_output(config, svc_id, svc, rules)
+            else:
+                # mirror：紧凑 provenance，校验来源集合/本地规则数，禁止逐条 rule_sources。
+                # 规则本身已由上面的 parse_surge 严格逐条校验，不能跳过合法性检查。
+                if "rule_sources" in info:
+                    raise SyncError(f"{rel} 为 mirror 输出，不应包含逐条 rule_sources")
+                if info.get("source_ids") != sorted(svc.get("listSources", [])):
+                    raise SyncError(f"{rel} 的 source_ids 与配置不一致")
+                if info.get("local_rule_count") != len(svc.get("local_rules", [])):
+                    raise SyncError(f"{rel} 的 local_rule_count 与配置不一致")
         print("[validate] 通过。")
         return 0
     except (SyncError, ConfigError) as exc:

@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "aliases": {
+    "MtProviders.list": [
+      "rules/custom/MtProviders.list"
+    ],
+    "Plex.list": [
+      "rules/custom/Plex.list"
+    ],
+    "PrivateTracker.list": [
+      "rules/custom/PrivateTracker.list"
+    ],
+    "SynologyDDNS.list": [
+      "rules/custom/SynologyDDNS.list"
+    ],
+    "WebsiteProxy.list": [
+      "rules/custom/WebsiteProxy.list"
+    ],
+    "Speacial.list": [
+      "rules/custom/Special.list"
+    ],
+    "WebNovel.list": [
+      "rules/custom/WebNovel.list"
+    ],
+    "NewAPI.list": [
+      "rules/custom/NewAPI.list"
+    ],
+    "Parsec.list": [
+      "rules/custom/Parsec.list"
+    ],
+    "xptv.list": [
+      "rules/custom/XPTV.list"
+    ],
+    "GoogleVoice.list": [
+      "rules/services/GoogleVoice.list"
+    ],
+    "oracle.list": [
+      "rules/services/Oracle.list",
+      "rules/custom/OracleLegacy.list"
+    ],
+    "talkatone.list": [
+      "rules/services/Talkatone.list",
+      "rules/custom/TalkatoneExtras.list"
+    ],
+    "ChatGPT.list": [
+      "rules/ai/ChatGPT.list"
+    ],
+    "OpenAI.list": [
+      "rules/ai/ChatGPT.list"
+    ],
+    "claude.list": [
+      "rules/ai/Claude.list"
+    ],
+    "AIGC.list": [
+      "rules/ai/ChatGPT.list",
+      "rules/ai/Claude.list",
+      "rules/ai/Grok.list",
+      "rules/ai/Gemini.list",
+      "rules/ai/GoogleAIStudio.list",
+      "rules/ai/NotebookLM.list",
+      "rules/ai/Antigravity.list",
+      "rules/ai/GoogleAIShared.list",
+      "rules/ai/Copilot.list",
+      "rules/ai/Cursor.list",
+      "rules/ai/Windsurf.list",
+      "rules/ai/Perplexity.list",
+      "rules/ai/OpenRouter.list",
+      "rules/ai/Sora.list",
+      "rules/ai/MetaAI.list",
+      "rules/ai/Dify.list",
+      "rules/ai/Groq.list"
+    ]
+  }
+}

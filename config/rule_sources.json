@@ -76,6 +76,154 @@
       "format": "surge",
       "repository": "Rabbit-Spec/Surge",
       "path": "Rules/AIGC.list"
+    },
+    "upstream_apple": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Apple.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/Apple.list"
+    },
+    "upstream_microsoft": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Microsoft.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/Microsoft.list"
+    },
+    "upstream_game": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Game.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/Game.list"
+    },
+    "upstream_youtube": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/YouTube.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/YouTube.list"
+    },
+    "upstream_netflix": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Netflix.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/Netflix.list"
+    },
+    "upstream_disney": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Disney.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/Disney.list"
+    },
+    "upstream_bilibili": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/BiliBili.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/BiliBili.list"
+    },
+    "upstream_chinamedia": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/ChinaMedia.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/ChinaMedia.list"
+    },
+    "upstream_globalmedia": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/GlobalMedia.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/GlobalMedia.list"
+    },
+    "upstream_spotify": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Spotify.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/Spotify.list"
+    },
+    "upstream_google": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Google.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/Google.list"
+    },
+    "upstream_proxy": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Proxy.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/Proxy.list"
+    },
+    "upstream_china": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/China.list",
+      "format": "domainset",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/China.list"
+    },
+    "upstream_chinacidr": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/ChinaCIDR.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/ChinaCIDR.list"
+    },
+    "upstream_telegram": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Telegram.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/Telegram.list"
+    },
+    "upstream_telegram_asn": {
+      "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/TelegramASN.list",
+      "format": "surge",
+      "repository": "Rabbit-Spec/Surge",
+      "path": "Rules/TelegramASN.list"
+    },
+    "upstream_wechat": {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/WeChat/WeChat.list",
+      "format": "surge",
+      "repository": "blackmatrix7/ios_rule_script",
+      "path": "rule/Surge/WeChat/WeChat.list",
+      "license_url": "https://github.com/blackmatrix7/ios_rule_script/blob/master/LICENSE"
+    },
+    "upstream_oracle": {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Oracle/Oracle.list",
+      "format": "surge",
+      "repository": "blackmatrix7/ios_rule_script",
+      "path": "rule/Surge/Oracle/Oracle.list",
+      "license_url": "https://github.com/blackmatrix7/ios_rule_script/blob/master/LICENSE"
+    },
+    "upstream_googlevoice": {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GoogleVoice/GoogleVoice.list",
+      "format": "surge",
+      "repository": "blackmatrix7/ios_rule_script",
+      "path": "rule/Surge/GoogleVoice/GoogleVoice.list",
+      "license_url": "https://github.com/blackmatrix7/ios_rule_script/blob/master/LICENSE"
+    },
+    "upstream_github": {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GitHub/GitHub.list",
+      "format": "surge",
+      "repository": "blackmatrix7/ios_rule_script",
+      "path": "rule/Surge/GitHub/GitHub.list",
+      "license_url": "https://github.com/blackmatrix7/ios_rule_script/blob/master/LICENSE"
+    },
+    "upstream_apns": {
+      "url": "https://raw.githubusercontent.com/mrbruce516/apns-fix/main/Apple_APNs.list",
+      "format": "surge",
+      "repository": "mrbruce516/apns-fix",
+      "path": "Apple_APNs.list"
+    },
+    "upstream_talkatone": {
+      "url": "https://raw.githubusercontent.com/mottzz87/crules/main/rule/talkatone.list",
+      "format": "surge",
+      "repository": "mottzz87/crules",
+      "path": "rule/talkatone.list"
+    },
+    "upstream_reject_domains": {
+      "url": "https://ruleset.skk.moe/List/domainset/reject.conf",
+      "format": "domainset",
+      "repository": "SukkaW/Surge",
+      "license_url": "https://github.com/SukkaW/Surge/blob/master/LICENSE"
+    },
+    "upstream_reject_non_ip": {
+      "url": "https://ruleset.skk.moe/List/non_ip/reject.conf",
+      "format": "surge",
+      "repository": "SukkaW/Surge",
+      "license_url": "https://github.com/SukkaW/Surge/blob/master/LICENSE"
     }
   },
   "services": {
@@ -86,207 +234,735 @@
       "listSources": [],
       "allowed_suffixes": [],
       "allowed_domains": [],
-      "local_rules": ["PROCESS-NAME,/Applications/Muse.app/"],
+      "local_rules": [
+        "PROCESS-NAME,/Applications/Muse.app/"
+      ],
       "description": "macOS only; confirmed application path, remote domain identity unconfirmed. App bundle prefix requires Surge Mac 6.0.0+. No guessed domains.",
-      "evidence": ["https://manual.nssurge.com/rules/process.html"]
+      "evidence": [
+        "https://manual.nssurge.com/rules/process.html"
+      ]
     },
     "chatgpt": {
       "name": "ChatGPT / OpenAI",
       "output": "rules/ai/ChatGPT.list",
       "mode": "filtered",
-      "listSources": ["meta_openai", "sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["openai.com", "openai.org", "chatgpt.com", "chat.com", "oaistatic.com", "oaiusercontent.com", "oaistatsig.com", "chatgpt.livekit.cloud", "openai.com.cdn.cloudflare.net"],
-      "allowed_domains": ["openaiapi-site.azureedge.net", "openaiassets.blob.core.windows.net", "openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net", "openaicom.imgix.net", "openaicomproductionae4b.blob.core.windows.net", "production-openaicom-storage.azureedge.net"],
+      "listSources": [
+        "meta_openai",
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "openai.com",
+        "openai.org",
+        "chatgpt.com",
+        "chat.com",
+        "oaistatic.com",
+        "oaiusercontent.com",
+        "oaistatsig.com",
+        "chatgpt.livekit.cloud",
+        "openai.com.cdn.cloudflare.net"
+      ],
+      "allowed_domains": [
+        "openaiapi-site.azureedge.net",
+        "openaiassets.blob.core.windows.net",
+        "openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net",
+        "openaicom.imgix.net",
+        "openaicomproductionae4b.blob.core.windows.net",
+        "production-openaicom-storage.azureedge.net"
+      ],
       "local_rules": [],
       "description": "ChatGPT web, OpenAI API and dedicated assets; Sora is a separate list. Shared payment, CAPTCHA and telemetry providers excluded.",
-      "evidence": ["https://help.openai.com/en/articles/9247338-network-recommendations-for-chatgpt-errors-on-web-and-apps"]
+      "evidence": [
+        "https://help.openai.com/en/articles/9247338-network-recommendations-for-chatgpt-errors-on-web-and-apps"
+      ]
     },
     "claude": {
       "name": "Claude / Anthropic / Claude Code",
       "output": "rules/ai/Claude.list",
       "mode": "filtered",
-      "listSources": ["meta_anthropic", "sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["anthropic.com", "claude.ai", "claude.com", "claude.app", "claudeusercontent.com", "claudemcpcontent.com", "clau.de"],
+      "listSources": [
+        "meta_anthropic",
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "anthropic.com",
+        "claude.ai",
+        "claude.com",
+        "claude.app",
+        "claudeusercontent.com",
+        "claudemcpcontent.com",
+        "clau.de"
+      ],
       "allowed_domains": [],
-      "local_rules": ["DOMAIN-SUFFIX,anthropic.com", "DOMAIN-SUFFIX,claude.ai", "DOMAIN-SUFFIX,claude.com", "DOMAIN-SUFFIX,claude.app", "DOMAIN-SUFFIX,claudeusercontent.com", "DOMAIN-SUFFIX,claudemcpcontent.com"],
+      "local_rules": [
+        "DOMAIN-SUFFIX,anthropic.com",
+        "DOMAIN-SUFFIX,claude.ai",
+        "DOMAIN-SUFFIX,claude.com",
+        "DOMAIN-SUFFIX,claude.app",
+        "DOMAIN-SUFFIX,claudeusercontent.com",
+        "DOMAIN-SUFFIX,claudemcpcontent.com"
+      ],
       "description": "Claude web, desktop and Claude Code share Anthropic domains; domains cannot distinguish these clients. Retains previously reviewed local core domains.",
-      "evidence": ["https://code.claude.com/docs/en/network-config", "https://code.claude.com/docs/en/desktop"]
+      "evidence": [
+        "https://code.claude.com/docs/en/network-config",
+        "https://code.claude.com/docs/en/desktop"
+      ]
     },
     "grok": {
       "name": "Grok / xAI",
       "output": "rules/ai/Grok.list",
       "mode": "filtered",
-      "listSources": ["meta_xai", "sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["grok.com", "x.ai", "grok.x.com"],
+      "listSources": [
+        "meta_xai",
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "grok.com",
+        "x.ai",
+        "grok.x.com"
+      ],
       "allowed_domains": [],
       "local_rules": [],
       "description": "Grok web and xAI API; does not route all of X/Twitter or Grokipedia.",
-      "evidence": ["https://docs.x.ai/"]
+      "evidence": [
+        "https://docs.x.ai/"
+      ]
     },
     "gemini": {
       "name": "Gemini",
       "output": "rules/ai/Gemini.list",
       "mode": "filtered",
-      "listSources": ["meta_google_ai", "sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["gemini.google", "gemini.google.com", "gemini.gstatic.com", "bard.google.com"],
-      "allowed_domains": ["geminiweb-pa.clients.google.com", "geminiweb-pa.clients6.google.com", "robinfrontend-pa.googleapis.com", "aisandbox-pa.googleapis.com", "geller-pa.googleapis.com", "proactivebackend-pa.googleapis.com"],
+      "listSources": [
+        "meta_google_ai",
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "gemini.google",
+        "gemini.google.com",
+        "gemini.gstatic.com",
+        "bard.google.com"
+      ],
+      "allowed_domains": [
+        "geminiweb-pa.clients.google.com",
+        "geminiweb-pa.clients6.google.com",
+        "robinfrontend-pa.googleapis.com",
+        "aisandbox-pa.googleapis.com",
+        "geller-pa.googleapis.com",
+        "proactivebackend-pa.googleapis.com"
+      ],
       "local_rules": [],
       "description": "Gemini web endpoints only; Google AI Studio, NotebookLM, Antigravity and shared developer APIs are separate.",
-      "evidence": ["https://gemini.google.com/"]
+      "evidence": [
+        "https://gemini.google.com/"
+      ]
     },
     "google_ai_studio": {
       "name": "Google AI Studio / Gemini API",
       "output": "rules/ai/GoogleAIStudio.list",
       "mode": "filtered",
-      "listSources": ["meta_google_ai", "sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["aistudio.google.com", "makersuite.google.com", "ai.studio", "generativelanguage.googleapis.com"],
-      "allowed_domains": ["ai.google.dev", "alkalicore-pa.clients6.google.com", "alkalimakersuite-pa.clients6.google.com", "webchannel-alkalimakersuite-pa.clients6.google.com", "appsgenaiserver-pa.clients.google.com", "appsgenaiserver-pa.clients6.google.com", "appsgenaiserver-pa.googleapis.com"],
+      "listSources": [
+        "meta_google_ai",
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "aistudio.google.com",
+        "makersuite.google.com",
+        "ai.studio",
+        "generativelanguage.googleapis.com"
+      ],
+      "allowed_domains": [
+        "ai.google.dev",
+        "alkalicore-pa.clients6.google.com",
+        "alkalimakersuite-pa.clients6.google.com",
+        "webchannel-alkalimakersuite-pa.clients6.google.com",
+        "appsgenaiserver-pa.clients.google.com",
+        "appsgenaiserver-pa.clients6.google.com",
+        "appsgenaiserver-pa.googleapis.com"
+      ],
       "local_rules": [],
       "description": "AI Studio and Gemini API. API callers share these endpoints regardless of their local application.",
-      "evidence": ["https://ai.google.dev/gemini-api/docs"]
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs"
+      ]
     },
     "notebooklm": {
       "name": "NotebookLM",
       "output": "rules/ai/NotebookLM.list",
       "mode": "filtered",
-      "listSources": ["meta_google_ai", "sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["notebooklm.google", "notebooklm.google.com"],
-      "allowed_domains": ["notebooklm-pa.googleapis.com", "notebooklm.googleapis.com"],
+      "listSources": [
+        "meta_google_ai",
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "notebooklm.google",
+        "notebooklm.google.com"
+      ],
+      "allowed_domains": [
+        "notebooklm-pa.googleapis.com",
+        "notebooklm.googleapis.com"
+      ],
       "local_rules": [],
       "description": "NotebookLM dedicated web and API endpoints.",
-      "evidence": ["https://notebooklm.google.com/"]
+      "evidence": [
+        "https://notebooklm.google.com/"
+      ]
     },
     "antigravity": {
       "name": "Antigravity",
       "output": "rules/ai/Antigravity.list",
       "mode": "filtered",
-      "listSources": ["meta_google_ai", "sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["antigravity.google", "antigravity-unleash.goog"],
-      "allowed_domains": ["antigravity-pa.googleapis.com", "antigravity.googleapis.com"],
+      "listSources": [
+        "meta_google_ai",
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "antigravity.google",
+        "antigravity-unleash.goog"
+      ],
+      "allowed_domains": [
+        "antigravity-pa.googleapis.com",
+        "antigravity.googleapis.com"
+      ],
       "local_rules": [],
       "description": "Antigravity dedicated endpoints. Also use GoogleAIShared for shared Cloud Code APIs.",
-      "evidence": ["https://antigravity.google/"]
+      "evidence": [
+        "https://antigravity.google/"
+      ]
     },
     "google_ai_shared": {
       "name": "Google AI Shared Developer APIs",
       "output": "rules/ai/GoogleAIShared.list",
       "mode": "filtered",
-      "listSources": ["meta_google_ai", "sukka_ai", "rabbit_ai"],
+      "listSources": [
+        "meta_google_ai",
+        "sukka_ai",
+        "rabbit_ai"
+      ],
       "allowed_suffixes": [],
-      "allowed_domains": ["cloudcode-pa.googleapis.com", "daily-cloudcode-pa.googleapis.com", "cloudaicompanion.googleapis.com", "aicode.googleapis.com", "aida.googleapis.com"],
+      "allowed_domains": [
+        "cloudcode-pa.googleapis.com",
+        "daily-cloudcode-pa.googleapis.com",
+        "cloudaicompanion.googleapis.com",
+        "aicode.googleapis.com",
+        "aida.googleapis.com"
+      ],
       "local_rules": [],
       "description": "Shared Google AI development backends used by Antigravity, Gemini CLI and other Google developer clients. Assign a compatible common policy.",
-      "evidence": ["https://github.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/google-gemini.list"]
+      "evidence": [
+        "https://github.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/google-gemini.list"
+      ]
     },
     "copilot": {
       "name": "GitHub Copilot",
       "output": "rules/ai/Copilot.list",
       "mode": "filtered",
-      "listSources": ["meta_copilot", "sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["githubcopilot.com"],
-      "allowed_domains": ["copilot-proxy.githubusercontent.com", "copilot-workspace.githubnext.com", "copilotprodattachments.blob.core.windows.net"],
+      "listSources": [
+        "meta_copilot",
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "githubcopilot.com"
+      ],
+      "allowed_domains": [
+        "copilot-proxy.githubusercontent.com",
+        "copilot-workspace.githubnext.com",
+        "copilotprodattachments.blob.core.windows.net"
+      ],
       "local_rules": [],
       "description": "GitHub Copilot dedicated endpoints; excludes generic api.github.com and telemetry. Microsoft Copilot is a different service.",
-      "evidence": ["https://docs.github.com/en/copilot/reference/copilot-allowlist-reference"]
+      "evidence": [
+        "https://docs.github.com/en/copilot/reference/copilot-allowlist-reference"
+      ]
     },
     "cursor": {
       "name": "Cursor",
       "output": "rules/ai/Cursor.list",
       "mode": "filtered",
-      "listSources": ["meta_cursor", "sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["cursor.com", "cursor.sh", "cursorapi.com", "cursor-cdn.com", "cursorvm.com"],
+      "listSources": [
+        "meta_cursor",
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "cursor.com",
+        "cursor.sh",
+        "cursorapi.com",
+        "cursor-cdn.com",
+        "cursorvm.com"
+      ],
       "allowed_domains": [],
       "local_rules": [],
       "description": "Cursor dedicated domains, including editor APIs, CDN and VM namespace.",
-      "evidence": ["https://cursor.com/"]
+      "evidence": [
+        "https://cursor.com/"
+      ]
     },
     "windsurf": {
       "name": "Windsurf / Codeium",
       "output": "rules/ai/Windsurf.list",
       "mode": "filtered",
-      "listSources": ["meta_windsurf", "sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["windsurf.com", "windsurf.build", "codeium.com", "codeiumdata.com"],
+      "listSources": [
+        "meta_windsurf",
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "windsurf.com",
+        "windsurf.build",
+        "codeium.com",
+        "codeiumdata.com"
+      ],
       "allowed_domains": [],
       "local_rules": [],
       "description": "Windsurf and former Codeium dedicated APIs and domains.",
-      "evidence": ["https://docs.windsurf.com/"]
+      "evidence": [
+        "https://docs.windsurf.com/"
+      ]
     },
     "perplexity": {
       "name": "Perplexity",
       "output": "rules/ai/Perplexity.list",
       "mode": "filtered",
-      "listSources": ["meta_perplexity", "sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["perplexity.ai", "perplexity.com", "pplx.ai"],
+      "listSources": [
+        "meta_perplexity",
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "perplexity.ai",
+        "perplexity.com",
+        "pplx.ai"
+      ],
       "allowed_domains": [],
       "local_rules": [],
       "description": "Perplexity dedicated search and API domains.",
-      "evidence": ["https://docs.perplexity.ai/"]
+      "evidence": [
+        "https://docs.perplexity.ai/"
+      ]
     },
     "deepseek": {
       "name": "DeepSeek",
       "output": "rules/ai/DeepSeek.list",
       "mode": "filtered",
-      "listSources": ["meta_deepseek", "rabbit_ai"],
-      "allowed_suffixes": ["deepseek.com", "deepseeksvc.com"],
+      "listSources": [
+        "meta_deepseek",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "deepseek.com",
+        "deepseeksvc.com"
+      ],
       "allowed_domains": [],
       "local_rules": [],
       "description": "DeepSeek dedicated domains. A separate list does not imply it needs proxying; DIRECT is supported.",
-      "evidence": ["https://api-docs.deepseek.com/"]
+      "evidence": [
+        "https://api-docs.deepseek.com/"
+      ]
     },
     "openrouter": {
       "name": "OpenRouter",
       "output": "rules/ai/OpenRouter.list",
       "mode": "filtered",
-      "listSources": ["sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["openrouter.ai"],
+      "listSources": [
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "openrouter.ai"
+      ],
       "allowed_domains": [],
       "local_rules": [],
       "description": "OpenRouter dedicated domain; no unrelated gateway or relay domains.",
-      "evidence": ["https://openrouter.ai/docs/"]
+      "evidence": [
+        "https://openrouter.ai/docs/"
+      ]
     },
     "sora": {
       "name": "Sora",
       "output": "rules/ai/Sora.list",
       "mode": "filtered",
-      "listSources": ["meta_openai", "sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["sora.com"],
+      "listSources": [
+        "meta_openai",
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "sora.com"
+      ],
       "allowed_domains": [],
       "local_rules": [],
       "description": "Sora dedicated domain. OpenAI authentication and assets remain in ChatGPT.list.",
-      "evidence": ["https://sora.com/"]
+      "evidence": [
+        "https://sora.com/"
+      ]
     },
     "meta_ai": {
       "name": "Meta AI",
       "output": "rules/ai/MetaAI.list",
       "mode": "filtered",
-      "listSources": ["sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["meta.ai"],
+      "listSources": [
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "meta.ai"
+      ],
       "allowed_domains": [],
       "local_rules": [],
       "description": "Meta AI dedicated domain; does not route all Facebook or Instagram traffic.",
-      "evidence": ["https://www.meta.ai/"]
+      "evidence": [
+        "https://www.meta.ai/"
+      ]
     },
     "dify": {
       "name": "Dify",
       "output": "rules/ai/Dify.list",
       "mode": "filtered",
-      "listSources": ["sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["dify.ai"],
+      "listSources": [
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "dify.ai"
+      ],
       "allowed_domains": [],
       "local_rules": [],
       "description": "Dify public service only; self-hosted Dify and user-defined providers require local rules.",
-      "evidence": ["https://dify.ai/"]
+      "evidence": [
+        "https://dify.ai/"
+      ]
     },
     "groq": {
       "name": "Groq",
       "output": "rules/ai/Groq.list",
       "mode": "filtered",
-      "listSources": ["sukka_ai", "rabbit_ai"],
-      "allowed_suffixes": ["groq.com"],
+      "listSources": [
+        "sukka_ai",
+        "rabbit_ai"
+      ],
+      "allowed_suffixes": [
+        "groq.com"
+      ],
       "allowed_domains": [],
       "local_rules": [],
       "description": "Groq inference service; distinct from Grok / xAI.",
-      "evidence": ["https://console.groq.com/docs/"]
+      "evidence": [
+        "https://console.groq.com/docs/"
+      ]
+    },
+    "mirror_apple": {
+      "name": "Apple",
+      "output": "rules/services/Apple.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_apple"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Apple.list"
+      ]
+    },
+    "mirror_microsoft": {
+      "name": "Microsoft",
+      "output": "rules/services/Microsoft.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_microsoft"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Microsoft.list"
+      ]
+    },
+    "mirror_game": {
+      "name": "Game",
+      "output": "rules/services/Game.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_game"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Game.list"
+      ]
+    },
+    "mirror_youtube": {
+      "name": "YouTube",
+      "output": "rules/services/YouTube.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_youtube"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/YouTube.list"
+      ]
+    },
+    "mirror_netflix": {
+      "name": "Netflix",
+      "output": "rules/services/Netflix.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_netflix"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Netflix.list"
+      ]
+    },
+    "mirror_disney": {
+      "name": "Disney",
+      "output": "rules/services/Disney.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_disney"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Disney.list"
+      ]
+    },
+    "mirror_bilibili": {
+      "name": "BiliBili",
+      "output": "rules/services/BiliBili.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_bilibili"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/BiliBili.list"
+      ]
+    },
+    "mirror_chinamedia": {
+      "name": "ChinaMedia",
+      "output": "rules/services/ChinaMedia.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_chinamedia"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/ChinaMedia.list"
+      ]
+    },
+    "mirror_globalmedia": {
+      "name": "GlobalMedia",
+      "output": "rules/services/GlobalMedia.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_globalmedia"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/GlobalMedia.list"
+      ]
+    },
+    "mirror_spotify": {
+      "name": "Spotify",
+      "output": "rules/services/Spotify.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_spotify"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Spotify.list"
+      ]
+    },
+    "mirror_google": {
+      "name": "Google",
+      "output": "rules/services/Google.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_google"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Google.list"
+      ]
+    },
+    "mirror_proxy": {
+      "name": "Proxy",
+      "output": "rules/services/Proxy.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_proxy"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Proxy.list"
+      ]
+    },
+    "mirror_china": {
+      "name": "China",
+      "output": "rules/services/China.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_china"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/China.list"
+      ]
+    },
+    "mirror_chinacidr": {
+      "name": "ChinaCIDR",
+      "output": "rules/services/ChinaCIDR.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_chinacidr"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/ChinaCIDR.list"
+      ]
+    },
+    "mirror_telegram": {
+      "name": "Telegram",
+      "output": "rules/services/Telegram.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_telegram",
+        "upstream_telegram_asn"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Telegram.list"
+      ]
+    },
+    "mirror_wechat": {
+      "name": "WeChat",
+      "output": "rules/services/WeChat.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_wechat"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/WeChat/WeChat.list"
+      ]
+    },
+    "mirror_oracle": {
+      "name": "Oracle",
+      "output": "rules/services/Oracle.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_oracle"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Oracle/Oracle.list"
+      ]
+    },
+    "mirror_googlevoice": {
+      "name": "GoogleVoice",
+      "output": "rules/services/GoogleVoice.list",
+      "mode": "filtered",
+      "listSources": [
+        "upstream_googlevoice"
+      ],
+      "local_rules": [
+        "DOMAIN-SUFFIX,voice.google.com"
+      ],
+      "description": "Google Voice dedicated official web entry. The upstream list currently contains a Google Lens host; it is excluded by the scope filter. Shared Google assets follow the Google policy.",
+      "evidence": [
+        "https://voice.google.com/",
+        "https://support.google.com/voice/"
+      ],
+      "allowed_suffixes": [
+        "voice.google.com"
+      ],
+      "allowed_domains": []
+    },
+    "mirror_github": {
+      "name": "GitHub",
+      "output": "rules/services/GitHub.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_github"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GitHub/GitHub.list"
+      ]
+    },
+    "mirror_apns": {
+      "name": "AppleAPNs",
+      "output": "rules/services/AppleAPNs.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_apns"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/mrbruce516/apns-fix/main/Apple_APNs.list"
+      ]
+    },
+    "mirror_talkatone": {
+      "name": "Talkatone",
+      "output": "rules/services/Talkatone.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_talkatone"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://raw.githubusercontent.com/mottzz87/crules/main/rule/talkatone.list"
+      ]
+    },
+    "mirror_reject_domains": {
+      "name": "RejectDomain",
+      "output": "rules/security/RejectDomain.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_reject_domains"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://ruleset.skk.moe/List/domainset/reject.conf"
+      ]
+    },
+    "mirror_reject_non_ip": {
+      "name": "Reject",
+      "output": "rules/security/Reject.list",
+      "mode": "mirror",
+      "listSources": [
+        "upstream_reject_non_ip"
+      ],
+      "local_rules": [],
+      "description": "Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.",
+      "evidence": [
+        "https://ruleset.skk.moe/List/non_ip/reject.conf"
+      ]
     }
   }
 }
