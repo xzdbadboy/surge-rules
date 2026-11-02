@@ -170,9 +170,13 @@ class ParsingTests(unittest.TestCase):
         with self.assertRaises(sync.ParseError):
             sync.parse_surge("IP-CIDR,not-a-cidr", source_id="t")
 
-    def test_broad_keyword_rejected(self):
-        with self.assertRaises(sync.ParseError):
-            sync.parse_surge("DOMAIN-KEYWORD,com", source_id="t")
+    def test_short_and_dotted_keyword_allowed(self):
+        # Surge 支持短关键词（ad/ads）与带点关键词（.estream.），不能一概判为非法；
+        # filtered 模式不导入关键词，mirror 模式则原样保留。
+        for kw in ("com", "ads", "ad", ".estream.", "anybest."):
+            with self.subTest(kw=kw):
+                r = sync.parse_surge(f"DOMAIN-KEYWORD,{kw}", source_id="t")
+                self.assertEqual(r[0].render(), f"DOMAIN-KEYWORD,{kw.lower()}")
         with self.assertRaises(sync.ParseError):
             sync.parse_surge("DOMAIN-KEYWORD,", source_id="t")
         self.assertEqual(sync.parse_surge("DOMAIN-KEYWORD,openai", source_id="t")[0].value, "openai")
@@ -180,6 +184,54 @@ class ParsingTests(unittest.TestCase):
     def test_url_regex_compile_checked(self):
         with self.assertRaises(sync.ParseError):
             sync.parse_surge("URL-REGEX,[invalid(", source_id="t")
+
+    def test_single_label_tld_domains(self):
+        # 真实上游含 DOMAIN-SUFFIX,cn / DOMAIN-SUFFIX,apple 等单标签 TLD。
+        rules = sync.parse_surge(
+            "DOMAIN-SUFFIX,cn\nDOMAIN,msleep\nDOMAIN-SUFFIX,apple\n", source_id="t"
+        )
+        self.assertEqual(
+            [r.render() for r in rules],
+            ["DOMAIN-SUFFIX,cn", "DOMAIN,msleep", "DOMAIN-SUFFIX,apple"],
+        )
+        # domainset 的 .cn / .ms 单标签同样合法。
+        ds = sync.parse_domainset(".cn\n.ms\n", source_id="ds")
+        self.assertEqual([r.render() for r in ds], ["DOMAIN-SUFFIX,cn", "DOMAIN-SUFFIX,ms"])
+        # 单字符「TLD」与非法标签仍拒绝。
+        with self.assertRaises(sync.ParseError):
+            sync.parse_surge("DOMAIN-SUFFIX,x", source_id="t")
+        with self.assertRaises(sync.ParseError):
+            sync.parse_surge("DOMAIN-SUFFIX,-bad", source_id="t")
+
+    def test_domain_wildcard_embedded_patterns(self):
+        # 真实上游形如 ads-*.tiktok.com / beacons*.gvt?.com / *.ad.*.host，不能误拒。
+        for val in (
+            "ads-*.tiktok.com",
+            "*.ad.*.prod.hosts.ooklaserver.net",
+            "beacons*.gvt?.com",
+            "[ab]oo.example.com",
+            "v*.thenewstack.io",
+        ):
+            with self.subTest(val=val):
+                r = sync.parse_surge(f"DOMAIN-WILDCARD,{val}", source_id="t")[0]
+                self.assertEqual(r.type, "DOMAIN-WILDCARD")
+                self.assertEqual(r.value, val.lower())
+        for bad in ("bad path.com", "foo..com", "foo.com/x", "a[bc.example.com"):
+            with self.subTest(bad=bad):
+                with self.assertRaises(sync.ParseError):
+                    sync.parse_surge(f"DOMAIN-WILDCARD,{bad}", source_id="t")
+
+    def test_url_not_treated_as_comment(self):
+        # URL-REGEX / 行尾注释里的 // 不得被当注释，只有前置空白的 // 才是注释。
+        rules = sync.parse_surge(
+            "URL-REGEX,^https://api\\.example\\.com/x // 尾注释\n"
+            "DOMAIN-SUFFIX,foo.com // 见 https://foo.com/doc\n",
+            source_id="t",
+        )
+        self.assertEqual(
+            [r.render() for r in rules],
+            ["URL-REGEX,^https://api\\.example\\.com/x", "DOMAIN-SUFFIX,foo.com"],
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -420,6 +472,44 @@ class SelectionTests(BaseCase):
             "PROCESS-NAME,SomeApp",
         ):
             self.assertIn(expected, lines)
+
+
+    def test_mirror_keeps_short_keyword_wildcard_and_single_label(self):
+        source = (
+            "DOMAIN-KEYWORD,ads\n"
+            "DOMAIN-KEYWORD,ad\n"
+            "DOMAIN-WILDCARD,ads-*.foo.com\n"
+            "DOMAIN-SUFFIX,cn\n"
+        )
+        cfg = make_config(
+            {"a": src(SURGE_A)},
+            {"m": {"name": "Mirror", "output": "rules/M2.list", "mode": "mirror", "listSources": ["a"]}},
+        )
+        self.write_config(cfg)
+        with self.fetch_patch({SURGE_A: source}):
+            self.assertEqual(self.cli(), 0)
+        self.assertEqual(
+            self.output_lines("rules/M2.list"),
+            [
+                "DOMAIN-SUFFIX,cn",
+                "DOMAIN-KEYWORD,ad",
+                "DOMAIN-KEYWORD,ads",
+                "DOMAIN-WILDCARD,ads-*.foo.com",
+            ],
+        )
+
+    def test_filtered_never_imports_keywords(self):
+        source = "DOMAIN-KEYWORD,com\nDOMAIN-KEYWORD,ads\nDOMAIN-SUFFIX,demo.com\n"
+        cfg = make_config(
+            {"a": src(SURGE_A)},
+            {"demo": {"name": "Demo", "output": "rules/Demo.list", "mode": "filtered",
+                      "listSources": ["a"], "allowed_suffixes": ["demo.com"]}},
+        )
+        self.write_config(cfg)
+        with self.fetch_patch({SURGE_A: source}):
+            self.assertEqual(self.cli(), 0)
+        # filtered 不导入任何 DOMAIN-KEYWORD（含短关键词 com/ads），只保留白名单后缀。
+        self.assertEqual(self.output_lines("rules/Demo.list"), ["DOMAIN-SUFFIX,demo.com"])
 
 
 # ---------------------------------------------------------------------------
@@ -867,6 +957,142 @@ class ValidateHardeningTests(BaseCase):
             with self.subTest(bad=bad.render()):
                 with self.assertRaises(sync.SyncError):
                     sync._validate_filtered_output(cfg, "d", svc, [bad])
+
+
+# ---------------------------------------------------------------------------
+# 后缀裁剪：O(N) 线性、选项语义、extended-matching 不丢失
+# ---------------------------------------------------------------------------
+
+
+class PruneCoverageTests(unittest.TestCase):
+    def test_prune_is_linear_not_quadratic(self):
+        # 通过统计逐级后缀生成 helper 的调用次数证明 O(N)：每条规则只调用一次，
+        # 而非旧实现那样对每条规则遍历整个 suffix 集合（O(N^2)，146k 会卡死）。
+        store = {}
+        sync._add_rule(store, sync.Rule("DOMAIN-SUFFIX", "example.com"), "s")
+        n = 20000
+        for i in range(n):
+            sync._add_rule(store, sync.Rule("DOMAIN", f"h{i}.example.com"), "s")
+        calls = {"n": 0}
+        orig = sync._iter_parent_suffixes
+
+        def counting(value, include_self):
+            calls["n"] += 1
+            yield from orig(value, include_self)
+
+        with patch.object(sync, "_iter_parent_suffixes", counting):
+            kept = sync._prune_covered(store)
+        self.assertEqual(set(kept), {"DOMAIN-SUFFIX,example.com"})  # 子域全被覆盖
+        self.assertEqual(calls["n"], n + 1)  # 每条规则一次 helper 调用 -> 线性
+
+    def test_prune_20k_is_fast_enough(self):
+        store = {}
+        sync._add_rule(store, sync.Rule("DOMAIN-SUFFIX", "example.com"), "s")
+        for i in range(20000):
+            sync._add_rule(store, sync.Rule("DOMAIN", f"h{i}.example.com"), "s")
+        t0 = time.perf_counter()
+        kept = sync._prune_covered(store)
+        elapsed = time.perf_counter() - t0
+        self.assertEqual(len(kept), 1)
+        # 线性实现远低于此；二次实现（2e4^2 ≈ 4e8 次比较）会明显超过。阈值取宽松值防抖动。
+        self.assertLess(elapsed, 5.0)
+
+    def test_prune_respects_options_and_keeps_extended_matching(self):
+        store = {}
+        sync._add_rule(store, sync.Rule("DOMAIN-SUFFIX", "example.com", ("extended-matching",)), "s")
+        sync._add_rule(store, sync.Rule("DOMAIN", "api.example.com"), "s")  # 选项不同：保留
+        sync._add_rule(store, sync.Rule("DOMAIN", "www.example.com", ("extended-matching",)), "s")
+        sync._add_rule(store, sync.Rule("DOMAIN-SUFFIX", "plain.com"), "s")
+        sync._add_rule(store, sync.Rule("DOMAIN", "a.plain.com"), "s")
+        kept = set(sync._prune_covered(store))
+        self.assertIn("DOMAIN-SUFFIX,example.com,extended-matching", kept)
+        # 选项不同：不能因「后缀更宽」而裁掉 extended-matching 的窄域，避免错误改变覆盖语义。
+        self.assertIn("DOMAIN,api.example.com", kept)
+        # 选项相同：同语义下被宽后缀覆盖，可安全裁剪。
+        self.assertNotIn("DOMAIN,www.example.com,extended-matching", kept)
+        self.assertIn("DOMAIN-SUFFIX,plain.com", kept)
+        self.assertNotIn("DOMAIN,a.plain.com", kept)
+
+
+# ---------------------------------------------------------------------------
+# mirror 紧凑 manifest：无逐条 rule_sources，离线校验/篡改失败
+# ---------------------------------------------------------------------------
+
+
+class MirrorManifestTests(BaseCase):
+    def _cfg(self, **over):
+        svc = {"name": "Mirror", "output": "rules/M.list", "mode": "mirror", "listSources": ["a"]}
+        svc.update(over)
+        return make_config({"a": src(SURGE_A)}, {"m": svc})
+
+    def test_compact_manifest_and_offline_validate(self):
+        self.write_config(self._cfg())
+        source = (
+            "DOMAIN-SUFFIX,a.com\n"
+            "DOMAIN,b.a.com\n"  # 被 a.com 覆盖 -> 裁剪
+            "DOMAIN-KEYWORD,ads\n"
+            "DOMAIN-WILDCARD,ads-*.a.com\n"
+            "IP-ASN,65000,no-resolve\n"
+        )
+        with self.fetch_patch({SURGE_A: source}):
+            self.assertEqual(self.cli(), 0)
+        out = self.manifest()["outputs"]["rules/M.list"]
+        self.assertEqual(out["mode"], "mirror")
+        self.assertEqual(out["source_ids"], ["a"])
+        self.assertEqual(out["local_rule_count"], 0)
+        self.assertNotIn("rule_sources", out)  # 镜像不逐条存来源映射
+        # 146k 场景下 manifest 不会膨胀：其中不含任何逐条 rule key。
+        raw = self.read("rules/manifest.json").decode("utf-8")
+        self.assertNotIn("DOMAIN-SUFFIX,a.com", raw)
+        # 离线 validate（禁止联网）
+        with patch.object(sync, "_http_get", side_effect=AssertionError("no network")):
+            self.assertEqual(self.cli("--validate"), 0)
+
+    def test_mirror_local_rule_count(self):
+        cfg = self._cfg(local_rules=["DOMAIN-SUFFIX,local.example"])
+        self.write_config(cfg)
+        with self.fetch_patch({SURGE_A: "DOMAIN-SUFFIX,a.com\n"}):
+            self.assertEqual(self.cli(), 0)
+        out = self.manifest()["outputs"]["rules/M.list"]
+        self.assertEqual(out["local_rule_count"], 1)
+        self.assertIn("DOMAIN-SUFFIX,local.example", self.output_lines("rules/M.list"))
+
+    def test_validate_rejects_tampered_compact_provenance(self):
+        self.write_config(self._cfg())
+        with self.fetch_patch({SURGE_A: "DOMAIN-SUFFIX,a.com\n"}):
+            self.assertEqual(self.cli(), 0)
+        mp = self.root / "rules" / "manifest.json"
+        m = json.loads(mp.read_text(encoding="utf-8"))
+        m["outputs"]["rules/M.list"]["source_ids"] = ["bogus"]
+        mp.write_text(json.dumps(m), encoding="utf-8")
+        with patch.object(sync, "_http_get", side_effect=AssertionError("no network")):
+            self.assertEqual(self.cli("--validate"), 1)
+
+    def test_validate_rejects_forbidden_rule_sources_on_mirror(self):
+        self.write_config(self._cfg())
+        with self.fetch_patch({SURGE_A: "DOMAIN-SUFFIX,a.com\n"}):
+            self.assertEqual(self.cli(), 0)
+        mp = self.root / "rules" / "manifest.json"
+        m = json.loads(mp.read_text(encoding="utf-8"))
+        m["outputs"]["rules/M.list"]["rule_sources"] = {"DOMAIN-SUFFIX,a.com": ["a"]}
+        mp.write_text(json.dumps(m), encoding="utf-8")
+        with patch.object(sync, "_http_get", side_effect=AssertionError("no network")):
+            self.assertEqual(self.cli("--validate"), 1)
+
+    def test_validate_still_checks_rule_legality(self):
+        # 即便篡改者重算了 sha，非法规则行仍必须被解析拒绝（镜像不跳过规则校验）。
+        self.write_config(self._cfg())
+        with self.fetch_patch({SURGE_A: "DOMAIN-SUFFIX,a.com\n"}):
+            self.assertEqual(self.cli(), 0)
+        target = self.root / "rules" / "M.list"
+        data = (target.read_text(encoding="utf-8") + "FINAL,Proxy\n").encode("utf-8")
+        target.write_bytes(data)
+        mp = self.root / "rules" / "manifest.json"
+        m = json.loads(mp.read_text(encoding="utf-8"))
+        m["outputs"]["rules/M.list"]["sha256"] = sync.sha256_hex(data)
+        mp.write_text(json.dumps(m), encoding="utf-8")
+        with patch.object(sync, "_http_get", side_effect=AssertionError("no network")):
+            self.assertEqual(self.cli("--validate"), 1)
 
 
 class DocstringHonestyTests(unittest.TestCase):

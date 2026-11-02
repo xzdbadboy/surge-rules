@@ -1,2 +1,4 @@
-# Parsec
+# generated; edit canonical paths
+# sources: rules/custom/Parsec.list
+
 DOMAIN-SUFFIX,parsec.app

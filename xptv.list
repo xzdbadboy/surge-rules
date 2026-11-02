@@ -1,8 +1,9 @@
-# > XPTV出海规则
+# generated; edit canonical paths
+# sources: rules/custom/XPTV.list
 
-DOMAIN-KEYWORD,wogg
+DOMAIN-SUFFIX,gitcafe.net
+DOMAIN-SUFFIX,mobile-stream.api.mgtv.com
 DOMAIN-SUFFIX,wogg.link
 DOMAIN-SUFFIX,wogg.xyz
 DOMAIN-SUFFIX,xxooo.cf
-DOMAIN-SUFFIX,gitcafe.net
-DOMAIN-SUFFIX,mobile-stream.api.mgtv.com
+DOMAIN-KEYWORD,wogg

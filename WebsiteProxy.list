@@ -1,4 +1,5 @@
-# > 今日热榜
-DOMAIN,tophub.today
-# > Qnap aliyun DDNS
+# generated; edit canonical paths
+# sources: rules/custom/WebsiteProxy.list
+
 DOMAIN,tonnp.com
+DOMAIN,tophub.today

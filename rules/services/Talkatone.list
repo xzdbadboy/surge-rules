@@ -1,0 +1,19 @@
+# 名称：Talkatone
+# 来源：https://raw.githubusercontent.com/mottzz87/crules/main/rule/talkatone.list
+# FORMAT: Surge RULE-SET
+# 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
+# 证据：https://raw.githubusercontent.com/mottzz87/crules/main/rule/talkatone.list
+
+DOMAIN-SUFFIX,agkn.com
+DOMAIN-SUFFIX,cohere.com
+DOMAIN-SUFFIX,crashlytics.com
+DOMAIN-SUFFIX,inmobi.com
+DOMAIN-SUFFIX,ip-api.com
+DOMAIN-SUFFIX,kochava.com
+DOMAIN-SUFFIX,mobilefuse.com
+DOMAIN-SUFFIX,talkatone.com
+DOMAIN-SUFFIX,tktn.at
+IP-CIDR,205.164.56.0/24
+IP-CIDR,50.117.27.0/24
+IP-CIDR,63.251.124.0/24
+IP-CIDR,69.46.75.0/24

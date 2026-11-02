@@ -36,3 +36,15 @@ MetaCubeX：
 - Muse 的事实依据来自用户现有 `/Applications/Muse.app/Contents/MacOS/Muse` 进程规则。原 `kkykkky/metamuse-rules/main/MetaMuse.domainset` 本次核查返回 404；没有把其他同名产品域名归入 Muse。
 - 不把 `grokipedia.com` 自动归入 Grok，也不把 `api.github.com` 自动归入 Copilot；存在于同一上游集合不代表属于同一客户端的专属后端。
 - Google 的多个 AI 产品存在共用后端，拆分列表不能保证每个 Agent 全部请求独占一个域名集合；共用开发接口放在独立的 GoogleAIShared 列表。
+
+## 非 AI 服务与安全拦截
+
+扩展核查日期同为 2026-11-02。源 URL、格式、许可链接、输出和实际字节摘要以配置及生成清单为准。
+
+- Rabbit-Spec：Apple、Microsoft、Telegram / TelegramASN、Game、YouTube、Netflix、Disney、BiliBili、ChinaMedia、GlobalMedia、Spotify、Google、Proxy、China、ChinaCIDR。文件头本次标记为 2026.11.02；China 原为 Domainset，转换为 RULE-SET，Telegram 两份同策略源合并。
+- Sukka：`ruleset.skk.moe/List/domainset/reject.conf` 与 `List/non_ip/reject.conf`，实际抓取并按其格式处理；大型域名集约 14.6 万条。
+- blackmatrix7：WeChat、Oracle、GitHub 标准服务列表；GoogleVoice 列表目前实际仅含 Lens 主机，故对它额外限域，固定官方 `voice.google.com` 入口并排除 Lens。部分稳定列表更新日期较早，不据此推断全仓库停更。
+- [mrbruce516/apns-fix](https://github.com/mrbruce516/apns-fix)：保留 APNs 指定子网，不扩展成 Apple 全网段。
+- [mottzz87/crules](https://github.com/mottzz87/crules)：Talkatone 原范围镜像，仓库既有 tktn.be 补充单列手工维护。
+
+Spotify 官方源本次为 40 条，用户 fork 为 31 条，采用有效的官方原版源。服务镜像保留上游既有范围，不等于 AI 的严格专属域名提取；模板用更早的专用规则控制优先级。

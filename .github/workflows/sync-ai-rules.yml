@@ -1,4 +1,4 @@
-name: Sync AI service rules
+name: Sync routing rules
 
 on:
   schedule:
@@ -8,8 +8,10 @@ on:
   push:
     branches: [main]
     paths:
-      - config/rule_sources.json
-      - scripts/sync_rules.py
+      - config/**
+      - scripts/**
+      - rules/custom/**
+      - examples/**
       - tests/**
       - .github/workflows/sync-ai-rules.yml
 
@@ -17,7 +19,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: sync-ai-rules-${{ github.repository }}
+  group: sync-routing-rules-${{ github.repository }}
   cancel-in-progress: false
 
 jobs:
@@ -27,10 +29,10 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Check out the default branch
+      - name: Check out the selected branch
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
-          ref: ${{ github.event.repository.default_branch }}
+          ref: ${{ github.ref_name }}
       - name: Set up Python
         uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
@@ -39,20 +41,25 @@ jobs:
         run: python3 -m unittest discover -s tests -v
       - name: Fetch, filter and generate all service lists
         run: python3 scripts/sync_rules.py
-      - name: Validate generated lists and manifest offline
-        run: python3 scripts/sync_rules.py --validate
+      - name: Rebuild compatible root addresses
+        run: python3 scripts/build_compat.py
+      - name: Validate generated lists, aliases and profile offline
+        run: |
+          python3 scripts/sync_rules.py --validate
+          python3 scripts/build_compat.py --validate
+          python3 scripts/validate_profile.py --smoke
       - name: Commit changed outputs only
         shell: bash
         env:
-          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          TARGET_BRANCH: ${{ github.ref_name }}
         run: |
           set -euo pipefail
-          git add -- rules/ai rules/manifest.json
+          git add -- rules/ai rules/services rules/security rules/manifest.json '*.list'
           if git diff --cached --quiet; then
             echo 'No upstream or rule changes; no commit needed.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'chore: sync AI service rules'
-          git push origin "HEAD:${DEFAULT_BRANCH}"
+          git commit -m 'chore: sync routing rules and compatibility entries'
+          git push origin "HEAD:${TARGET_BRANCH}"

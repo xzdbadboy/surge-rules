@@ -1,5 +1,7 @@
-# > Plex 刮削
-DOMAIN,scrobbles.plex.tv
+# generated; edit canonical paths
+# sources: rules/custom/Plex.list
+
 DOMAIN,analytics.plex.tv
-DOMAIN,metadata.provider.plex.tv
 DOMAIN,images.plex.tv
+DOMAIN,metadata.provider.plex.tv
+DOMAIN,scrobbles.plex.tv

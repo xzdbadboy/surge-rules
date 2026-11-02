@@ -6,16 +6,19 @@
 
 Surge 代理规则集合库。通过 `.list` 和 `.yaml` 文件管理网络流量路由。请参考 README.md 了解文件用途和格式。
 
+规范目录：`rules/custom/` 是人工维护源；`rules/ai/`、`rules/services/`、`rules/security/` 是同步产物；根目录 `.list` 是兼容入口，由 `scripts/build_compat.py` 生成，不直接编辑。上游与允许范围在 `config/rule_sources.json`，兼容映射在 `config/compatibility.json`。`archive/` 仅供历史回溯，不作为新规则源。
+
 ## 快速维护命令
 
 ### 检测重复
 
 ```bash
 # 查找某个文件中的重复条目
-grep "^DOMAIN-SUFFIX," PrivateTracker.list | sort | uniq -d
+grep "^DOMAIN-SUFFIX," rules/custom/PrivateTracker.list | sort | uniq -d
 
-# 移除全局重复（保持顺序）
-sort PrivateTracker.list | uniq > tmp && mv tmp PrivateTracker.list
+# 修改人工源后校验并重建兼容入口
+python3 scripts/build_compat.py
+python3 scripts/validate_profile.py --smoke
 ```
 
 ### 查找条目

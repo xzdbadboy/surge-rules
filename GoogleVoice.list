@@ -1,7 +1,4 @@
-# NAME: GoogleVoice
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2024-04-29 13:35:33
-# DOMAIN: 1
-# TOTAL: 1
-DOMAIN,lens.l.google.com
+# generated; edit canonical paths
+# sources: rules/services/GoogleVoice.list
+
+DOMAIN-SUFFIX,voice.google.com

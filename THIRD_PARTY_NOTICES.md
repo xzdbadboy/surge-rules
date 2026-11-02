@@ -1,6 +1,6 @@
 # 第三方来源与许可证
 
-自动生成的 AI 规则包含从以下上游提取、筛选或转换的域名事实及规则条目。每个输出文件保留源 URL，逐条来源及原始内容 SHA-256 记录在 [manifest](rules/manifest.json)，转换配置和脚本均在本仓库公开。
+自动生成的规则包含从以下上游提取、筛选、镜像或转换的规则条目。每个输出保留源 URL，原始内容 SHA-256、AI 的逐条来源和大规模镜像的紧凑来源关系记录在 [manifest](rules/manifest.json)，转换配置和脚本均在本仓库公开。
 
 本声明只涉及新增的自动同步内容，不为仓库历史文件重新指定许可证，也不代表上游作者为本项目背书。
 
@@ -16,18 +16,31 @@
 ## SukkaW/Surge
 
 - 项目：https://github.com/SukkaW/Surge
-- 使用范围：`Source/non_ip/ai.conf` 中位于已审查服务域名范围内的 DOMAIN / DOMAIN-SUFFIX 条目。
-- 处理方式：按服务筛选、收窄精确主机、规范化和去重；不导入其中的宽关键词、URL 正则或共享平台兜底。
+- 使用范围：`Source/non_ip/ai.conf` 中已审查的 AI 域名，以及 `ruleset.skk.moe/List/domainset/reject.conf` 和 `List/non_ip/reject.conf` 两份拦截规则。
+- 处理方式：AI 按服务筛选并收窄精确主机；拦截规则按原有范围镜像并规范化为 Surge RULE-SET。两种模式的导入范围不同。
 - 上游声明的许可证：[GNU AGPL v3](https://github.com/SukkaW/Surge/blob/master/LICENSE)。
 - 本仓库保留的原文副本：[Sukka-AGPL-3.0.txt](licenses/Sukka-AGPL-3.0.txt)。
 
 ## Rabbit-Spec/Surge
 
 - 项目：https://github.com/Rabbit-Spec/Surge
-- 使用范围：`Rules/AIGC.list` 中位于已审查服务域名范围内的 DOMAIN / DOMAIN-SUFFIX 条目。
+- 使用范围：`Rules/AIGC.list` 中已审查的 AI 域名，以及配置中列出的 Apple、Microsoft、Google、Telegram、游戏、流媒体、国内域名和 CIDR、通用代理等服务文件。
 - 署名：深巷有喵 / Rabbit-Spec。该集合标注为上游同步规则，原始贡献归属还应参考其上游说明。
-- 处理方式：仅提取服务专属域名和经配置确认的专属主机，不复制聚合集合中的 IP / ASN、共享登录、支付、校时或遥测匹配。
+- 处理方式：AI 仅提取服务专属域名和经配置确认的主机；其他服务采用镜像模式，保留其现有 IP / ASN、关键词和共享基础设施匹配范围。China 从 Domainset 转换为 Surge RULE-SET，Telegram 两份同策略源合并。
 - 本次核查未发现仓库根目录许可证；不将该部分标为 MIT / GPL，也不把保留链接等同于授予其他权利。
+
+## blackmatrix7/ios_rule_script
+
+- 项目：https://github.com/blackmatrix7/ios_rule_script
+- 使用范围：Surge WeChat、Oracle、GoogleVoice、GitHub 服务列表。
+- WeChat、Oracle、GitHub 按上游原范围镜像；GoogleVoice 上游当前包含 Lens 主机，单独限域并补充官方 voice.google.com 入口。
+- 上游许可证：[GNU GPL v2](https://github.com/blackmatrix7/ios_rule_script/blob/master/LICENSE)，保留副本：[blackmatrix7-GPL-2.0.txt](licenses/blackmatrix7-GPL-2.0.txt)。
+
+## APNs 与 Talkatone
+
+- [mrbruce516/apns-fix](https://github.com/mrbruce516/apns-fix)：使用 Apple_APNs.list，保留域名及指定 IP 子网的 APNs 分流范围。
+- [mottzz87/crules](https://github.com/mottzz87/crules)：使用 rule/talkatone.list；本仓库既有 tktn.be 补充由手工列表单独保留。
+- 本次未确认这两个仓库的明确许可文本，不为其声明 MIT / GPL；保留原项目链接、来源和原始内容摘要，不声称取得其他权利。
 
 ## 本地规则
 
