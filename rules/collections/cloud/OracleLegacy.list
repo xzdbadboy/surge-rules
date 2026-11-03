@@ -1,11 +1,11 @@
 # 名称：Oracle（兼容历史定制）
-# 更新时间：2026-11-03 10:00:30 +08:00
+# 更新时间：2026-11-03 10:29:29 +08:00
 # 上游：https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Oracle/Oracle.list
 # 上游：https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/cloud/OracleLegacy.list
 # 维护位置：rules/services/Oracle.list, rules/custom/cloud/OracleLegacy.list
-# 内容校验：sha256:aedcca50526f16780a840e9891160c5093659720399e646d54339e1a59e6f908
+# 内容校验：sha256:792129c64715704b729b1d22c5de396fa5c3bd75b3fad44a48d00add3a6276d7
 
-# 策略：Oracle；包含历史宽关键词，仅兼容入口默认引用
+# 策略：Oracle；历史定制合集，含宽关键词，按需引用
 # 来源类型：生成合并（同一策略使用）
 
 DOMAIN-SUFFIX,a1cbafa5ea9a6480cb8e9ffba46cbad9-466059813.us-west-2.elb.amazonaws.com

@@ -54,7 +54,7 @@ RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/ai/D
 RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/ai/Groq.list,智能助理
 ```
 
-接入上述片段后，删除或注释旧的顶部 Muse `PROCESS-NAME` 行、旧根目录 `ChatGPT.list` / `AIGC.list` 引用，以及已 404 的 MetaMuse 引用，避免重复分流。根目录历史 AI 地址已改为自动生成的安全兼容内容；新配置仍建议使用独立服务文件。其他服务、拦截规则和完整顺序见 [完整 Rule 模板](../examples/Rule.template.conf) 与 [迁移说明](rules-migration.md)。
+接入上述片段后，删除或注释旧的顶部 Muse `PROCESS-NAME` 行、旧根目录 `ChatGPT.list` / `AIGC.list` 引用，以及已 404 的 MetaMuse 引用，避免重复分流。根目录历史 AI 地址已停用；新配置应使用分类目录中的独立服务文件。其他服务、拦截规则和完整顺序见 [完整 Rule 模板](../examples/Rule.template.conf) 与 [迁移说明](rules-migration.md)。
 
 如果只用其中几个服务，只引用对应文件即可。运行在网关或 iOS 上时无法依赖本机 Muse 进程规则；其他服务的域名规则仍可使用。进程规则只覆盖 Surge 能识别到的应用目录内进程，应用转交给目录外程序或独立代理的流量不保证被识别为 Muse。
 
@@ -80,7 +80,7 @@ RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/ai/G
 - URL 超时、404、HTML、空内容、未知格式、非法域名或服务集合为空时，整轮失败，不写入规则、不提交。
 - 全部来源抓取和校验通过后才写文件；单文件用原子替换。磁盘写入异常不保证多个文件之间的事务，但工作流失败后不会提交半成品。
 - 规则只在内容或来源说明变化时更新头部时间，规则和来源内容均无变化时不产生提交。清单保留上游原始 SHA-256，因此上游只改注释也可能更新清单。
-- 同步写入 `rules/ai/`、`rules/services/`、`rules/security/` 和来源清单，并生成分类合集和兼容 `.list`；手工源只更新元数据头，不改规则正文、节点、策略组或 Surge 本机配置。
+- 同步写入 `rules/ai/`、`rules/services/`、`rules/security/` 和来源清单，并生成分类合集；手工源只更新元数据头，不改规则正文、节点、策略组或 Surge 本机配置。
 - GitHub Actions `GITHUB_TOKEN` 仅同步 job 使用 `contents: write`，无须另存 PAT；PR 校验流程只有读取权限，不执行联网更新。
 - 若默认分支禁止 bot 直接推送，需要调整同步为 PR 模式或按仓库保护策略放行；公开仓库连续 60 天没有活动时，GitHub 可能停用计划任务，需在 Actions 中恢复。
 
@@ -93,7 +93,6 @@ RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/ai/G
 python3 scripts/sync_rules.py
 python3 scripts/stamp_custom.py
 python3 scripts/build_collections.py
-python3 scripts/build_compat.py
 
 # 联网检查，不修改文件：0 无变化；2 有变化；1 失败
 python3 scripts/sync_rules.py --check

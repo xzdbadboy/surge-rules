@@ -23,7 +23,7 @@
         "rules/services/Oracle.list",
         "rules/custom/cloud/OracleLegacy.list"
       ],
-      "policy_hint": "Oracle；包含历史宽关键词，仅兼容入口默认引用"
+      "policy_hint": "Oracle；历史定制合集，含宽关键词，按需引用"
     },
     "rules/collections/ai/AIGC.list": {
       "name": "AI兼容合集",

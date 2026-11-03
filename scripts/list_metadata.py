@@ -2,7 +2,7 @@
 """统一的中文受管 metadata 头工具（仅标准库）。
 
 本模块为 ``.list`` 规则文件提供**唯一**的 metadata 头生成/解析实现，供
-:mod:`scripts.sync_rules`、:mod:`scripts.build_compat` 与
+:mod:`scripts.sync_rules`、:mod:`scripts.build_collections` 与
 :mod:`scripts.stamp_custom` 共用，避免三处各写一套导致时间/哈希语义漂移。
 
 受管头（位于文件最前部，均为整行注释）::
