@@ -1,6 +1,9 @@
 # 名称：OpenRouter
-# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 内容校验：sha256:7e2d72bc15a48b9cb0780e17bd2c6ffa7a5a68593322faea6b0e7e8312fcb6dd
+
 # FORMAT: Surge RULE-SET
 # 说明：OpenRouter dedicated domain; no unrelated gateway or relay domains.
 # 证据：https://openrouter.ai/docs/

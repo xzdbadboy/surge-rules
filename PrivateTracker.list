@@ -1,5 +1,11 @@
+# 名称：PrivateTracker
+# 更新时间：2026-11-03 10:00:31 +08:00
+# 上游：https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/custom/trackers/PrivateTracker.list（手工维护，无外部同步源）
+# 维护位置：rules/custom/trackers/PrivateTracker.list
+# 内容校验：sha256:4d5294b104965ae37d3cec170d872d3e2b3f6a04878d73b7554fe5047c99006d
+
 # generated; edit canonical paths
-# sources: rules/custom/PrivateTracker.list
+# sources: rules/custom/trackers/PrivateTracker.list
 
 DOMAIN-SUFFIX,1ptba.com
 DOMAIN-SUFFIX,52pt.site

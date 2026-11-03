@@ -1,5 +1,12 @@
+# 名称：talkatone
+# 更新时间：2026-11-03 10:00:31 +08:00
+# 上游：https://raw.githubusercontent.com/mottzz87/crules/main/rule/talkatone.list
+# 上游：https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/communication/TalkatoneExtras.list
+# 维护位置：rules/collections/communication/Talkatone.list
+# 内容校验：sha256:8ee49a96ff5013e995eb468a817a39be8e0d28bde79b841fb3a8cf04684328d3
+
 # generated; edit canonical paths
-# sources: rules/services/Talkatone.list, rules/custom/TalkatoneExtras.list
+# sources: rules/collections/communication/Talkatone.list
 
 DOMAIN-SUFFIX,agkn.com
 DOMAIN-SUFFIX,cohere.com

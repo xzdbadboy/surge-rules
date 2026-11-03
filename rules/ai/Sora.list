@@ -1,7 +1,10 @@
 # 名称：Sora
-# 来源：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.list
-# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.list
+# 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 内容校验：sha256:97806f1c36b2ca9a1ff7bd00134911f4fb06ccd736a2bc2c71437321883f36f7
+
 # FORMAT: Surge RULE-SET
 # 说明：Sora dedicated domain. OpenAI authentication and assets remain in ChatGPT.list.
 # 证据：https://sora.com/

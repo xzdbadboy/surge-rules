@@ -1,5 +1,8 @@
 # 名称：WeChat
-# 来源：https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/WeChat/WeChat.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/WeChat/WeChat.list
+# 内容校验：sha256:17fac7cb2b209b066dc3dcedbafbee2aa4570a55cc0e87e8eda04305a24a4c90
+
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
 # 证据：https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/WeChat/WeChat.list

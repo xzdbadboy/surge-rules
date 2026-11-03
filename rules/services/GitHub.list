@@ -1,5 +1,8 @@
 # 名称：GitHub
-# 来源：https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GitHub/GitHub.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GitHub/GitHub.list
+# 内容校验：sha256:ab568429594628d63804434a14eaf21cf5492653538e18a9deb0ec30002b7b93
+
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
 # 证据：https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GitHub/GitHub.list

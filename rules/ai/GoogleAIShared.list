@@ -1,7 +1,10 @@
 # 名称：Google AI Shared Developer APIs
-# 来源：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list
-# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list
+# 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 内容校验：sha256:2e9693587c1387457502c69765f7acd3afe26acc16569a2099d834fb7f119927
+
 # FORMAT: Surge RULE-SET
 # 说明：Shared Google AI development backends used by Antigravity, Gemini CLI and other Google developer clients. Assign a compatible common policy.
 # 证据：https://github.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/google-gemini.list

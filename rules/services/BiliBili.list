@@ -1,5 +1,8 @@
 # 名称：BiliBili
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/BiliBili.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/BiliBili.list
+# 内容校验：sha256:2bae62da0a11a63da47d9be4f9ec830a0e93384980ceec0a3d69c4086d6a0881
+
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
 # 证据：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/BiliBili.list

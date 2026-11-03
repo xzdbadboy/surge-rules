@@ -1,3 +1,11 @@
+# 名称：ChatGPT
+# 更新时间：2026-11-03 10:00:31 +08:00
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.list
+# 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 维护位置：rules/ai/ChatGPT.list
+# 内容校验：sha256:82c86febaa777995aff4470b67a335cf57ccce8b0f7ce55d450df722d3a1015b
+
 # generated; edit canonical paths
 # sources: rules/ai/ChatGPT.list
 

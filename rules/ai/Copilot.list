@@ -1,7 +1,10 @@
 # 名称：GitHub Copilot
-# 来源：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github-copilot.list
-# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github-copilot.list
+# 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 内容校验：sha256:fcfa7b6b3b086d4e0c58e0abe9d39744d0c432cfa7f2acf128221f3780980739
+
 # FORMAT: Surge RULE-SET
 # 说明：GitHub Copilot dedicated endpoints; excludes generic api.github.com and telemetry. Microsoft Copilot is a different service.
 # 证据：https://docs.github.com/en/copilot/reference/copilot-allowlist-reference

@@ -1,0 +1,8 @@
+# 名称：Parsec
+# 更新时间：2026-11-03 10:00:29 +08:00
+# 上游：本仓库手工维护，无外部同步源
+# 维护位置：https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/network/Parsec.list
+# 内容校验：sha256:88f8835722cbd2e730911074186fc894761794776da57c903d7de7f24d658a18
+
+# Parsec
+DOMAIN-SUFFIX,parsec.app

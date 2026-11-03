@@ -1,5 +1,20 @@
+# 名称：AIGC
+# 更新时间：2026-11-03 10:00:31 +08:00
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.list
+# 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/anthropic.list
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/xai.list
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github-copilot.list
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cursor.list
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/windsurf.list
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/perplexity.list
+# 维护位置：rules/collections/ai/AIGC.list
+# 内容校验：sha256:84ceff15e7f10180f00833290707ed7edd45f7ad5e82d76dbae6d2438cf42c5d
+
 # generated; edit canonical paths
-# sources: rules/ai/ChatGPT.list, rules/ai/Claude.list, rules/ai/Grok.list, rules/ai/Gemini.list, rules/ai/GoogleAIStudio.list, rules/ai/NotebookLM.list, rules/ai/Antigravity.list, rules/ai/GoogleAIShared.list, rules/ai/Copilot.list, rules/ai/Cursor.list, rules/ai/Windsurf.list, rules/ai/Perplexity.list, rules/ai/OpenRouter.list, rules/ai/Sora.list, rules/ai/MetaAI.list, rules/ai/Dify.list, rules/ai/Groq.list
+# sources: rules/collections/ai/AIGC.list
 
 DOMAIN,ai.google.dev
 DOMAIN,aicode.googleapis.com

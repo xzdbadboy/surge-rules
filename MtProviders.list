@@ -1,5 +1,11 @@
+# 名称：MtProviders
+# 更新时间：2026-11-03 10:00:31 +08:00
+# 上游：https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/custom/media/MtProviders.list（手工维护，无外部同步源）
+# 维护位置：rules/custom/media/MtProviders.list
+# 内容校验：sha256:a6654b320619ed2b640a1eb183c3c627b10f1ec8dcdef229c009e1720055dac4
+
 # generated; edit canonical paths
-# sources: rules/custom/MtProviders.list
+# sources: rules/custom/media/MtProviders.list
 
 DOMAIN,7mmtv.sx
 DOMAIN,adult.contents.fc2.com

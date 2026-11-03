@@ -1,0 +1,83 @@
+# 名称：Special
+# 更新时间：2026-11-03 10:00:29 +08:00
+# 上游：本仓库手工维护，无外部同步源
+# 维护位置：https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/proxy/Special.list
+# 内容校验：sha256:0002e294bb5f22e31795357c2f18a48700b908cf30e78a99bad852c8d358b6dd
+
+# > Duet
+USER-AGENT,duet*
+
+# > Epic
+DOMAIN-KEYWORD,epicgames
+
+# > Google
+DOMAIN,safebrowsing.googleapis.com
+DOMAIN-SUFFIX,dl.google.com
+
+# > Microsoft
+USER-AGENT,Microsoft%20Remote%20Desktop*
+DOMAIN-SUFFIX,msftconnecttest.com
+
+# > Proxy plugin
+PROCESS-NAME,v2ray
+PROCESS-NAME,ss-local
+
+# > Steam
+USER-AGENT,Steam*
+DOMAIN,cm.steampowered.com
+DOMAIN,ol.epicgames.com
+DOMAIN-SUFFIX,steamcontent.com
+DOMAIN-SUFFIX,steamserver.net
+
+DOMAIN-SUFFIX,steamchina.com
+
+DOMAIN,csgo.wmsj.cn
+DOMAIN,dota2.wmsj.cn
+DOMAIN,wmsjsteam.com
+
+DOMAIN,dl.steam.clngaa.com
+DOMAIN,dl.steam.ksyna.com
+
+DOMAIN,gstore.val.manlaxy.com
+
+DOMAIN,st.dl.bscstorage.net
+DOMAIN,st.dl.eccdnx.com
+DOMAIN,st.dl.pinyuncloud.com
+
+DOMAIN,steampipe.steamcontent.tnkjmec.com
+
+DOMAIN,steampowered.com.8686c.com
+DOMAIN,steamstatic.com.8686c.com
+
+DOMAIN,steambroadcast.akamaized.net
+DOMAIN,steamcdn-a.akamaihd.net
+DOMAIN,steamcommunity-a.akamaihd.net
+DOMAIN,steamstore-a.akamaihd.net
+DOMAIN,steamusercontent-a.akamaihd.net
+DOMAIN,steamuserimages-a.akamaihd.net
+
+# > Tesla
+DOMAIN,tesla-cdn.thron.cn
+DOMAIN,tesla-cdn.thron.com
+DOMAIN-SUFFIX,solarcity.com
+DOMAIN-SUFFIX,tesla.cn
+DOMAIN-SUFFIX,tesla.com
+DOMAIN-SUFFIX,tesla.com.cn
+DOMAIN-SUFFIX,teslamotors.cn
+DOMAIN-SUFFIX,teslamotors.com
+DOMAIN-SUFFIX,teslamotors.com.cn
+DOMAIN-SUFFIX,ts.la
+
+# > UUBooster
+PROCESS-NAME,UUBooster
+
+# > WiFiman
+DOMAIN-SUFFIX,app-measurement.com
+
+
+
+# > UBI
+DOMAIN,uplaypc-s-ubisoft.cdn.ubi.com
+
+# > Tailscale
+IP-CIDR,100.64.0.0/10,no-resolve

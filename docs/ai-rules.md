@@ -79,8 +79,8 @@ RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/ai/G
 
 - URL 超时、404、HTML、空内容、未知格式、非法域名或服务集合为空时，整轮失败，不写入规则、不提交。
 - 全部来源抓取和校验通过后才写文件；单文件用原子替换。磁盘写入异常不保证多个文件之间的事务，但工作流失败后不会提交半成品。
-- 规则不写运行时间，规则和来源内容均无变化时不产生提交。清单保留上游原始 SHA-256，因此上游只改注释也可能更新清单。
-- 同步写入 `rules/ai/`、`rules/services/`、`rules/security/` 和来源清单，并重建根目录兼容 `.list`；不改手工源、节点、策略组或 Surge 本机配置。
+- 规则只在内容或来源说明变化时更新头部时间，规则和来源内容均无变化时不产生提交。清单保留上游原始 SHA-256，因此上游只改注释也可能更新清单。
+- 同步写入 `rules/ai/`、`rules/services/`、`rules/security/` 和来源清单，并生成分类合集和兼容 `.list`；手工源只更新元数据头，不改规则正文、节点、策略组或 Surge 本机配置。
 - GitHub Actions `GITHUB_TOKEN` 仅同步 job 使用 `contents: write`，无须另存 PAT；PR 校验流程只有读取权限，不执行联网更新。
 - 若默认分支禁止 bot 直接推送，需要调整同步为 PR 模式或按仓库保护策略放行；公开仓库连续 60 天没有活动时，GitHub 可能停用计划任务，需在 Actions 中恢复。
 
@@ -91,6 +91,8 @@ RULE-SET,https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/ai/G
 ```bash
 # 在仓库根目录：抓取并生成
 python3 scripts/sync_rules.py
+python3 scripts/stamp_custom.py
+python3 scripts/build_collections.py
 python3 scripts/build_compat.py
 
 # 联网检查，不修改文件：0 无变化；2 有变化；1 失败

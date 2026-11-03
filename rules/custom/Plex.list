@@ -1,5 +1,13 @@
-# > Plex 刮削
-DOMAIN,scrobbles.plex.tv
+# 名称：Plex
+# 更新时间：2026-11-03 10:00:31 +08:00
+# 上游：https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/custom/media/Plex.list（手工维护，无外部同步源）
+# 维护位置：rules/custom/media/Plex.list
+# 内容校验：sha256:789fbf6b222e14032d144579407afcf1f527c0c7090231c96d9aa29eb796196a
+
+# generated; edit canonical paths
+# sources: rules/custom/media/Plex.list
+
 DOMAIN,analytics.plex.tv
-DOMAIN,metadata.provider.plex.tv
 DOMAIN,images.plex.tv
+DOMAIN,metadata.provider.plex.tv
+DOMAIN,scrobbles.plex.tv

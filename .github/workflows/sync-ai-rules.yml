@@ -41,11 +41,17 @@ jobs:
         run: python3 -m unittest discover -s tests -v
       - name: Fetch, filter and generate all service lists
         run: python3 scripts/sync_rules.py
-      - name: Rebuild compatible root addresses
+      - name: Stamp manual rule metadata
+        run: python3 scripts/stamp_custom.py
+      - name: Build categorized collections
+        run: python3 scripts/build_collections.py
+      - name: Rebuild compatible addresses
         run: python3 scripts/build_compat.py
       - name: Validate generated lists, aliases and profile offline
         run: |
+          python3 scripts/stamp_custom.py --validate
           python3 scripts/sync_rules.py --validate
+          python3 scripts/build_collections.py --validate
           python3 scripts/build_compat.py --validate
           python3 scripts/validate_profile.py --smoke
       - name: Commit changed outputs only
@@ -54,7 +60,7 @@ jobs:
           TARGET_BRANCH: ${{ github.ref_name }}
         run: |
           set -euo pipefail
-          git add -- rules/ai rules/services rules/security rules/manifest.json '*.list'
+          git add -- rules/ai rules/services rules/security rules/custom rules/collections rules/manifest.json '*.list'
           if git diff --cached --quiet; then
             echo 'No upstream or rule changes; no commit needed.'
             exit 0

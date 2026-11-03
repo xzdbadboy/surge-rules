@@ -16,24 +16,32 @@
 
 ## 原根目录文件
 
+手工规范源已分为 trackers、media、direct、network、proxy、communication、cloud 七类。根目录 17 个地址及旧 custom 平铺目录 12 个地址均由兼容生成器保留，共 29 个兼容入口；请按头部维护位置编辑分类后的规范源。
+
 | 原地址 | 规范来源 | 处理 |
 | --- | --- | --- |
-| MtProviders.list | [custom/MtProviders.list](../rules/custom/MtProviders.list) | 修正带路径 DOMAIN，删除相同条目 |
-| Plex.list | [custom/Plex.list](../rules/custom/Plex.list) | 保留精确域名 |
-| PrivateTracker.list | [custom/PrivateTracker.list](../rules/custom/PrivateTracker.list) | 去重；保留 PT 站、下载进程及原有宽匹配 |
-| SynologyDDNS.list | [custom/SynologyDDNS.list](../rules/custom/SynologyDDNS.list) | 保留 |
-| WebsiteProxy.list | [custom/WebsiteProxy.list](../rules/custom/WebsiteProxy.list) | 保留 |
-| Speacial.list | [custom/Special.list](../rules/custom/Special.list) | 规范文件修正拼写，旧地址与 Speacial 策略名不变 |
-| WebNovel.list | [custom/WebNovel.list](../rules/custom/WebNovel.list) | 保留 |
-| NewAPI.list | [custom/NewAPI.list](../rules/custom/NewAPI.list) | 保留 |
-| Parsec.list | [custom/Parsec.list](../rules/custom/Parsec.list) | 保留；模板未额外启用原配置中没有的服务 |
-| xptv.list | [custom/XPTV.list](../rules/custom/XPTV.list) | 保留；模板未额外启用 |
+| MtProviders.list | [custom/MtProviders.list](../rules/custom/media/MtProviders.list) | 修正带路径 DOMAIN，删除相同条目 |
+| Plex.list | [custom/Plex.list](../rules/custom/media/Plex.list) | 保留精确域名 |
+| PrivateTracker.list | [custom/PrivateTracker.list](../rules/custom/trackers/PrivateTracker.list) | 去重；保留 PT 站、下载进程及原有宽匹配 |
+| SynologyDDNS.list | [custom/SynologyDDNS.list](../rules/custom/network/SynologyDDNS.list) | 保留 |
+| WebsiteProxy.list | [custom/WebsiteProxy.list](../rules/custom/proxy/WebsiteProxy.list) | 保留 |
+| Speacial.list | [custom/Special.list](../rules/custom/proxy/Special.list) | 规范文件修正拼写，旧地址与 Speacial 策略名不变 |
+| WebNovel.list | [custom/WebNovel.list](../rules/custom/direct/WebNovel.list) | 保留 |
+| NewAPI.list | [custom/NewAPI.list](../rules/custom/direct/NewAPI.list) | 保留 |
+| Parsec.list | [custom/Parsec.list](../rules/custom/network/Parsec.list) | 保留；模板未额外启用原配置中没有的服务 |
+| xptv.list | [custom/XPTV.list](../rules/custom/media/XPTV.list) | 保留；模板未额外启用 |
 | GoogleVoice.list | [services/GoogleVoice.list](../rules/services/GoogleVoice.list) | 原文件及上游仅含 Google Lens 域名；固定官方 Voice 入口并限域，旧内容归档 |
-| oracle.list | [services/Oracle.list](../rules/services/Oracle.list) + [custom/OracleLegacy.list](../rules/custom/OracleLegacy.list) | 原定制项保留在兼容并集；新模板只启用标准服务集 |
-| talkatone.list | [services/Talkatone.list](../rules/services/Talkatone.list) + [custom/TalkatoneExtras.list](../rules/custom/TalkatoneExtras.list) | 保留本地额外的 tktn.be |
+| oracle.list | [services/Oracle.list](../rules/services/Oracle.list) + [custom/OracleLegacy.list](../rules/custom/cloud/OracleLegacy.list) | 原定制项保留在兼容并集；新模板只启用标准服务集 |
+| talkatone.list | [services/Talkatone.list](../rules/services/Talkatone.list) + [custom/TalkatoneExtras.list](../rules/custom/communication/TalkatoneExtras.list) | 保留本地额外的 tktn.be |
 | ChatGPT.list / OpenAI.list | [ai/ChatGPT.list](../rules/ai/ChatGPT.list) | 旧的宽泛集合归档，兼容入口变为经筛选的 ChatGPT 内容 |
 | claude.list | [ai/Claude.list](../rules/ai/Claude.list) | 归档旧副本，按新规则生成 |
 | AIGC.list | 17 个经审查的 AI 集合并集 | 不包含 Muse 进程与 DeepSeek；建议改用逐服务规则 |
+
+新建的 4 份实体合并入口见 [collections](../rules/collections/)：DirectSites（NewAPI + WebNovel）、Talkatone（上游 + 本地补充）、OracleLegacy（上游 + 历史定制）、AIGC（17 个安全 AI 列表）。新模板的 Talkatone 两行合为一行，直连站点使用合并入口；Oracle 宽关键词仍未默认启用。
+
+## 时间和来源注释
+
+所有活跃列表添加中文名称、北京时间最后内容更新时间、真实上游、维护位置和内容校验。手工列表注明本仓库维护，自动列表注明真实抓取 URL；兼容和合并入口汇总来源。内容或来源不变时保留旧时间，避免定时检查制造空提交；手工修改正文后，旧内容校验会失效，需运行 stamp_custom.py 更新。历史归档保持原文。
 
 兼容入口由 [build_compat.py](../scripts/build_compat.py) 生成，内容是实际规则，不使用软链接或跳转；完整映射见 [compatibility.json](../config/compatibility.json)。
 
@@ -67,8 +75,12 @@
 
 ```bash
 python3 scripts/sync_rules.py
+python3 scripts/stamp_custom.py
+python3 scripts/build_collections.py
 python3 scripts/build_compat.py
+python3 scripts/stamp_custom.py --validate
 python3 scripts/sync_rules.py --validate
+python3 scripts/build_collections.py --validate
 python3 scripts/build_compat.py --validate
 python3 scripts/validate_profile.py --smoke
 python3 -m unittest discover -s tests

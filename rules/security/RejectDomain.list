@@ -1,5 +1,8 @@
 # 名称：RejectDomain
-# 来源：https://ruleset.skk.moe/List/domainset/reject.conf
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://ruleset.skk.moe/List/domainset/reject.conf
+# 内容校验：sha256:b15b4857bb12df14f637b4d255d9e3e4e7569fb392fe0c4ea29c30ed7e12052d
+
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
 # 证据：https://ruleset.skk.moe/List/domainset/reject.conf

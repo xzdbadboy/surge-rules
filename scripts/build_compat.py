@@ -3,35 +3,34 @@
 
 背景
 ----
-仓库把规则整理进 ``rules/{custom,ai,services,security}/`` 下的 canonical 文件后，
-仍需保留根目录的旧文件名（例如 ``AIGC.list``、``ChatGPT.list``、``MtProviders.list``）
-作为兼容地址。本脚本读取 ``config/compatibility.json`` 的映射，把多个 canonical
-文件的规则**合并去重**后渲染成根目录的别名 ``.list``。
+仓库把规则整理进 ``rules/{custom,ai,services,security,collections}/`` 下的 canonical
+文件后，仍需保留根目录的旧文件名（例如 ``AIGC.list``、``ChatGPT.list``、
+``MtProviders.list``）以及少数 ``rules/custom/`` 直下别名作为兼容地址。本脚本读取
+``config/compatibility.json`` 的映射，把多个 canonical 文件的规则**合并去重**后渲染
+成兼容别名 ``.list``，并写入统一的中文 metadata 头。
 
 设计要点
 --------
-- 纯标准库，不联网；解析/校验/渲染全部复用 ``sync_rules`` 的公用接口
-  （``parse_surge``、``Rule.render``、``write_outputs``），不重复实现。
-- fail closed：任一 canonical 源缺失 / 非法 / 路径问题 / 无规则时，**所有**别名都不写盘；
-  只有全部别名先在内存中渲染成功后才统一写入。
-- 去重仅做 **exact（type+value+options 全等）** 去重，绝不按 suffix 粗略裁剪，
-  避免把带不同 options 或更具体域名的合法规则误删。
-- 输出稳定：不写时间戳；``write_outputs`` 内部 write-if-changed，内容无变化不重写。
-- 根别名只包含与 canonical 相同语义的规则，不生成 ``RULE-SET`` 网络嵌套引用。
+- 纯标准库，不联网；解析/校验/渲染复用 ``sync_rules`` 的公用接口与
+  ``list_metadata`` 的统一 metadata 头。
+- fail closed：任一 canonical 源缺失 / 非法 / 路径问题 / 无规则时，**所有**别名都
+  不写盘；只有全部别名先在内存中渲染成功后才统一写入。
+- 去重仅做 **exact（type+value+options 全等）** 去重，绝不按 suffix 粗略裁剪。
+- 输出稳定：metadata 头的时间只在「输出有效内容 / 来源描述」变化时更新；内容无
+  变化时 ``--check`` / ``--validate`` 跨次稳定，不按运行时刻刷新。
+- 不生成 ``RULE-SET`` 网络嵌套引用。
 
-配置 schema（``config/compatibility.json``）::
-
-    {
-      "version": 1,
-      "aliases": {
-        "MtProviders.list": ["rules/custom/MtProviders.list"],
-        "ChatGPT.list": ["rules/ai/ChatGPT.list"],
-        "AIGC.list": ["rules/ai/ChatGPT.list", "rules/ai/Claude.list", "..."]
-      }
-    }
-
-- key：根目录目标文件名，单个 filename（不允许路径，不允许 ``scripts``/``config``/``..``）。
-- value：canonical 源路径列表，必须位于 ``rules/{custom,ai,services,security}/`` 下且已存在。
+目标与来源约束
+--------------
+- 目标（target）只允许：
+    * 根目录单文件名 ``foo.list``；或
+    * 正好三层 ``rules/custom/foo.list``。
+  其它任意嵌套目标一律拒绝。
+- 来源（source）只允许位于 ``rules/{custom,ai,services,security,collections}/`` 下；
+  其中 ``custom`` 规范源必须再分类到 ``rules/custom/<category>/<file>.list``（不能是
+  ``rules/custom`` 直下的扁平层，避免与兼容目标互相依赖）。
+- 全局禁止：任一 target 出现在任一 source（字符串相同或 resolve 后相同）、target
+  之间大小写冲突 / resolve 后重复，防止循环、覆盖与大小写冲突、路径逃逸。
 
 用法::
 
@@ -47,20 +46,28 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Dict, List, Mapping, Sequence, Tuple
+from typing import Dict, List, Mapping, Optional, Sequence, Tuple
 
 try:  # 作为包的一部分导入（测试：from scripts import build_compat）
     from . import sync_rules as sync
+    from . import list_metadata as meta
 except ImportError:  # 直接以脚本方式运行（python3 scripts/build_compat.py）
     import sync_rules as sync  # type: ignore[no-redef]
+    import list_metadata as meta  # type: ignore[no-redef]
 
-# 允许作为 canonical 来源的 rules 子目录。
-ALLOWED_SOURCE_DIRS: Tuple[str, ...] = ("custom", "ai", "services", "security")
+# 允许作为 canonical 来源的 rules 子目录（含新增 collections 实体集合）。
+ALLOWED_SOURCE_DIRS: Tuple[str, ...] = ("custom", "ai", "services", "security", "collections")
 
-# 兼容头（稳定、无时间戳）。第一行固定为可识别的生成标记。
-COMPAT_HEADER = "# generated; edit canonical paths"
+# 本仓库 canonical RULE-SET 固定 URL 前缀（用于手工源的注释来源说明）。
+CANONICAL_BASE_URL = "https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/"
+
+# 兼容正文里的历史标记（保留以兼容既有消费者，非受管头）。
+GENERATED_MARKER = "# generated; edit canonical paths"
 
 CONFIG_VERSION = 1
+
+# target 允许的嵌套层数（rules/custom/<file>.list）。
+NESTED_TARGET_PARTS = ("rules", "custom")
 
 
 class CompatError(sync.ConfigError):
@@ -96,23 +103,35 @@ def load_compat_config(config_path: Path) -> dict:
 # ---------------------------------------------------------------------------
 
 
-def _validate_target_name(name: str, project_root: Path) -> str:
-    """校验根目录别名目标文件名（单 filename，.list 结尾，不得受保护目录）。"""
-    if not isinstance(name, str) or not name.strip():
-        raise CompatError(f"别名目标必须是非空字符串: {name!r}")
-    if "\\" in name:
-        raise CompatError(f"别名目标不允许反斜杠: {name!r}")
-    if name.startswith("/") or (len(name) >= 2 and name[1] == ":"):
-        raise CompatError(f"别名目标必须是相对根目录的文件名: {name!r}")
-    if "/" in name:
-        raise CompatError(f"别名目标必须是单个文件名（不允许路径分隔符）: {name!r}")
-    if name in (".", ".."):
-        raise CompatError(f"别名目标非法: {name!r}")
-    if not name.endswith(".list"):
-        raise CompatError(f"别名目标必须以 .list 结尾: {name!r}")
+def _validate_target(target: str, project_root: Path) -> str:
+    """校验兼容目标路径。
+
+    允许：根目录 ``foo.list``，或正好三层 ``rules/custom/foo.list``。
+    """
+    if not isinstance(target, str) or not target.strip():
+        raise CompatError(f"别名目标必须是非空字符串: {target!r}")
+    if "\\" in target:
+        raise CompatError(f"别名目标不允许反斜杠: {target!r}")
+    if target.startswith("/") or (len(target) >= 2 and target[1] == ":"):
+        raise CompatError(f"别名目标必须是相对路径: {target!r}")
+    if target in (".", ".."):
+        raise CompatError(f"别名目标非法: {target!r}")
+    parts = target.split("/")
+    if any(p in ("", ".", "..") for p in parts):
+        raise CompatError(f"别名目标包含非法路径片段: {target!r}")
+    if not target.endswith(".list"):
+        raise CompatError(f"别名目标必须以 .list 结尾: {target!r}")
+    if len(parts) == 1:
+        pass  # 根目录单文件名
+    elif len(parts) == 3 and parts[0] == NESTED_TARGET_PARTS[0] and parts[1] == NESTED_TARGET_PARTS[1]:
+        pass  # rules/custom/foo.list
+    else:
+        raise CompatError(
+            f"别名目标只允许根目录 foo.list 或 rules/custom/foo.list（正好三层）: {target!r}"
+        )
     # 复用 sync_rules 的路径安全校验（受保护目录、逃逸等）。
-    sync._validate_output_path(name, project_root)
-    return name
+    sync._validate_output_path(target, project_root)
+    return target
 
 
 def _validate_source_rel(rel: str, project_root: Path) -> Path:
@@ -134,9 +153,13 @@ def _validate_source_rel(rel: str, project_root: Path) -> Path:
         raise CompatError(
             f"canonical 来源必须位于 rules/{{{','.join(ALLOWED_SOURCE_DIRS)}}}/ 下: {rel!r}"
         )
+    if parts[1] == "custom" and len(parts) < 4:
+        raise CompatError(
+            f"custom 规范源必须分类到 rules/custom/<category>/<file>.list（不能是扁平层）: {rel!r}"
+        )
 
     root = project_root.resolve()
-    candidate = (root / rel)
+    candidate = root / rel
     if not candidate.exists():
         raise CompatError(f"canonical 来源不存在: {rel!r}")
     if not candidate.is_file():
@@ -156,7 +179,7 @@ def _validate_source_rel(rel: str, project_root: Path) -> Path:
 
 
 def validate_compat_config(config: Mapping, project_root: Path) -> None:
-    """校验 schema、路径、大小写冲突、别名覆盖等；不解析规则内容。"""
+    """校验 schema、路径、大小写冲突、别名覆盖、循环与逃逸；不解析规则内容。"""
     if not isinstance(config, dict):
         raise CompatError("兼容配置根必须是 JSON 对象")
     if config.get("version") != CONFIG_VERSION:
@@ -166,31 +189,48 @@ def validate_compat_config(config: Mapping, project_root: Path) -> None:
     aliases = config.get("aliases")
     if not isinstance(aliases, dict):
         raise CompatError("compatibility.aliases 必须是对象")
+    if not aliases:
+        raise CompatError("compatibility.aliases 不能为空")
 
     root = project_root.resolve()
 
-    # 1) 先校验所有来源，收集解析后的 canonical 路径集合（用于“别名不得覆盖 canonical”）。
+    # 1) 校验所有来源，收集字符串与解析后 canonical 路径集合。
+    source_strings: Dict[str, str] = {}
     source_resolved: set = set()
     for target, sources in aliases.items():
         if not isinstance(sources, list) or not sources:
             raise CompatError(f"别名 {target!r} 的来源必须是非空数组")
         for rel in sources:
+            if not isinstance(rel, str):
+                raise CompatError(f"别名 {target!r} 的来源必须都是字符串: {rel!r}")
+            low = rel.lower()
+            if low in source_strings and source_strings[low] != rel:
+                raise CompatError(
+                    f"来源路径大小写冲突: {rel!r} 与 {source_strings[low]!r} 仅大小写不同"
+                )
+            source_strings[low] = rel
             source_resolved.add(_validate_source_rel(rel, root))
 
-    # 2) 校验目标文件名、大小写冲突、别名不得覆盖 canonical。
-    lowered: Dict[str, str] = {}
+    # 2) 校验目标：路径、大小写冲突、resolve 后重复、不得覆盖 canonical 来源。
+    lowered_targets: Dict[str, str] = {}
     target_resolved: Dict[str, Path] = {}
     for target in aliases:
-        _validate_target_name(target, root)
+        _validate_target(target, root)
         low = target.lower()
-        if low in lowered:
+        if low in lowered_targets:
             raise CompatError(
-                f"别名目标大小写冲突: {target!r} 与 {lowered[low]!r} 仅大小写不同"
+                f"别名目标大小写冲突: {target!r} 与 {lowered_targets[low]!r} 仅大小写不同"
             )
-        lowered[low] = target
+        if low in source_strings:
+            raise CompatError(
+                f"别名目标与 canonical 来源同名（大小写不敏感）: {target!r} vs {source_strings[low]!r}"
+            )
+        lowered_targets[low] = target
         resolved_target = (root / target).resolve()
         if resolved_target in source_resolved:
-            raise CompatError(f"别名 {target!r} 会覆盖 canonical 文件: {target!r}")
+            raise CompatError(f"别名 {target!r} 会覆盖 canonical 文件")
+        if resolved_target in target_resolved.values():
+            raise CompatError(f"别名目标 resolve 后重复: {target!r}")
         target_resolved[target] = resolved_target
 
 
@@ -215,19 +255,63 @@ def _parse_source(rel: str, project_root: Path) -> List[sync.Rule]:
     return sync.parse_surge(text, source_id=rel)
 
 
-def render_compat(target: str, sources: Sequence[str], rules: Sequence[sync.Rule]) -> str:
-    """渲染根目录兼容别名文件内容（稳定、无时间戳）。"""
-    lines: List[str] = [COMPAT_HEADER]
-    lines.append("# sources: " + ", ".join(sources))
-    lines.append("")
-    lines.extend(rule.render() for rule in rules)
-    return "\n".join(lines) + "\n"
+def _source_text(rel: str, project_root: Path) -> str:
+    path = (project_root.resolve() / rel)
+    try:
+        return sync._decode_bytes(path.read_bytes(), rel)
+    except OSError as exc:
+        raise CompatError(f"读取 canonical 来源失败: {rel!r}: {exc}") from exc
 
 
-def build_compat_outputs(config: Mapping, project_root: Path) -> Dict[str, str]:
-    """在内存中构建所有根别名文件，不写盘；任何错误都不产生部分结果。"""
+def _collect_upstreams(sources: Sequence[str], project_root: Path) -> List[str]:
+    """汇总各来源的真实上游；纯手工源指向本仓库 canonical URL 并注明手工类型。"""
+    upstreams: List[str] = []
+    for rel in sources:
+        text = _source_text(rel, project_root)
+        found = meta.extract_upstreams(text)
+        if found:
+            candidates = found
+        else:
+            candidates = [f"{CANONICAL_BASE_URL}{rel}（手工维护，无外部同步源）"]
+        for item in candidates:
+            if item not in upstreams:
+                upstreams.append(item)
+    return upstreams
+
+
+def render_compat(
+    target: str,
+    sources: Sequence[str],
+    rules: Sequence[sync.Rule],
+    upstreams: Sequence[str],
+    previous_text: Optional[str] = None,
+    now=None,
+) -> str:
+    """渲染兼容别名文件内容（统一中文 metadata 头 + 稳定规则正文）。"""
+    body_lines: List[str] = [GENERATED_MARKER, "# sources: " + ", ".join(sources), ""]
+    body_lines.extend(rule.render() for rule in rules)
+    body = "\n".join(body_lines) + "\n"
+    name = Path(target).stem
+    return meta.annotate_list(
+        body,
+        name=name,
+        upstreams=list(upstreams),
+        canonical_sources=list(sources),
+        previous_text=previous_text,
+        now=now,
+    )
+
+
+def build_compat_outputs(
+    config: Mapping,
+    project_root: Path,
+    previous_outputs: Optional[Mapping[str, str]] = None,
+    now=None,
+) -> Dict[str, str]:
+    """在内存中构建所有兼容别名文件，不写盘；任何错误都不产生部分结果。"""
     validate_compat_config(config, project_root)
     root = project_root.resolve()
+    shared_now = meta.now_beijing(now)
 
     files: Dict[str, str] = {}
     for target, sources in config["aliases"].items():
@@ -249,12 +333,16 @@ def build_compat_outputs(config: Mapping, project_root: Path) -> Dict[str, str]:
             raise CompatError(f"别名 {target!r} 未产生任何有效规则（无规则则 fail）")
 
         rules = sorted(merged.values(), key=_sort_key)
-        files[target] = render_compat(target, ordered_sources, rules)
+        upstreams = _collect_upstreams(ordered_sources, root)
+        previous_text = previous_outputs.get(target) if previous_outputs else None
+        files[target] = render_compat(
+            target, ordered_sources, rules, upstreams, previous_text=previous_text, now=shared_now
+        )
     return files
 
 
 # ---------------------------------------------------------------------------
-# 比较
+# 比较与读取
 # ---------------------------------------------------------------------------
 
 
@@ -274,6 +362,27 @@ def _changed_files(files: Mapping[str, str], project_root: Path) -> List[str]:
     return changed
 
 
+def _read_previous_outputs(config: Mapping, project_root: Path) -> Dict[str, str]:
+    """读取现有兼容别名文件（target -> 文本），用于沿用旧更新时间。"""
+    root = project_root.resolve()
+    aliases = config.get("aliases") if isinstance(config, dict) else None
+    if not isinstance(aliases, dict):
+        return {}
+    previous: Dict[str, str] = {}
+    for target in aliases:
+        try:
+            path = sync._resolve_target(root, target)
+        except sync.SyncError:
+            continue
+        if not path.is_file():
+            continue
+        try:
+            previous[target] = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+    return previous
+
+
 # ---------------------------------------------------------------------------
 # 顶层命令
 # ---------------------------------------------------------------------------
@@ -282,7 +391,8 @@ def _changed_files(files: Mapping[str, str], project_root: Path) -> List[str]:
 def run_default(config_path: Path, project_root: Path) -> int:
     try:
         config = load_compat_config(config_path)
-        files = build_compat_outputs(config, project_root)
+        previous = _read_previous_outputs(config, project_root)
+        files = build_compat_outputs(config, project_root, previous_outputs=previous)
         written = sync.write_outputs(files, project_root)
     except sync.SyncError as exc:
         print(f"[compat] 失败: {exc}")
@@ -299,7 +409,8 @@ def run_default(config_path: Path, project_root: Path) -> int:
 def run_check(config_path: Path, project_root: Path) -> int:
     try:
         config = load_compat_config(config_path)
-        files = build_compat_outputs(config, project_root)
+        previous = _read_previous_outputs(config, project_root)
+        files = build_compat_outputs(config, project_root, previous_outputs=previous)
         changed = _changed_files(files, project_root)
     except sync.SyncError as exc:
         print(f"[check] 失败: {exc}")
@@ -316,7 +427,8 @@ def run_check(config_path: Path, project_root: Path) -> int:
 def run_validate(config_path: Path, project_root: Path) -> int:
     try:
         config = load_compat_config(config_path)
-        files = build_compat_outputs(config, project_root)
+        previous = _read_previous_outputs(config, project_root)
+        files = build_compat_outputs(config, project_root, previous_outputs=previous)
         changed = _changed_files(files, project_root)
     except sync.SyncError as exc:
         print(f"[validate] 失败: {exc}")

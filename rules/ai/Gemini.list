@@ -1,7 +1,10 @@
 # 名称：Gemini
-# 来源：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list
-# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list
+# 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 内容校验：sha256:c75196bcffb1d699a4b5e9af910ff7ff3bf73da55b9098760bea2e92ce2c667d
+
 # FORMAT: Surge RULE-SET
 # 说明：Gemini web endpoints only; Google AI Studio, NotebookLM, Antigravity and shared developer APIs are separate.
 # 证据：https://gemini.google.com/

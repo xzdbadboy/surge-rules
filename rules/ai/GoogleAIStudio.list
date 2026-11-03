@@ -1,7 +1,10 @@
 # 名称：Google AI Studio / Gemini API
-# 来源：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list
-# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list
+# 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 内容校验：sha256:6d0d0c7c103916ebbfa3d089716f76825c815f93feca84e998674eb4ff69f8ec
+
 # FORMAT: Surge RULE-SET
 # 说明：AI Studio and Gemini API. API callers share these endpoints regardless of their local application.
 # 证据：https://ai.google.dev/gemini-api/docs

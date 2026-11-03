@@ -1,5 +1,11 @@
+# 名称：Speacial
+# 更新时间：2026-11-03 10:00:31 +08:00
+# 上游：https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/custom/proxy/Special.list（手工维护，无外部同步源）
+# 维护位置：rules/custom/proxy/Special.list
+# 内容校验：sha256:d12198e8f1835bc17b8134f6c901ada757bd02b2e39b0daa08dfff115e391f60
+
 # generated; edit canonical paths
-# sources: rules/custom/Special.list
+# sources: rules/custom/proxy/Special.list
 
 DOMAIN,cm.steampowered.com
 DOMAIN,csgo.wmsj.cn

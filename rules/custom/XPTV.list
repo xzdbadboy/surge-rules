@@ -1,8 +1,15 @@
-# > XPTV出海规则
+# 名称：XPTV
+# 更新时间：2026-11-03 10:00:31 +08:00
+# 上游：https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/custom/media/XPTV.list（手工维护，无外部同步源）
+# 维护位置：rules/custom/media/XPTV.list
+# 内容校验：sha256:6bf4b07cd47ac0450f42b94879fb3e30ee86548170fed985573cd49c9f1e2137
 
-DOMAIN-KEYWORD,wogg
+# generated; edit canonical paths
+# sources: rules/custom/media/XPTV.list
+
+DOMAIN-SUFFIX,gitcafe.net
+DOMAIN-SUFFIX,mobile-stream.api.mgtv.com
 DOMAIN-SUFFIX,wogg.link
 DOMAIN-SUFFIX,wogg.xyz
 DOMAIN-SUFFIX,xxooo.cf
-DOMAIN-SUFFIX,gitcafe.net
-DOMAIN-SUFFIX,mobile-stream.api.mgtv.com
+DOMAIN-KEYWORD,wogg

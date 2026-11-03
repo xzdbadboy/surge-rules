@@ -1,7 +1,10 @@
 # 名称：Claude / Anthropic / Claude Code
-# 来源：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/anthropic.list
-# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/anthropic.list
+# 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 内容校验：sha256:9d48202d43443df0a5e17a45676b3e958ed8d413eee1693e71230ddc6b499177
+
 # FORMAT: Surge RULE-SET
 # 说明：Claude web, desktop and Claude Code share Anthropic domains; domains cannot distinguish these clients. Retains previously reviewed local core domains.
 # 证据：https://code.claude.com/docs/en/network-config

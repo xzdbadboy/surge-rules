@@ -2,45 +2,43 @@
   "version": 1,
   "aliases": {
     "MtProviders.list": [
-      "rules/custom/MtProviders.list"
+      "rules/custom/media/MtProviders.list"
     ],
     "Plex.list": [
-      "rules/custom/Plex.list"
+      "rules/custom/media/Plex.list"
     ],
     "PrivateTracker.list": [
-      "rules/custom/PrivateTracker.list"
+      "rules/custom/trackers/PrivateTracker.list"
     ],
     "SynologyDDNS.list": [
-      "rules/custom/SynologyDDNS.list"
+      "rules/custom/network/SynologyDDNS.list"
     ],
     "WebsiteProxy.list": [
-      "rules/custom/WebsiteProxy.list"
+      "rules/custom/proxy/WebsiteProxy.list"
     ],
     "Speacial.list": [
-      "rules/custom/Special.list"
+      "rules/custom/proxy/Special.list"
     ],
     "WebNovel.list": [
-      "rules/custom/WebNovel.list"
+      "rules/custom/direct/WebNovel.list"
     ],
     "NewAPI.list": [
-      "rules/custom/NewAPI.list"
+      "rules/custom/direct/NewAPI.list"
     ],
     "Parsec.list": [
-      "rules/custom/Parsec.list"
+      "rules/custom/network/Parsec.list"
     ],
     "xptv.list": [
-      "rules/custom/XPTV.list"
+      "rules/custom/media/XPTV.list"
     ],
     "GoogleVoice.list": [
       "rules/services/GoogleVoice.list"
     ],
     "oracle.list": [
-      "rules/services/Oracle.list",
-      "rules/custom/OracleLegacy.list"
+      "rules/collections/cloud/OracleLegacy.list"
     ],
     "talkatone.list": [
-      "rules/services/Talkatone.list",
-      "rules/custom/TalkatoneExtras.list"
+      "rules/collections/communication/Talkatone.list"
     ],
     "ChatGPT.list": [
       "rules/ai/ChatGPT.list"
@@ -52,23 +50,43 @@
       "rules/ai/Claude.list"
     ],
     "AIGC.list": [
-      "rules/ai/ChatGPT.list",
-      "rules/ai/Claude.list",
-      "rules/ai/Grok.list",
-      "rules/ai/Gemini.list",
-      "rules/ai/GoogleAIStudio.list",
-      "rules/ai/NotebookLM.list",
-      "rules/ai/Antigravity.list",
-      "rules/ai/GoogleAIShared.list",
-      "rules/ai/Copilot.list",
-      "rules/ai/Cursor.list",
-      "rules/ai/Windsurf.list",
-      "rules/ai/Perplexity.list",
-      "rules/ai/OpenRouter.list",
-      "rules/ai/Sora.list",
-      "rules/ai/MetaAI.list",
-      "rules/ai/Dify.list",
-      "rules/ai/Groq.list"
+      "rules/collections/ai/AIGC.list"
+    ],
+    "rules/custom/MtProviders.list": [
+      "rules/custom/media/MtProviders.list"
+    ],
+    "rules/custom/Plex.list": [
+      "rules/custom/media/Plex.list"
+    ],
+    "rules/custom/XPTV.list": [
+      "rules/custom/media/XPTV.list"
+    ],
+    "rules/custom/PrivateTracker.list": [
+      "rules/custom/trackers/PrivateTracker.list"
+    ],
+    "rules/custom/NewAPI.list": [
+      "rules/custom/direct/NewAPI.list"
+    ],
+    "rules/custom/WebNovel.list": [
+      "rules/custom/direct/WebNovel.list"
+    ],
+    "rules/custom/SynologyDDNS.list": [
+      "rules/custom/network/SynologyDDNS.list"
+    ],
+    "rules/custom/Parsec.list": [
+      "rules/custom/network/Parsec.list"
+    ],
+    "rules/custom/WebsiteProxy.list": [
+      "rules/custom/proxy/WebsiteProxy.list"
+    ],
+    "rules/custom/Special.list": [
+      "rules/custom/proxy/Special.list"
+    ],
+    "rules/custom/OracleLegacy.list": [
+      "rules/custom/cloud/OracleLegacy.list"
+    ],
+    "rules/custom/TalkatoneExtras.list": [
+      "rules/custom/communication/TalkatoneExtras.list"
     ]
   }
 }
