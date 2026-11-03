@@ -3,7 +3,9 @@ name: Sync routing rules
 on:
   schedule:
     # UTC 00:17 / 06:17 / 12:17 / 18:17; Asia/Shanghai 08:17 / 14:17 / 20:17 / 02:17.
-    - cron: '17 */6 * * *'
+    - cron: '17 0,6,12,18 * * *'
+    # Temporary bounded probe: Nov 3, 00:00-00:59 UTC; remove after verification.
+    - cron: '*/5 0 3 11 *'
   workflow_dispatch:
   push:
     branches: [main]
