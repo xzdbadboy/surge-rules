@@ -721,13 +721,13 @@
       ],
       "local_rule_count": 0,
       "mode": "mirror",
-      "rule_count": 146565,
+      "rule_count": 147978,
       "rule_types": {
         "DOMAIN": 1155,
-        "DOMAIN-SUFFIX": 145410
+        "DOMAIN-SUFFIX": 146823
       },
       "service": "mirror_reject_domains",
-      "sha256": "a2b52a807443777ccca02a8f1f80212e5a540ca73855e796ca97f3ae1fcd6008",
+      "sha256": "2a4bf8672162ad2b64ce6aecc63028d8c1499df366b040ac82897c1fd72bc8e0",
       "source_ids": [
         "upstream_reject_domains"
       ],
@@ -1415,7 +1415,7 @@
     "upstream_reject_domains": {
       "format": "domainset",
       "license_url": "https://github.com/SukkaW/Surge/blob/master/LICENSE",
-      "raw_sha256": "eb9ce75d08e3db62c7f2c18d19105a31690da3d2a082652dc5c8cb8f18d123df",
+      "raw_sha256": "1b2884785a896d12bf1511e0d4d977feb1eb2c0ce66cfc00c1db0ce9617e0076",
       "repository": "SukkaW/Surge",
       "url": "https://ruleset.skk.moe/List/domainset/reject.conf"
     },
