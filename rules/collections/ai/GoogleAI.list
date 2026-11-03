@@ -1,10 +1,10 @@
 # 名称：Google AI合集
-# 更新时间：2026-11-03 11:15:55 +08:00
+# 更新时间：2026-11-03 11:22:02 +08:00
 # 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list
 # 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
-# 维护位置：rules/ai/Gemini.list, rules/ai/GoogleAIStudio.list, rules/ai/NotebookLM.list, rules/ai/GoogleAIShared.list
-# 内容校验：sha256:5fd798fd9b7ff8365091d330daf9aa2736a39be2bb82b2fac1cfcc7d76378c5f
+# 维护位置：rules/ai/Gemini.list, rules/ai/GoogleAIStudio.list, rules/ai/NotebookLM.list, rules/ai/Antigravity.list, rules/ai/GoogleAIShared.list
+# 内容校验：sha256:13d686bfc0bc1f753d0034e19d9348a7368116c0130b1ec8a73abb727487bb95
 
 # 策略：智能助理
 # 来源类型：生成合并（同一策略使用）
@@ -15,6 +15,8 @@ DOMAIN,aida.googleapis.com
 DOMAIN,aisandbox-pa.googleapis.com
 DOMAIN,alkalicore-pa.clients6.google.com
 DOMAIN,alkalimakersuite-pa.clients6.google.com
+DOMAIN,antigravity-pa.googleapis.com
+DOMAIN,antigravity.googleapis.com
 DOMAIN,appsgenaiserver-pa.clients.google.com
 DOMAIN,appsgenaiserver-pa.clients6.google.com
 DOMAIN,appsgenaiserver-pa.googleapis.com
@@ -31,6 +33,8 @@ DOMAIN,robinfrontend-pa.googleapis.com
 DOMAIN,webchannel-alkalimakersuite-pa.clients6.google.com
 DOMAIN-SUFFIX,ai.studio
 DOMAIN-SUFFIX,aistudio.google.com
+DOMAIN-SUFFIX,antigravity-unleash.goog
+DOMAIN-SUFFIX,antigravity.google
 DOMAIN-SUFFIX,bard.google.com
 DOMAIN-SUFFIX,gemini.google
 DOMAIN-SUFFIX,gemini.google.com

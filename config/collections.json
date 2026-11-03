@@ -31,6 +31,7 @@
         "rules/ai/Gemini.list",
         "rules/ai/GoogleAIStudio.list",
         "rules/ai/NotebookLM.list",
+        "rules/ai/Antigravity.list",
         "rules/ai/GoogleAIShared.list"
       ],
       "policy_hint": "智能助理"
