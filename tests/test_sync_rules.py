@@ -645,7 +645,7 @@ class StabilityTests(BaseCase):
             stat_after = os.stat(self.root / "rules" / "Demo.list").st_mtime_ns
         self.assertEqual(stat_before, stat_after, "内容无变化时不应重写文件")
 
-    def test_header_has_no_timestamp_and_stable(self):
+    def test_header_has_metadata_and_stable(self):
         self.write_config(self._cfg())
         with self.fetch_patch({SURGE_A: "DOMAIN-SUFFIX,demo.com\n"}):
             self.assertEqual(self.cli(), 0)
@@ -656,11 +656,12 @@ class StabilityTests(BaseCase):
         text = first.decode("utf-8")
         self.assertIn("# 名称：Demo", text)
         self.assertIn("# FORMAT: Surge RULE-SET", text)
-        self.assertIn("# 来源：https://up.example/a.list", text)
+        self.assertIn("# 上游：https://up.example/a.list", text)
         self.assertIn("# 说明：Demo 服务说明", text)
-        # 不写入当前时间（无 4 位年份）
+        # 统一北京时间更新时间（固定格式）
         import re
-        self.assertIsNone(re.search(r"\b20\d{2}\b", text))
+        self.assertRegex(text, r"# 更新时间：\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} \+08:00")
+        self.assertRegex(text, r"# 内容校验：sha256:[0-9a-f]{64}")
 
     def test_manifest_relative_paths_and_reproducible(self):
         self.write_config(self._cfg())
@@ -857,7 +858,7 @@ class ManifestMetadataTests(BaseCase):
         text = self.read("rules/Demo.list").decode("utf-8")
         self.assertIn("# 证据：https://evidence.example/doc", text)
 
-    def test_local_only_header_declares_no_update_time(self):
+    def test_local_only_header_declares_manual_upstream_and_time(self):
         cfg = make_config(
             {},
             {"muse": {"name": "Muse", "output": "rules/Muse.list", "mode": "filtered",
@@ -868,8 +869,9 @@ class ManifestMetadataTests(BaseCase):
         with self.fetch_patch({}):
             self.assertEqual(self.cli(), 0)
         text = self.read("rules/Muse.list").decode("utf-8")
+        # 本地维护用明确中文说明代替上游；仍带统一北京时间更新头。
         self.assertIn("本地维护", text)
-        self.assertIn("无更新时间", text)
+        self.assertRegex(text, r"# 更新时间：\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} \+08:00")
 
 
 # ---------------------------------------------------------------------------
@@ -1091,6 +1093,91 @@ class MirrorManifestTests(BaseCase):
         m = json.loads(mp.read_text(encoding="utf-8"))
         m["outputs"]["rules/M.list"]["sha256"] = sync.sha256_hex(data)
         mp.write_text(json.dumps(m), encoding="utf-8")
+        with patch.object(sync, "_http_get", side_effect=AssertionError("no network")):
+            self.assertEqual(self.cli("--validate"), 1)
+
+
+class MetadataTimestampTests(BaseCase):
+    """受管 metadata 头：时间语义、稳定哈希、手工改动能被 --validate 发现。"""
+
+    def _cfg(self):
+        return make_config(
+            {"a": src(SURGE_A)},
+            {"demo": {"name": "Demo", "output": "rules/Demo.list", "mode": "filtered",
+                      "listSources": ["a"], "allowed_suffixes": ["demo.com"]}},
+        )
+
+    def test_fixed_clock_cross_day_no_change_does_not_bump_time(self):
+        from datetime import datetime
+
+        cfg = self._cfg()
+        raw = {"a": b"DOMAIN-SUFFIX,demo.com\n"}
+        day1 = sync.build_outputs(cfg, raw, previous_outputs=None, now=datetime(2026, 11, 3, 10, 0, 0))
+        # 第二天同一内容：应沿用第一天时间。
+        day2 = sync.build_outputs(cfg, raw, previous_outputs=day1, now=datetime(2026, 11, 4, 12, 30, 0))
+        self.assertEqual(day1["rules/Demo.list"], day2["rules/Demo.list"])
+        self.assertIn("2026-11-03 10:00:00 +08:00", day1["rules/Demo.list"])
+
+    def test_content_change_updates_time(self):
+        from datetime import datetime
+
+        cfg = make_config(
+            {"a": src(SURGE_A)},
+            {"demo": {"name": "Demo", "output": "rules/Demo.list", "mode": "filtered",
+                      "listSources": ["a"], "allowed_suffixes": ["demo.com", "other.com"]}},
+        )
+        day1 = sync.build_outputs(
+            cfg, {"a": b"DOMAIN-SUFFIX,demo.com\n"}, now=datetime(2026, 11, 3, 10, 0, 0)
+        )
+        day2 = sync.build_outputs(
+            cfg,
+            {"a": b"DOMAIN-SUFFIX,demo.com\nDOMAIN-SUFFIX,other.com\n"},
+            previous_outputs=day1,
+            now=datetime(2026, 11, 4, 12, 30, 0),
+        )
+        self.assertIn("2026-11-04 12:30:00 +08:00", day2["rules/Demo.list"])
+
+    def _sync(self):
+        self.write_config(self._cfg())
+        with self.fetch_patch({SURGE_A: "DOMAIN-SUFFIX,demo.com\n"}):
+            self.assertEqual(self.cli(), 0)
+
+    def _rewrite_output_and_fix_manifest_sha(self, transform):
+        target = self.root / "rules" / "Demo.list"
+        new_text = transform(target.read_text(encoding="utf-8"))
+        data = new_text.encode("utf-8")
+        target.write_bytes(data)
+        mp = self.root / "rules" / "manifest.json"
+        m = json.loads(mp.read_text(encoding="utf-8"))
+        m["outputs"]["rules/Demo.list"]["sha256"] = sync.sha256_hex(data)
+        mp.write_text(json.dumps(m), encoding="utf-8")
+
+    def test_validate_detects_manual_body_edit_with_stale_header(self):
+        # 手工加规则但没重打时间：即便重算了 manifest sha，内容校验哈希仍能发现。
+        self._sync()
+        self._rewrite_output_and_fix_manifest_sha(
+            lambda t: t + "DOMAIN-SUFFIX,manual-edit.com\n"
+        )
+        with patch.object(sync, "_http_get", side_effect=AssertionError("no network")):
+            self.assertEqual(self.cli("--validate"), 1)
+
+    def test_validate_detects_invalid_timestamp(self):
+        def bad_time(text):
+            import re
+            return re.sub(r"# 更新时间：.*", "# 更新时间：2026-02-30 99:99:99 +08:00", text)
+
+        self._sync()
+        self._rewrite_output_and_fix_manifest_sha(bad_time)
+        with patch.object(sync, "_http_get", side_effect=AssertionError("no network")):
+            self.assertEqual(self.cli("--validate"), 1)
+
+    def test_validate_detects_invalid_hash(self):
+        def bad_hash(text):
+            import re
+            return re.sub(r"# 内容校验：sha256:[0-9a-f]+", "# 内容校验：sha256:not-a-hash", text)
+
+        self._sync()
+        self._rewrite_output_and_fix_manifest_sha(bad_hash)
         with patch.object(sync, "_http_get", side_effect=AssertionError("no network")):
             self.assertEqual(self.cli("--validate"), 1)
 

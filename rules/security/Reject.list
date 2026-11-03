@@ -1,5 +1,8 @@
 # 名称：Reject
-# 来源：https://ruleset.skk.moe/List/non_ip/reject.conf
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://ruleset.skk.moe/List/non_ip/reject.conf
+# 内容校验：sha256:d91e07b5b94a23df278f761ea2badfd8c9b4ce509c9811b971256edb68235268
+
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
 # 证据：https://ruleset.skk.moe/List/non_ip/reject.conf

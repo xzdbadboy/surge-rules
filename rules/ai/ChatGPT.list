@@ -1,7 +1,10 @@
 # 名称：ChatGPT / OpenAI
-# 来源：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.list
-# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.list
+# 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 内容校验：sha256:51db5b8ef92879f6dd4372ffd7899483e0e301acf8ab82afea2b6c91d45ba0c3
+
 # FORMAT: Surge RULE-SET
 # 说明：ChatGPT web, OpenAI API and dedicated assets; Sora is a separate list. Shared payment, CAPTCHA and telemetry providers excluded.
 # 证据：https://help.openai.com/en/articles/9247338-network-recommendations-for-chatgpt-errors-on-web-and-apps

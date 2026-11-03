@@ -1,5 +1,8 @@
 # 名称：Google
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Google.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Google.list
+# 内容校验：sha256:17044304a30d6a75a845bf6e63e77c0bbbcc932c61620483d4e995d44c13128a
+
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
 # 证据：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Google.list

@@ -1,0 +1,14 @@
+# 名称：XPTV
+# 更新时间：2026-11-03 10:00:29 +08:00
+# 上游：本仓库手工维护，无外部同步源
+# 维护位置：https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/media/XPTV.list
+# 内容校验：sha256:129f5965b5da74a02fd7cb0db1ceda9c75ac46b14766913d40ca9bf5f598b1f9
+
+# > XPTV出海规则
+
+DOMAIN-KEYWORD,wogg
+DOMAIN-SUFFIX,wogg.link
+DOMAIN-SUFFIX,wogg.xyz
+DOMAIN-SUFFIX,xxooo.cf
+DOMAIN-SUFFIX,gitcafe.net
+DOMAIN-SUFFIX,mobile-stream.api.mgtv.com

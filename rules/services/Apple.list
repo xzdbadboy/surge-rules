@@ -1,5 +1,8 @@
 # 名称：Apple
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Apple.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Apple.list
+# 内容校验：sha256:a4d033f566e6fb973eccf6951ddcb09ffb4a772b92cd06d426173801b0be8f5f
+
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
 # 证据：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Apple.list

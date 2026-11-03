@@ -1,2 +1,10 @@
-# Parsec
+# 名称：Parsec
+# 更新时间：2026-11-03 10:00:31 +08:00
+# 上游：https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/custom/network/Parsec.list（手工维护，无外部同步源）
+# 维护位置：rules/custom/network/Parsec.list
+# 内容校验：sha256:c1bfcd36c312aa7357e117909eb8fde8e890f3ddea6087ec91350fd2a02f27cc
+
+# generated; edit canonical paths
+# sources: rules/custom/network/Parsec.list
+
 DOMAIN-SUFFIX,parsec.app

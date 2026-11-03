@@ -1,6 +1,9 @@
 # 名称：DeepSeek
-# 来源：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/deepseek.list
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/deepseek.list
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 内容校验：sha256:f8d9822402fe4098fb9c907cd410ec25062412b873bbee95b4a88ae499cc7a22
+
 # FORMAT: Surge RULE-SET
 # 说明：DeepSeek dedicated domains. A separate list does not imply it needs proxying; DIRECT is supported.
 # 证据：https://api-docs.deepseek.com/

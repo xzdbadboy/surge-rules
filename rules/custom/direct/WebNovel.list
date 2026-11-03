@@ -1,0 +1,10 @@
+# 名称：WebNovel
+# 更新时间：2026-11-03 10:00:29 +08:00
+# 上游：本仓库手工维护，无外部同步源
+# 维护位置：https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/direct/WebNovel.list
+# 内容校验：sha256:66d2f5dcf00975a3abd3139600f47bdca77e4fff81089ddc67934f6bec7c1f3b
+
+# NAME: WebNovel
+# NOTE：小说网址
+# UPDATED: 2026-07-13 16:35:33
+DOMAIN-SUFFIX,itianyu.org  # 天域小说网

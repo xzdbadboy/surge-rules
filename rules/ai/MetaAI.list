@@ -1,6 +1,9 @@
 # 名称：Meta AI
-# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 内容校验：sha256:649c96ec438bccf33765f26eb6b2adecada75fe48b011ff3e2acbe8223e0cfd2
+
 # FORMAT: Surge RULE-SET
 # 说明：Meta AI dedicated domain; does not route all Facebook or Instagram traffic.
 # 证据：https://www.meta.ai/

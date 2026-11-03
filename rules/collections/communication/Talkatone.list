@@ -1,0 +1,24 @@
+# 名称：Talkatone（上游及本地补充）
+# 更新时间：2026-11-03 10:00:30 +08:00
+# 上游：https://raw.githubusercontent.com/mottzz87/crules/main/rule/talkatone.list
+# 上游：https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/communication/TalkatoneExtras.list
+# 维护位置：rules/services/Talkatone.list, rules/custom/communication/TalkatoneExtras.list
+# 内容校验：sha256:c4b4cabe94685620566f176b93722ce57d6b7d1de939274b1d2df54e97255f0b
+
+# 策略：Talkatone
+# 来源类型：生成合并（同一策略使用）
+
+DOMAIN-SUFFIX,agkn.com
+DOMAIN-SUFFIX,cohere.com
+DOMAIN-SUFFIX,crashlytics.com
+DOMAIN-SUFFIX,inmobi.com
+DOMAIN-SUFFIX,ip-api.com
+DOMAIN-SUFFIX,kochava.com
+DOMAIN-SUFFIX,mobilefuse.com
+DOMAIN-SUFFIX,talkatone.com
+DOMAIN-SUFFIX,tktn.at
+DOMAIN-SUFFIX,tktn.be
+IP-CIDR,205.164.56.0/24
+IP-CIDR,50.117.27.0/24
+IP-CIDR,63.251.124.0/24
+IP-CIDR,69.46.75.0/24

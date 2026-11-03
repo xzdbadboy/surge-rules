@@ -1,4 +1,11 @@
-# > 今日热榜
-DOMAIN,tophub.today
-# > Qnap aliyun DDNS
+# 名称：WebsiteProxy
+# 更新时间：2026-11-03 10:00:31 +08:00
+# 上游：https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/custom/proxy/WebsiteProxy.list（手工维护，无外部同步源）
+# 维护位置：rules/custom/proxy/WebsiteProxy.list
+# 内容校验：sha256:a3a51e776b55bad8f4066d67261d7e13ada236f58226b731eb12ae6149124593
+
+# generated; edit canonical paths
+# sources: rules/custom/proxy/WebsiteProxy.list
+
 DOMAIN,tonnp.com
+DOMAIN,tophub.today

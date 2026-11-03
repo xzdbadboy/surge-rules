@@ -61,16 +61,16 @@ class CompatTestBase(unittest.TestCase):
             if line.strip() and not line.lstrip().startswith("#")
         ]
 
-    def build(self, aliases: dict):
+    def build(self, aliases: dict, **kwargs):
         cfg = {"version": 1, "aliases": aliases}
-        return bc.build_compat_outputs(cfg, self.root)
+        return bc.build_compat_outputs(cfg, self.root, **kwargs)
 
 
 class TestMergeAndDedup(CompatTestBase):
     def test_manual_rules_preserved_and_exact_dedup(self):
-        self.write_source("rules/custom/A.list", "DOMAIN-SUFFIX,foo.com\nDOMAIN,bar.com\n")
-        self.write_source("rules/custom/B.list", "DOMAIN,bar.com\nDOMAIN-SUFFIX,baz.com\n")
-        files = self.build({"Mix.list": ["rules/custom/A.list", "rules/custom/B.list"]})
+        self.write_source("rules/custom/misc/A.list", "DOMAIN-SUFFIX,foo.com\nDOMAIN,bar.com\n")
+        self.write_source("rules/custom/misc/B.list", "DOMAIN,bar.com\nDOMAIN-SUFFIX,baz.com\n")
+        files = self.build({"Mix.list": ["rules/custom/misc/A.list", "rules/custom/misc/B.list"]})
         rules = [
             l for l in files["Mix.list"].splitlines() if l and not l.startswith("#")
         ]
@@ -81,7 +81,6 @@ class TestMergeAndDedup(CompatTestBase):
         )
 
     def test_aggregate_excludes_never_present_shared_and_ip(self):
-        # ChatGPT 与 Claude 两个 canonical；共享/CDN/IP/进程规则从未出现在任一来源。
         self.write_source(
             "rules/ai/ChatGPT.list",
             "DOMAIN,openai.com\nDOMAIN-SUFFIX,chatgpt.com\n",
@@ -98,14 +97,13 @@ class TestMergeAndDedup(CompatTestBase):
             set(rules),
             {"DOMAIN,openai.com", "DOMAIN-SUFFIX,chatgpt.com", "DOMAIN-SUFFIX,anthropic.com"},
         )
-        # 明确断言：聚合不会凭空引入从没在 source 出现的共享 domain / IP / node。
         joined = "\n".join(rules)
         for forbidden in ("cdn.auth0.com", "IP-CIDR", "IP-CIDR6", "PROCESS-NAME", "node"):
             self.assertNotIn(forbidden, joined)
 
     def test_options_preserved_and_not_suffix_pruned(self):
         self.write_source(
-            "rules/custom/Opt.list",
+            "rules/custom/misc/Opt.list",
             "\n".join(
                 [
                     "DOMAIN-SUFFIX,example.com",
@@ -116,27 +114,28 @@ class TestMergeAndDedup(CompatTestBase):
                 ]
             ),
         )
-        files = self.build({"Opt.list": ["rules/custom/Opt.list"]})
+        files = self.build({"Opt.list": ["rules/custom/misc/Opt.list"]})
         rules = [
             l for l in files["Opt.list"].splitlines() if l and not l.startswith("#")
         ]
-        # 4 条全保留：不因 suffix 覆盖而裁剪更具体规则，也不丢 options。
         self.assertIn("DOMAIN-SUFFIX,example.com", rules)
         self.assertIn("DOMAIN-SUFFIX,example.com,extended-matching", rules)
         self.assertIn("DOMAIN,sub.example.com", rules)
         self.assertIn("IP-CIDR,203.0.113.0/24,no-resolve", rules)
         self.assertEqual(len(rules), 4)
 
-    def test_header_is_stable_without_timestamp(self):
-        self.write_source("rules/custom/H.list", "DOMAIN,a.com\n")
-        files = self.build({"H.list": ["rules/custom/H.list"]})
-        lines = files["H.list"].splitlines()
-        self.assertEqual(lines[0], "# generated; edit canonical paths")
-        self.assertTrue(lines[1].startswith("# sources: rules/custom/H.list"))
-        # 无时间戳（不出现 YYYY-MM-DD 之类）。
-        import re
-
-        self.assertIsNone(re.search(r"\d{4}[-/]\d{2}[-/]\d{2}", files["H.list"]))
+    def test_header_has_metadata_and_is_stable(self):
+        self.write_source(
+            "rules/ai/H.list",
+            "# 名称：H\n# 上游：https://up.example/h.list\n\nDOMAIN,a.com\n",
+        )
+        files = self.build({"H.list": ["rules/ai/H.list"]})
+        text = files["H.list"]
+        self.assertIn("# 名称：H", text)
+        self.assertRegex(text, r"# 更新时间：\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} \+08:00")
+        self.assertIn("# 上游：https://up.example/h.list", text)
+        self.assertIn("# 维护位置：rules/ai/H.list", text)
+        self.assertRegex(text, r"# 内容校验：sha256:[0-9a-f]{64}")
 
 
 class TestLocalProcessAndMuse(CompatTestBase):
@@ -153,26 +152,25 @@ class TestLocalProcessAndMuse(CompatTestBase):
 
 class TestAllOrNothingAndErrors(CompatTestBase):
     def test_missing_canonical_writes_no_alias_at_all(self):
-        self.write_source("rules/custom/Good.list", "DOMAIN,good.com\n")
+        self.write_source("rules/custom/misc/Good.list", "DOMAIN,good.com\n")
         cfg = self.write_config(
             {
-                "Good.list": ["rules/custom/Good.list"],
-                "Bad.list": ["rules/custom/DoesNotExist.list"],
+                "Good.list": ["rules/custom/misc/Good.list"],
+                "Bad.list": ["rules/custom/misc/DoesNotExist.list"],
             }
         )
         rc = bc.run_default(cfg, self.root)
         self.assertEqual(rc, 1)
-        # 整轮失败：连合法的 Good.list 也不得写盘。
         self.assertFalse((self.root / "Good.list").exists())
         self.assertFalse((self.root / "Bad.list").exists())
 
     def test_invalid_canonical_line_writes_no_alias(self):
-        self.write_source("rules/custom/Good.list", "DOMAIN,good.com\n")
-        self.write_source("rules/custom/Broken.list", "DOMAIN-SUFFIX, bad domain \n")
+        self.write_source("rules/custom/misc/Good.list", "DOMAIN,good.com\n")
+        self.write_source("rules/custom/misc/Broken.list", "DOMAIN-SUFFIX, bad domain \n")
         cfg = self.write_config(
             {
-                "Good.list": ["rules/custom/Good.list"],
-                "Broken.list": ["rules/custom/Broken.list"],
+                "Good.list": ["rules/custom/misc/Good.list"],
+                "Broken.list": ["rules/custom/misc/Broken.list"],
             }
         )
         rc = bc.run_default(cfg, self.root)
@@ -181,8 +179,8 @@ class TestAllOrNothingAndErrors(CompatTestBase):
         self.assertFalse((self.root / "Broken.list").exists())
 
     def test_source_with_only_comments_fails(self):
-        self.write_source("rules/custom/Empty.list", "# only a comment\n# another\n")
-        cfg = self.write_config({"Empty.list": ["rules/custom/Empty.list"]})
+        self.write_source("rules/custom/misc/Empty.list", "# only a comment\n# another\n")
+        cfg = self.write_config({"Empty.list": ["rules/custom/misc/Empty.list"]})
         self.assertEqual(bc.run_default(cfg, self.root), 1)
         self.assertFalse((self.root / "Empty.list").exists())
 
@@ -196,16 +194,20 @@ class TestPathValidation(CompatTestBase):
         self._expect_invalid({"X.list": ["/etc/passwd.list"]})
 
     def test_dotdot_source_rejected(self):
-        self.write_source("rules/custom/ok.list", "DOMAIN,a.com\n")
+        self.write_source("rules/custom/misc/ok.list", "DOMAIN,a.com\n")
         self._expect_invalid({"X.list": ["rules/custom/../scripts/x.list"]})
 
     def test_root_alias_self_reference_rejected(self):
-        # 来源指向根目录文件（非 rules/ 下）——自引用拒绝。
         self._expect_invalid({"AIGC.list": ["ChatGPT.list"]})
 
     def test_source_must_be_in_allowed_dirs(self):
         self.write_source("rules/other/X.list", "DOMAIN,a.com\n")
         self._expect_invalid({"X.list": ["rules/other/X.list"]})
+
+    def test_flat_custom_source_rejected(self):
+        # custom 规范源必须分类，扁平 rules/custom/foo.list 不可作来源。
+        self.write_source("rules/custom/Flat.list", "DOMAIN,a.com\n")
+        self._expect_invalid({"X.list": ["rules/custom/Flat.list"]})
 
     def test_missing_source_rejected(self):
         self._expect_invalid({"X.list": ["rules/ai/missing.list"]})
@@ -222,44 +224,69 @@ class TestPathValidation(CompatTestBase):
         self._expect_invalid({"X.list": ["rules/ai/evil.list"]})
 
     def test_duplicate_target_case_conflict_rejected(self):
-        self.write_source("rules/custom/a.list", "DOMAIN,a.com\n")
+        self.write_source("rules/custom/misc/a.list", "DOMAIN,a.com\n")
         self._expect_invalid(
             {
-                "Widget.list": ["rules/custom/a.list"],
-                "widget.list": ["rules/custom/a.list"],
+                "Widget.list": ["rules/custom/misc/a.list"],
+                "widget.list": ["rules/custom/misc/a.list"],
             }
         )
 
     def test_target_with_path_separator_rejected(self):
-        self.write_source("rules/custom/a.list", "DOMAIN,a.com\n")
-        self._expect_invalid({"rules/ai/a.list": ["rules/custom/a.list"]})
+        self.write_source("rules/custom/misc/a.list", "DOMAIN,a.com\n")
+        # rules/ai/a.list 不是允许的目标层（仅根或 rules/custom/foo.list）。
+        self._expect_invalid({"rules/ai/a.list": ["rules/custom/misc/a.list"]})
+
+    def test_target_too_deep_rejected(self):
+        self.write_source("rules/custom/misc/a.list", "DOMAIN,a.com\n")
+        self._expect_invalid({"rules/custom/sub/a.list": ["rules/custom/misc/a.list"]})
 
     def test_target_dotdot_rejected(self):
-        self.write_source("rules/custom/a.list", "DOMAIN,a.com\n")
-        self._expect_invalid({"../escape.list": ["rules/custom/a.list"]})
+        self.write_source("rules/custom/misc/a.list", "DOMAIN,a.com\n")
+        self._expect_invalid({"../escape.list": ["rules/custom/misc/a.list"]})
 
     def test_target_must_end_with_list(self):
-        self.write_source("rules/custom/a.list", "DOMAIN,a.com\n")
-        self._expect_invalid({"Widget.txt": ["rules/custom/a.list"]})
+        self.write_source("rules/custom/misc/a.list", "DOMAIN,a.com\n")
+        self._expect_invalid({"Widget.txt": ["rules/custom/misc/a.list"]})
 
     def test_bad_version_rejected(self):
-        self.write_source("rules/custom/a.list", "DOMAIN,a.com\n")
-        cfg = {"version": 99, "aliases": {"A.list": ["rules/custom/a.list"]}}
+        self.write_source("rules/custom/misc/a.list", "DOMAIN,a.com\n")
+        cfg = {"version": 99, "aliases": {"A.list": ["rules/custom/misc/a.list"]}}
         with self.assertRaises(bc.CompatError):
             bc.build_compat_outputs(cfg, self.root)
+
+    @unittest.skipUnless(hasattr(os, "symlink"), "需要 symlink 支持")
+    def test_source_resolving_onto_target_rejected(self):
+        # 来源符号链接解析到目标路径 -> 覆盖/循环风险 -> 拒绝。
+        self.write_source("rules/custom/misc/real.list", "DOMAIN,a.com\n")
+        link = self.root / "rules" / "ai" / "alias-target.list"
+        try:
+            os.symlink(self.root / "rules" / "custom" / "Alias.list", link)
+        except OSError as exc:  # pragma: no cover
+            self.skipTest(f"无法创建符号链接: {exc}")
+        # 目标 rules/custom/Alias.list；来源解析后指向同一路径。
+        self._expect_invalid({"rules/custom/Alias.list": ["rules/ai/alias-target.list"]})
+
+
+class TestNestedTarget(CompatTestBase):
+    def test_nested_custom_target_allowed(self):
+        self.write_source("rules/custom/misc/A.list", "DOMAIN,a.com\n")
+        cfg = self.write_config({"rules/custom/Alias.list": ["rules/custom/misc/A.list"]})
+        self.assertEqual(bc.run_default(cfg, self.root), 0)
+        target = self.root / "rules" / "custom" / "Alias.list"
+        self.assertTrue(target.is_file())
+        self.assertIn("DOMAIN,a.com", self.out_rules("rules/custom/Alias.list"))
 
 
 class TestCheckAndValidate(CompatTestBase):
     def setUp(self):
         super().setUp()
-        self.write_source("rules/custom/A.list", "DOMAIN,a.com\nDOMAIN-SUFFIX,b.com\n")
-        self.cfg = self.write_config({"Alias.list": ["rules/custom/A.list"]})
+        self.write_source("rules/custom/misc/A.list", "DOMAIN,a.com\nDOMAIN-SUFFIX,b.com\n")
+        self.cfg = self.write_config({"Alias.list": ["rules/custom/misc/A.list"]})
 
     def test_check_no_write_when_missing_then_clean(self):
-        # 尚未生成时：--check 返回 2 且不写文件。
         self.assertEqual(bc.run_check(self.cfg, self.root), 2)
         self.assertFalse((self.root / "Alias.list").exists())
-        # 生成后 --check 返回 0。
         self.assertEqual(bc.run_default(self.cfg, self.root), 0)
         self.assertEqual(bc.run_check(self.cfg, self.root), 0)
 
@@ -268,7 +295,6 @@ class TestCheckAndValidate(CompatTestBase):
         target = self.root / "Alias.list"
         before = target.read_bytes()
         before_mtime = target.stat().st_mtime_ns
-        # 再次运行：无变化不重写（内容与 mtime 均不变）。
         self.assertEqual(bc.run_default(self.cfg, self.root), 0)
         self.assertEqual(target.read_bytes(), before)
         self.assertEqual(target.stat().st_mtime_ns, before_mtime)
@@ -279,7 +305,6 @@ class TestCheckAndValidate(CompatTestBase):
         tampered = target.read_text(encoding="utf-8") + "DOMAIN,tampered.com\n"
         target.write_text(tampered, encoding="utf-8")
         self.assertEqual(bc.run_check(self.cfg, self.root), 2)
-        # --check 不写盘：篡改内容保持原样。
         self.assertEqual(target.read_text(encoding="utf-8"), tampered)
 
     def test_validate_passes_when_consistent(self):
@@ -291,16 +316,63 @@ class TestCheckAndValidate(CompatTestBase):
         target = self.root / "Alias.list"
         target.write_text(target.read_text(encoding="utf-8") + "DOMAIN,x.com\n", encoding="utf-8")
         self.assertEqual(bc.run_validate(self.cfg, self.root), 1)
-        # --validate 同样不写盘。
         self.assertIn("DOMAIN,x.com", target.read_text(encoding="utf-8"))
 
     def test_check_returns_1_on_config_error_not_2(self):
-        bad = self.write_config({"Alias.list": ["rules/custom/missing.list"]})
+        bad = self.write_config({"Alias.list": ["rules/custom/misc/missing.list"]})
         self.assertEqual(bc.run_check(bad, self.root), 1)
         self.assertEqual(bc.run_validate(bad, self.root), 1)
 
     def test_missing_config_file_error(self):
         self.assertEqual(bc.run_default(self.root / "config" / "nope.json", self.root), 1)
+
+
+class TestMetadataTimestamps(CompatTestBase):
+    def setUp(self):
+        super().setUp()
+        self.write_source("rules/ai/A.list", "# 上游：https://up/a\n\nDOMAIN-SUFFIX,demo.com\n")
+
+    def test_fixed_clock_cross_day_no_change_stable(self):
+        from datetime import datetime
+
+        cfg = {"version": 1, "aliases": {"Alias.list": ["rules/ai/A.list"]}}
+        day1 = bc.build_compat_outputs(cfg, self.root, now=datetime(2026, 11, 3, 9, 0, 0))
+        day2 = bc.build_compat_outputs(
+            cfg, self.root, previous_outputs=day1, now=datetime(2026, 11, 4, 18, 0, 0)
+        )
+        self.assertEqual(day1["Alias.list"], day2["Alias.list"])
+        self.assertIn("2026-11-03 09:00:00 +08:00", day1["Alias.list"])
+
+    def test_source_change_updates_time(self):
+        from datetime import datetime
+
+        cfg = {"version": 1, "aliases": {"Alias.list": ["rules/ai/A.list"]}}
+        day1 = bc.build_compat_outputs(cfg, self.root, now=datetime(2026, 11, 3, 9, 0, 0))
+        self.write_source("rules/ai/A.list", "# 上游：https://up/a\n\nDOMAIN-SUFFIX,demo.com\nDOMAIN,demo.org\n")
+        day2 = bc.build_compat_outputs(
+            cfg, self.root, previous_outputs=day1, now=datetime(2026, 11, 4, 18, 0, 0)
+        )
+        self.assertIn("2026-11-04 18:00:00 +08:00", day2["Alias.list"])
+
+    def test_manual_source_upstream_is_canonical_url_with_note(self):
+        self.write_source("rules/custom/misc/Manual.list", "# 手工\nDOMAIN,m.com\n")
+        files = self.build({"Manual.list": ["rules/custom/misc/Manual.list"]})
+        text = files["Manual.list"]
+        self.assertIn(bc.CANONICAL_BASE_URL + "rules/custom/misc/Manual.list", text)
+        self.assertIn("手工维护", text)
+
+    def test_corrupt_header_detected_by_check_and_validate(self):
+        import re
+
+        cfg = self.write_config({"Alias.list": ["rules/ai/A.list"]})
+        self.assertEqual(bc.run_default(cfg, self.root), 0)
+        target = self.root / "Alias.list"
+        target.write_text(
+            re.sub(r"# 更新时间：.*", "# 更新时间：坏时间", target.read_text(encoding="utf-8")),
+            encoding="utf-8",
+        )
+        self.assertEqual(bc.run_check(cfg, self.root), 2)
+        self.assertEqual(bc.run_validate(cfg, self.root), 1)
 
 
 if __name__ == "__main__":

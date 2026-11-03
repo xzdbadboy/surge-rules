@@ -1,0 +1,12 @@
+# 名称：SynologyDDNS
+# 更新时间：2026-11-03 10:00:29 +08:00
+# 上游：本仓库手工维护，无外部同步源
+# 维护位置：https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/network/SynologyDDNS.list
+# 内容校验：sha256:1664ea9105ce418da6e89fb0b10573ac4a30b6b22d951447e177341e1a4c001d
+
+# > 群晖 DDNS
+DOMAIN,account.synology.com
+DOMAIN,ddns.synology.com
+DOMAIN,checkport.synology.com
+DOMAIN,checkipv6.synology.com
+DOMAIN,checkip.synology.com

@@ -1,7 +1,10 @@
 # 名称：Antigravity
-# 来源：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list
-# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list
+# 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 内容校验：sha256:049f467496d4fdd3615fe449173ad73d4abea927eb42aa9357216618c8eb907d
+
 # FORMAT: Surge RULE-SET
 # 说明：Antigravity dedicated endpoints. Also use GoogleAIShared for shared Cloud Code APIs.
 # 证据：https://antigravity.google/

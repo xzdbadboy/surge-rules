@@ -41,6 +41,11 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
 
+try:  # 作为包的一部分导入（测试：from scripts import sync_rules）
+    from . import list_metadata as meta
+except ImportError:  # 直接以脚本方式运行（python3 scripts/sync_rules.py）
+    import list_metadata as meta  # type: ignore[no-redef]
+
 # ---------------------------------------------------------------------------
 # 常量
 # ---------------------------------------------------------------------------
@@ -844,16 +849,23 @@ def _source_urls(config: Mapping, svc: Mapping) -> List[str]:
     return urls
 
 
-def render_list(config: Mapping, svc: Mapping, rules: Sequence[Rule]) -> str:
-    lines: List[str] = []
-    lines.append(f"# 名称：{svc['name']}")
+# 本地维护（无外部上游）时写入的说明，避免出现空的上游字段。
+LOCAL_UPSTREAM_NOTE = "本地维护（人工规则，无外部同步源）"
+
+
+def _upstreams_for_service(config: Mapping, svc: Mapping) -> List[str]:
+    """服务的真实上游列表；本地维护服务给出明确的中文说明。"""
     urls = _source_urls(config, svc)
-    if urls:
-        for url in urls:
-            lines.append(f"# 来源：{url}")
-    else:
-        lines.append("# 来源：本地维护（人工规则，无更新时间）")
-    lines.append("# FORMAT: Surge RULE-SET")
+    return urls if urls else [LOCAL_UPSTREAM_NOTE]
+
+
+def render_list(config: Mapping, svc: Mapping, rules: Sequence[Rule]) -> str:
+    """渲染规则正文（不含受管 metadata 头；头由 ``annotate_list`` 统一添加）。
+
+    保留原有 ``FORMAT`` / ``说明`` / ``证据`` 等有用注释；上游 URL 由
+    受管头的 ``# 上游：`` 承载，避免与正文重复。
+    """
+    lines: List[str] = ["# FORMAT: Surge RULE-SET"]
     description = svc.get("description")
     if description:
         lines.append(f"# 说明：{description}")
@@ -883,10 +895,19 @@ _SOURCE_META_KEYS = ("repository", "path", "license_url")
 
 
 def build_outputs(
-    config: Mapping, raw: Mapping[str, bytes]
+    config: Mapping,
+    raw: Mapping[str, bytes],
+    previous_outputs: Optional[Mapping[str, str]] = None,
+    now: Optional["object"] = None,
 ) -> Dict[str, str]:
-    """在内存中构建所有输出文件（含 manifest），不写盘。"""
+    """在内存中构建所有输出文件（含 manifest），不写盘。
+
+    ``previous_outputs``：现有输出文件（path -> 文本），用于在有效内容/来源未变时
+    沿用旧更新时间，保证 ``--check`` / 重复同步稳定。缺省时所有文件按首次注释处理。
+    ``now``：注入的当前北京时间（测试用），None 表示使用真实当前时间。
+    """
     parsed = parse_sources(config, raw)
+    shared_now = meta.now_beijing(now)  # 单轮所有文件共享同一时刻，避免逐文件漂移
 
     files: Dict[str, str] = {}
     manifest: Dict[str, object] = {
@@ -918,8 +939,18 @@ def build_outputs(
             )
         content = render_list(config, svc, rules)
         path = svc["output"]
+        previous_text = previous_outputs.get(path) if previous_outputs else None
+        content = meta.annotate_list(
+            content,
+            name=svc["name"],
+            upstreams=_upstreams_for_service(config, svc),
+            canonical_sources=(),
+            previous_text=previous_text,
+            now=shared_now,
+        )
         files[path] = content
         data = content.encode("utf-8")
+        header = meta.parse_header(content)
         out_entry: Dict[str, object] = {
             "service": svc_id,
             "mode": svc["mode"],
@@ -928,6 +959,7 @@ def build_outputs(
             "rule_types": _rule_types(rules),
             "source_urls": _source_urls(config, svc),
             "evidence": list(svc.get("evidence", []) or []),
+            "updated_at": header["updated_at"],
         }
         if svc["mode"] == "filtered":
             out_entry["rule_sources"] = provenance
@@ -999,10 +1031,33 @@ def write_outputs(files: Mapping[str, str], project_root: Path) -> List[str]:
 # ---------------------------------------------------------------------------
 
 
+def _read_previous_outputs(config: Mapping, project_root: Path) -> Dict[str, str]:
+    """读取现有服务输出文件（path -> 文本），用于沿用旧更新时间。
+
+    只读已声明的服务输出；缺失或读取失败的文件跳过（按首次注释处理）。
+    """
+    root = project_root.resolve()
+    previous: Dict[str, str] = {}
+    for svc in config["services"].values():
+        rel = svc["output"]
+        try:
+            target = _resolve_target(root, rel)
+        except SyncError:
+            continue
+        if not target.is_file():
+            continue
+        try:
+            previous[rel] = target.read_text(encoding="utf-8")
+        except OSError:
+            continue
+    return previous
+
+
 def run_sync(config_path: Path, project_root: Path, timeout: float = DEFAULT_TIMEOUT) -> int:
     config = load_and_validate(config_path, project_root)
     raw = fetch_all_sources(config, timeout=timeout)
-    files = build_outputs(config, raw)
+    previous = _read_previous_outputs(config, project_root)
+    files = build_outputs(config, raw, previous_outputs=previous)
     written = write_outputs(files, project_root)
     if written:
         print(f"已更新 {len(written)} 个文件：")
@@ -1017,7 +1072,8 @@ def run_check(config_path: Path, project_root: Path, timeout: float = DEFAULT_TI
     try:
         config = load_and_validate(config_path, project_root)
         raw = fetch_all_sources(config, timeout=timeout)
-        files = build_outputs(config, raw)
+        previous = _read_previous_outputs(config, project_root)
+        files = build_outputs(config, raw, previous_outputs=previous)
     except SyncError as exc:
         print(f"[check] 失败: {exc}", file=sys.stderr)
         return 1
@@ -1162,6 +1218,23 @@ def run_validate(config_path: Path, project_root: Path) -> int:
             if sha256_hex(data) != info.get("sha256"):
                 raise SyncError(f"{rel} 的 sha256 与 manifest 不一致")
             text = data.decode("utf-8")
+            # 受管 metadata 头：时间格式合法、内容校验哈希与实际正文自洽。
+            header = meta.parse_header(text)
+            if not header["valid_time"]:
+                raise SyncError(f"{rel} 的更新时间格式非法或缺失: {header['updated_at']!r}")
+            if not header["valid_hash"]:
+                raise SyncError(f"{rel} 的内容校验哈希缺失或非法")
+            expected_body = meta.strip_metadata(text)
+            actual_hash = meta.compute_content_hash(
+                expected_body,
+                header["name"] if header["name"] is not None else "",
+                header["upstreams"],
+                header["canonical_sources"],
+            )
+            if actual_hash != header["hash"]:
+                raise SyncError(f"{rel} 的内容校验哈希与实际正文不一致（手工改动或头损坏）")
+            if "updated_at" in info and info.get("updated_at") != header["updated_at"]:
+                raise SyncError(f"{rel} 的 manifest.updated_at 与文件头更新时间不一致")
             # parse_surge 逐条严格校验：任何非法行都会抛 ParseError。
             rules = parse_surge(text, source_id=rel)
             if len(rules) != info.get("rule_count"):

@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "path": "rules/custom/media/MtProviders.list",
+      "name": "MtProviders",
+      "upstreams": [
+        "本仓库手工维护，无外部同步源"
+      ],
+      "canonical_sources": [
+        "https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/media/MtProviders.list"
+      ]
+    },
+    {
+      "path": "rules/custom/media/Plex.list",
+      "name": "Plex",
+      "upstreams": [
+        "本仓库手工维护，无外部同步源"
+      ],
+      "canonical_sources": [
+        "https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/media/Plex.list"
+      ]
+    },
+    {
+      "path": "rules/custom/media/XPTV.list",
+      "name": "XPTV",
+      "upstreams": [
+        "本仓库手工维护，无外部同步源"
+      ],
+      "canonical_sources": [
+        "https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/media/XPTV.list"
+      ]
+    },
+    {
+      "path": "rules/custom/trackers/PrivateTracker.list",
+      "name": "PrivateTracker",
+      "upstreams": [
+        "本仓库手工维护，无外部同步源"
+      ],
+      "canonical_sources": [
+        "https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/trackers/PrivateTracker.list"
+      ]
+    },
+    {
+      "path": "rules/custom/direct/NewAPI.list",
+      "name": "NewAPI",
+      "upstreams": [
+        "本仓库手工维护，无外部同步源"
+      ],
+      "canonical_sources": [
+        "https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/direct/NewAPI.list"
+      ]
+    },
+    {
+      "path": "rules/custom/direct/WebNovel.list",
+      "name": "WebNovel",
+      "upstreams": [
+        "本仓库手工维护，无外部同步源"
+      ],
+      "canonical_sources": [
+        "https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/direct/WebNovel.list"
+      ]
+    },
+    {
+      "path": "rules/custom/network/SynologyDDNS.list",
+      "name": "SynologyDDNS",
+      "upstreams": [
+        "本仓库手工维护，无外部同步源"
+      ],
+      "canonical_sources": [
+        "https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/network/SynologyDDNS.list"
+      ]
+    },
+    {
+      "path": "rules/custom/network/Parsec.list",
+      "name": "Parsec",
+      "upstreams": [
+        "本仓库手工维护，无外部同步源"
+      ],
+      "canonical_sources": [
+        "https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/network/Parsec.list"
+      ]
+    },
+    {
+      "path": "rules/custom/proxy/WebsiteProxy.list",
+      "name": "WebsiteProxy",
+      "upstreams": [
+        "本仓库手工维护，无外部同步源"
+      ],
+      "canonical_sources": [
+        "https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/proxy/WebsiteProxy.list"
+      ]
+    },
+    {
+      "path": "rules/custom/proxy/Special.list",
+      "name": "Special",
+      "upstreams": [
+        "本仓库手工维护，无外部同步源"
+      ],
+      "canonical_sources": [
+        "https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/proxy/Special.list"
+      ]
+    },
+    {
+      "path": "rules/custom/cloud/OracleLegacy.list",
+      "name": "OracleLegacy",
+      "upstreams": [
+        "本仓库手工维护，无外部同步源"
+      ],
+      "canonical_sources": [
+        "https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/cloud/OracleLegacy.list"
+      ]
+    },
+    {
+      "path": "rules/custom/communication/TalkatoneExtras.list",
+      "name": "TalkatoneExtras",
+      "upstreams": [
+        "本仓库手工维护，无外部同步源"
+      ],
+      "canonical_sources": [
+        "https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/communication/TalkatoneExtras.list"
+      ]
+    }
+  ]
+}

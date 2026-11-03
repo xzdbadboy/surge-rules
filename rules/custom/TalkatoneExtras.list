@@ -1,3 +1,10 @@
-# Local addition retained from the original repository.
-# The remote Talkatone source comments this host out.
+# 名称：TalkatoneExtras
+# 更新时间：2026-11-03 10:00:31 +08:00
+# 上游：https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/custom/communication/TalkatoneExtras.list（手工维护，无外部同步源）
+# 维护位置：rules/custom/communication/TalkatoneExtras.list
+# 内容校验：sha256:b3cb48a482d68eceeee59273b9a40c1170d16b5036f205e42ad420ff822fd159
+
+# generated; edit canonical paths
+# sources: rules/custom/communication/TalkatoneExtras.list
+
 DOMAIN-SUFFIX,tktn.be

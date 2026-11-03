@@ -1,5 +1,8 @@
 # 名称：GoogleVoice
-# 来源：https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GoogleVoice/GoogleVoice.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GoogleVoice/GoogleVoice.list
+# 内容校验：sha256:3d7f2f3c77402ff9107102184b9e0fab5c5db1dabe0a6c9dec838d4240d787e5
+
 # FORMAT: Surge RULE-SET
 # 说明：Google Voice dedicated official web entry. The upstream list currently contains a Google Lens host; it is excluded by the scope filter. Shared Google assets follow the Google policy.
 # 证据：https://voice.google.com/

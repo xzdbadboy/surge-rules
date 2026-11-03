@@ -1,5 +1,8 @@
 # 名称：Game
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Game.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Game.list
+# 内容校验：sha256:bb0a8d72771dba6e17abe287836eea2b184a109e9c48ae4778ef6a573679fd21
+
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
 # 证据：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Game.list

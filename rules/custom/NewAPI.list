@@ -1,4 +1,10 @@
-# NAME: NewAPI
-# NOTE：公益API的网址
-# UPDATED: 2026-06-25 9:35:33
-DOMAIN-SUFFIX,100xlabs.space  # Sub2API
+# 名称：NewAPI
+# 更新时间：2026-11-03 10:00:31 +08:00
+# 上游：https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/custom/direct/NewAPI.list（手工维护，无外部同步源）
+# 维护位置：rules/custom/direct/NewAPI.list
+# 内容校验：sha256:305327d25bfccf67d0b07ea85e16792418b122cfd7edf2ba4cff53940c04eb3f
+
+# generated; edit canonical paths
+# sources: rules/custom/direct/NewAPI.list
+
+DOMAIN-SUFFIX,100xlabs.space

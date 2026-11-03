@@ -1,0 +1,10 @@
+# 名称：WebsiteProxy
+# 更新时间：2026-11-03 10:00:29 +08:00
+# 上游：本仓库手工维护，无外部同步源
+# 维护位置：https://github.com/xzdbadboy/surge-rules/blob/main/rules/custom/proxy/WebsiteProxy.list
+# 内容校验：sha256:2ffbdd8ff33eee0d21fc792791a68c2eae3d4515c05d748be676d8597c2a30f1
+
+# > 今日热榜
+DOMAIN,tophub.today
+# > Qnap aliyun DDNS
+DOMAIN,tonnp.com

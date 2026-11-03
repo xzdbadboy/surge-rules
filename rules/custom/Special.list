@@ -1,59 +1,43 @@
-# > Duet
-USER-AGENT,duet*
+# 名称：Special
+# 更新时间：2026-11-03 10:00:31 +08:00
+# 上游：https://raw.githubusercontent.com/xzdbadboy/surge-rules/main/rules/custom/proxy/Special.list（手工维护，无外部同步源）
+# 维护位置：rules/custom/proxy/Special.list
+# 内容校验：sha256:35347cd8d67728eb223a1403db119858099b69c8f347f1cb064e012f1740803a
 
-# > Epic
-DOMAIN-KEYWORD,epicgames
+# generated; edit canonical paths
+# sources: rules/custom/proxy/Special.list
 
-# > Google
-DOMAIN,safebrowsing.googleapis.com
-DOMAIN-SUFFIX,dl.google.com
-
-# > Microsoft
-USER-AGENT,Microsoft%20Remote%20Desktop*
-DOMAIN-SUFFIX,msftconnecttest.com
-
-# > Proxy plugin
-PROCESS-NAME,v2ray
-PROCESS-NAME,ss-local
-
-# > Steam
-USER-AGENT,Steam*
 DOMAIN,cm.steampowered.com
-DOMAIN,ol.epicgames.com
-DOMAIN-SUFFIX,steamcontent.com
-DOMAIN-SUFFIX,steamserver.net
-
-DOMAIN-SUFFIX,steamchina.com
-
 DOMAIN,csgo.wmsj.cn
-DOMAIN,dota2.wmsj.cn
-DOMAIN,wmsjsteam.com
-
 DOMAIN,dl.steam.clngaa.com
 DOMAIN,dl.steam.ksyna.com
-
+DOMAIN,dota2.wmsj.cn
 DOMAIN,gstore.val.manlaxy.com
-
+DOMAIN,ol.epicgames.com
+DOMAIN,safebrowsing.googleapis.com
 DOMAIN,st.dl.bscstorage.net
 DOMAIN,st.dl.eccdnx.com
 DOMAIN,st.dl.pinyuncloud.com
-
-DOMAIN,steampipe.steamcontent.tnkjmec.com
-
-DOMAIN,steampowered.com.8686c.com
-DOMAIN,steamstatic.com.8686c.com
-
 DOMAIN,steambroadcast.akamaized.net
 DOMAIN,steamcdn-a.akamaihd.net
 DOMAIN,steamcommunity-a.akamaihd.net
+DOMAIN,steampipe.steamcontent.tnkjmec.com
+DOMAIN,steampowered.com.8686c.com
+DOMAIN,steamstatic.com.8686c.com
 DOMAIN,steamstore-a.akamaihd.net
 DOMAIN,steamusercontent-a.akamaihd.net
 DOMAIN,steamuserimages-a.akamaihd.net
-
-# > Tesla
 DOMAIN,tesla-cdn.thron.cn
 DOMAIN,tesla-cdn.thron.com
+DOMAIN,uplaypc-s-ubisoft.cdn.ubi.com
+DOMAIN,wmsjsteam.com
+DOMAIN-SUFFIX,app-measurement.com
+DOMAIN-SUFFIX,dl.google.com
+DOMAIN-SUFFIX,msftconnecttest.com
 DOMAIN-SUFFIX,solarcity.com
+DOMAIN-SUFFIX,steamchina.com
+DOMAIN-SUFFIX,steamcontent.com
+DOMAIN-SUFFIX,steamserver.net
 DOMAIN-SUFFIX,tesla.cn
 DOMAIN-SUFFIX,tesla.com
 DOMAIN-SUFFIX,tesla.com.cn
@@ -61,17 +45,11 @@ DOMAIN-SUFFIX,teslamotors.cn
 DOMAIN-SUFFIX,teslamotors.com
 DOMAIN-SUFFIX,teslamotors.com.cn
 DOMAIN-SUFFIX,ts.la
-
-# > UUBooster
-PROCESS-NAME,UUBooster
-
-# > WiFiman
-DOMAIN-SUFFIX,app-measurement.com
-
-
-
-# > UBI
-DOMAIN,uplaypc-s-ubisoft.cdn.ubi.com
-
-# > Tailscale
+DOMAIN-KEYWORD,epicgames
 IP-CIDR,100.64.0.0/10,no-resolve
+USER-AGENT,Microsoft%20Remote%20Desktop*
+USER-AGENT,Steam*
+USER-AGENT,duet*
+PROCESS-NAME,UUBooster
+PROCESS-NAME,ss-local
+PROCESS-NAME,v2ray

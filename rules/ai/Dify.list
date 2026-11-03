@@ -1,6 +1,9 @@
 # 名称：Dify
-# 来源：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
-# 来源：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 更新时间：2026-11-03 10:00:19 +08:00
+# 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
+# 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
+# 内容校验：sha256:03cef137ecca63dd6a9d883ad0822288df12154b29365c93aaee496d6478085b
+
 # FORMAT: Surge RULE-SET
 # 说明：Dify public service only; self-hosted Dify and user-defined providers require local rules.
 # 证据：https://dify.ai/
