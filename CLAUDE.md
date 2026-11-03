@@ -6,9 +6,9 @@
 
 Surge 代理规则集合库。通过 `.list` 和 `.yaml` 文件管理网络流量路由。请参考 README.md 了解文件用途和格式。
 
-规范目录：`rules/custom/<category>/` 是人工维护源；`rules/ai/`、`rules/services/`、`rules/security/` 是同步产物；`rules/collections/<category>/` 是实体合并产物。根目录及 `rules/custom/` 平铺 `.list` 是兼容入口，不直接编辑。
+规范目录：`rules/custom/<category>/` 是人工维护源；`rules/ai/`、`rules/services/`、`rules/security/` 是同步产物；`rules/collections/<category>/` 是实体合并产物。根目录及 `rules/custom/` 直下禁止放置平铺 `.list` 副本，所有活跃规则按分类路径维护和引用。
 
-配置：服务来源在 `config/rule_sources.json`，手工源在 `config/manual_rules.json`，分类合集在 `config/collections.json`，兼容映射在 `config/compatibility.json`。修改人工源后依次运行 `stamp_custom.py`、`build_collections.py`、`build_compat.py`，最后校验。受管头的内容校验和更新时间由脚本维护，不能每次检查都刷新日期。`archive/` 保留历史原文，不作为新规则源。
+配置：服务来源在 `config/rule_sources.json`，手工源在 `config/manual_rules.json`，分类合集在 `config/collections.json`。修改人工源后依次运行 `stamp_custom.py`、`build_collections.py`，最后校验。受管头的内容校验和更新时间由脚本维护，不能每次检查都刷新日期。`archive/` 保留历史原文，不作为新规则源。
 
 ## 快速维护命令
 
@@ -18,10 +18,9 @@ Surge 代理规则集合库。通过 `.list` 和 `.yaml` 文件管理网络流�
 # 查找某个文件中的重复条目
 grep "^DOMAIN-SUFFIX," rules/custom/trackers/PrivateTracker.list | sort | uniq -d
 
-# 修改人工源后校验并重建兼容入口
+# 修改人工源后校验并重建分类合集
 python3 scripts/stamp_custom.py
 python3 scripts/build_collections.py
-python3 scripts/build_compat.py
 python3 scripts/validate_profile.py --smoke
 ```
 
@@ -32,7 +31,7 @@ python3 scripts/validate_profile.py --smoke
 grep -r "domain.com" .
 
 # 在特定文件中查找
-grep "DOMAIN" PrivateTracker.list | grep "example"
+grep "DOMAIN" rules/custom/trackers/PrivateTracker.list | grep "example"
 ```
 
 ### 添加新域名
