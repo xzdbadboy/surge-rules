@@ -1,7 +1,7 @@
 # 名称：China
-# 更新时间：2026-11-03 10:00:19 +08:00
+# 更新时间：2026-11-05 14:40:50 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/China.list
-# 内容校验：sha256:b92806751d7bb571a66ce8bb9a20a907ef7c08fb733a23ceec477b1a2cd01e13
+# 内容校验：sha256:d8b5ef6b1fbbd7539aeb29f8ac5c72ebc23ebe9aeb218b3cc90abc7f26eeb935
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -594,6 +594,7 @@ DOMAIN-SUFFIX,alitianji.com
 DOMAIN-SUFFIX,alitrip.com
 DOMAIN-SUFFIX,alittle-tea.com
 DOMAIN-SUFFIX,aliunicorn.com
+DOMAIN-SUFFIX,alivecdn.com
 DOMAIN-SUFFIX,aliway.com
 DOMAIN-SUFFIX,aliwork.com
 DOMAIN-SUFFIX,aliwx.net
@@ -605,6 +606,7 @@ DOMAIN-SUFFIX,allawntech.com
 DOMAIN-SUFFIX,allday.work
 DOMAIN-SUFFIX,allhistory.com
 DOMAIN-SUFFIX,alloyteam.com
+DOMAIN-SUFFIX,allwinnertech.com
 DOMAIN-SUFFIX,allyes.com
 DOMAIN-SUFFIX,alookweb.com
 DOMAIN-SUFFIX,aloys233.top
@@ -961,6 +963,7 @@ DOMAIN-SUFFIX,building.fun
 DOMAIN-SUFFIX,buke999.com
 DOMAIN-SUFFIX,bulicdn2.com
 DOMAIN-SUFFIX,burningvocabulary.com
+DOMAIN-SUFFIX,busyming.com
 DOMAIN-SUFFIX,buydouke.com
 DOMAIN-SUFFIX,buyjingxi.com
 DOMAIN-SUFFIX,bvfcdn.com
@@ -1102,6 +1105,7 @@ DOMAIN-SUFFIX,caiyunai.com
 DOMAIN-SUFFIX,caiyunapp.com
 DOMAIN-SUFFIX,caiyuncdn.com
 DOMAIN-SUFFIX,calorietech.com
+DOMAIN-SUFFIX,cambricon.com
 DOMAIN-SUFFIX,camcard.com
 DOMAIN-SUFFIX,camera360.com
 DOMAIN-SUFFIX,camscanner.com
@@ -1873,6 +1877,7 @@ DOMAIN-SUFFIX,douban.fm
 DOMAIN-SUFFIX,doubanio.com
 DOMAIN-SUFFIX,doubao-dev.com
 DOMAIN-SUFFIX,doubao.com
+DOMAIN-SUFFIX,doubaoapps.com
 DOMAIN-SUFFIX,doubaocdn.com
 DOMAIN-SUFFIX,doubo03.com
 DOMAIN-SUFFIX,doucang.com
@@ -2103,6 +2108,9 @@ DOMAIN-SUFFIX,fanxian.com
 DOMAIN-SUFFIX,fanxingliveshow.com
 DOMAIN-SUFFIX,fastapi.net
 DOMAIN-SUFFIX,fastcdn.com
+DOMAIN-SUFFIX,favonis.cloud
+DOMAIN-SUFFIX,favonis.com
+DOMAIN-SUFFIX,favonis.space
 DOMAIN-SUFFIX,faxingbao.com
 DOMAIN-SUFFIX,fbank.com
 DOMAIN-SUFFIX,fcapp.run
@@ -2510,6 +2518,7 @@ DOMAIN-SUFFIX,haier.com
 DOMAIN-SUFFIX,haier.net
 DOMAIN-SUFFIX,haiersmarthomes.com
 DOMAIN-SUFFIX,hailuoai.com
+DOMAIN-SUFFIX,haimian.com
 DOMAIN-SUFFIX,hainanairlines.com
 DOMAIN-SUFFIX,haishun.com
 DOMAIN-SUFFIX,halvie.com
@@ -2636,6 +2645,7 @@ DOMAIN-SUFFIX,hnair.com
 DOMAIN-SUFFIX,hnbntv.com
 DOMAIN-SUFFIX,hnchasing.com
 DOMAIN-SUFFIX,hndt.com
+DOMAIN-SUFFIX,hnlshm.com
 DOMAIN-SUFFIX,hnol.net
 DOMAIN-SUFFIX,hnrcsc.com
 DOMAIN-SUFFIX,hntv.tv
@@ -3869,6 +3879,12 @@ DOMAIN-SUFFIX,mmarket6.com
 DOMAIN-SUFFIX,mmbang.com
 DOMAIN-SUFFIX,mmbang.info
 DOMAIN-SUFFIX,mmstat.com
+DOMAIN-SUFFIX,mnc000.mcc460.pub.3gppnetwork.org
+DOMAIN-SUFFIX,mnc002.mcc460.pub.3gppnetwork.org
+DOMAIN-SUFFIX,mnc004.mcc460.pub.3gppnetwork.org
+DOMAIN-SUFFIX,mnc007.mcc460.pub.3gppnetwork.org
+DOMAIN-SUFFIX,mnc011.mcc460.pub.3gppnetwork.org
+DOMAIN-SUFFIX,mnc015.mcc460.pub.3gppnetwork.org
 DOMAIN-SUFFIX,mndqlib.net
 DOMAIN-SUFFIX,mob.com
 DOMAIN-SUFFIX,mobike.com
@@ -3926,6 +3942,7 @@ DOMAIN-SUFFIX,msstatic.com
 DOMAIN-SUFFIX,mszdld.com
 DOMAIN-SUFFIX,mszdld.net
 DOMAIN-SUFFIX,mszq.com
+DOMAIN-SUFFIX,mthreads.com
 DOMAIN-SUFFIX,mti100.com
 DOMAIN-SUFFIX,mtime.com
 DOMAIN-SUFFIX,mting.info
@@ -4357,6 +4374,7 @@ DOMAIN-SUFFIX,qianxun.com
 DOMAIN-SUFFIX,qianyierp.com
 DOMAIN-SUFFIX,qianzhan.com
 DOMAIN-SUFFIX,qiaobutang.com
+DOMAIN-SUFFIX,qiaqiafood.com
 DOMAIN-SUFFIX,qichacha.com
 DOMAIN-SUFFIX,qichamao.com
 DOMAIN-SUFFIX,qidian.com
@@ -4758,6 +4776,7 @@ DOMAIN-SUFFIX,soufun.com
 DOMAIN-SUFFIX,soufunimg.com
 DOMAIN-SUFFIX,soulteary.com
 DOMAIN-SUFFIX,souqian.com
+DOMAIN-SUFFIX,southchip.com
 DOMAIN-SUFFIX,southcn.com
 DOMAIN-SUFFIX,southmoney.com
 DOMAIN-SUFFIX,sparenode.com
@@ -5021,6 +5040,7 @@ DOMAIN-SUFFIX,tendcloud.com
 DOMAIN-SUFFIX,tendis.net
 DOMAIN-SUFFIX,tengmed.com
 DOMAIN-SUFFIX,tenpay.com
+DOMAIN-SUFFIX,tenpayglobal.com
 DOMAIN-SUFFIX,tenxcloud.com
 DOMAIN-SUFFIX,tesoon.com
 DOMAIN-SUFFIX,test-cignacmb.com
@@ -5627,6 +5647,7 @@ DOMAIN-SUFFIX,wenxiaozhan.net
 DOMAIN-SUFFIX,wenxin-ge.com
 DOMAIN-SUFFIX,werewolf.53site.com
 DOMAIN-SUFFIX,west95582.com
+DOMAIN-SUFFIX,wesure100.com
 DOMAIN-SUFFIX,weui.io
 DOMAIN-SUFFIX,wework-studio.com
 DOMAIN-SUFFIX,wf.pub
@@ -6338,6 +6359,7 @@ DOMAIN-SUFFIX,zxhgroup.com
 DOMAIN-SUFFIX,zxxk.com
 DOMAIN-SUFFIX,zybang.com
 DOMAIN-SUFFIX,zyh365.com
+DOMAIN-SUFFIX,zymls.com
 DOMAIN-SUFFIX,zysn.net
 DOMAIN-SUFFIX,zysou.com
 DOMAIN-SUFFIX,zyyct.com

@@ -1,7 +1,7 @@
 # 名称：Game
-# 更新时间：2026-11-03 10:00:19 +08:00
+# 更新时间：2026-11-05 14:40:50 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Game.list
-# 内容校验：sha256:bb0a8d72771dba6e17abe287836eea2b184a109e9c48ae4778ef6a573679fd21
+# 内容校验：sha256:f1db79bec968a5dfbda8ec7e6bb53a0c71d47d174d874ab2d11186daefa51c26
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -116,6 +116,7 @@ DOMAIN-SUFFIX,activematter.game
 DOMAIN-SUFFIX,activision.com
 DOMAIN-SUFFIX,activisionblizzard.com
 DOMAIN-SUFFIX,activisionblizzardmedia.com
+DOMAIN-SUFFIX,amdgaming.com
 DOMAIN-SUFFIX,amiibo.com
 DOMAIN-SUFFIX,anthemgame.com
 DOMAIN-SUFFIX,anthemthegame.com
@@ -395,6 +396,9 @@ DOMAIN-SUFFIX,leaguoflegends.com
 DOMAIN-SUFFIX,learnwithleague.com
 DOMAIN-SUFFIX,legendofzelda.cn
 DOMAIN-SUFFIX,legendofzelda.com.cn
+DOMAIN-SUFFIX,limbuscompany.global
+DOMAIN-SUFFIX,limbuscompanyapi.com
+DOMAIN-SUFFIX,limbuscompanycdn.org
 DOMAIN-SUFFIX,lol-europe.com
 DOMAIN-SUFFIX,lolclub.org
 DOMAIN-SUFFIX,lolespor.com
@@ -585,6 +589,7 @@ DOMAIN-SUFFIX,popcap.com
 DOMAIN-SUFFIX,priconne-redive.jp
 DOMAIN-SUFFIX,prismlauncher.org
 DOMAIN-SUFFIX,projectapex.com
+DOMAIN-SUFFIX,projectmoon.studio
 DOMAIN-SUFFIX,protondb.com
 DOMAIN-SUFFIX,pubg.com
 DOMAIN-SUFFIX,pvp.net
@@ -679,6 +684,7 @@ DOMAIN-SUFFIX,simcity-buildit.com
 DOMAIN-SUFFIX,simcity.com
 DOMAIN-SUFFIX,skate2.com
 DOMAIN-SUFFIX,sketchfab.com
+DOMAIN-SUFFIX,skinswap.com
 DOMAIN-SUFFIX,skylanders.com
 DOMAIN-SUFFIX,sledgehammergames.com
 DOMAIN-SUFFIX,snk-corp.co.jp
@@ -729,6 +735,7 @@ DOMAIN-SUFFIX,steamdeck.com
 DOMAIN-SUFFIX,steamgames.com
 DOMAIN-SUFFIX,steaminventoryhelper.com
 DOMAIN-SUFFIX,steamos.cloud
+DOMAIN-SUFFIX,steampeek.hu
 DOMAIN-SUFFIX,steampowered.com
 DOMAIN-SUFFIX,steampowered.com.8686c.com
 DOMAIN-SUFFIX,steamserver.net

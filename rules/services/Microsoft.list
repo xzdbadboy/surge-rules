@@ -1,7 +1,7 @@
 # 名称：Microsoft
-# 更新时间：2026-11-03 10:00:19 +08:00
+# 更新时间：2026-11-05 14:40:50 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Microsoft.list
-# 内容校验：sha256:dab1b4c36eafee2be1634f9629f5b51e3c215dfd68ebf143bd3c09be5f0566c0
+# 内容校验：sha256:635d6b6b481a6e00b2594f6e4baab6f05e047cfce1b5c912b342b4c9db2e70d1
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -167,6 +167,7 @@ DOMAIN-SUFFIX,bingpix.com
 DOMAIN-SUFFIX,bingpk.com
 DOMAIN-SUFFIX,bings.com
 DOMAIN-SUFFIX,bingsandbox.com
+DOMAIN-SUFFIX,bingstatic.com
 DOMAIN-SUFFIX,bingtoolbar.com
 DOMAIN-SUFFIX,bingtranslator.com
 DOMAIN-SUFFIX,bingvisualsearch.com
@@ -484,6 +485,7 @@ DOMAIN-SUFFIX,msfteducation.ca
 DOMAIN-SUFFIX,msftidentity.com
 DOMAIN-SUFFIX,msftncsi.com
 DOMAIN-SUFFIX,msftnet.org
+DOMAIN-SUFFIX,msftstatic.com
 DOMAIN-SUFFIX,msgamesresearch.com
 DOMAIN-SUFFIX,msgamestudios.com
 DOMAIN-SUFFIX,mshome.net
