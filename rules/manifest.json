@@ -741,20 +741,20 @@
       ],
       "local_rule_count": 0,
       "mode": "mirror",
-      "rule_count": 148145,
+      "rule_count": 149296,
       "rule_types": {
         "DOMAIN": 1156,
-        "DOMAIN-SUFFIX": 146989
+        "DOMAIN-SUFFIX": 148140
       },
       "service": "mirror_reject_domains",
-      "sha256": "c47a5861d62f99399005a047f7526928b23108a758bdb313ba118356289f743c",
+      "sha256": "6cfcecc98b5bd44973d7283edab7f4723e6a0b14516879dcd1b33d5e3f7eece1",
       "source_ids": [
         "upstream_reject_domains"
       ],
       "source_urls": [
         "https://ruleset.skk.moe/List/domainset/reject.conf"
       ],
-      "updated_at": "2026-11-06 03:54:46 +08:00"
+      "updated_at": "2026-11-06 14:37:17 +08:00"
     },
     "rules/services/Apple.list": {
       "evidence": [
@@ -854,20 +854,20 @@
       ],
       "local_rule_count": 0,
       "mode": "mirror",
-      "rule_count": 9686,
+      "rule_count": 9671,
       "rule_types": {
-        "IP-CIDR": 6207,
-        "IP-CIDR6": 3479
+        "IP-CIDR": 6214,
+        "IP-CIDR6": 3457
       },
       "service": "mirror_chinacidr",
-      "sha256": "84d576a10be6a33199c8f3806ea968151499ee41d6d5ae8ec0f925125cf8dbd0",
+      "sha256": "20bc3357679772a63a09068c070949dd8e7625a794c243cfe017bd3ae1308963",
       "source_ids": [
         "upstream_chinacidr"
       ],
       "source_urls": [
         "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/ChinaCIDR.list"
       ],
-      "updated_at": "2026-11-03 10:10:21 +08:00"
+      "updated_at": "2026-11-06 14:37:17 +08:00"
     },
     "rules/services/ChinaMedia.list": {
       "evidence": [
@@ -1327,7 +1327,7 @@
     "rabbit_ai": {
       "format": "surge",
       "path": "Rules/AIGC.list",
-      "raw_sha256": "b7ab2a671e751cd00dbbc5078f280731729550017551200faf7879b9140e462b",
+      "raw_sha256": "57c87fa3bd5367a0c7a85ecce9290357e9f7571711f0f6f86c126669b3b63987",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list"
     },
@@ -1349,49 +1349,49 @@
     "upstream_apple": {
       "format": "surge",
       "path": "Rules/Apple.list",
-      "raw_sha256": "7adddb2b2f0bc44de359e78aeb634bdc8d98b6cc9b21bfb0dfa0616be560a07d",
+      "raw_sha256": "b38c012289038c52f403d846664ce03b9e2788e09e29f2a35d9136fae332dce2",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Apple.list"
     },
     "upstream_bilibili": {
       "format": "surge",
       "path": "Rules/BiliBili.list",
-      "raw_sha256": "ff6dd9db2ac7240f966d8bfded72e309fe4915e905a817f1aa3e01d4ed5131bc",
+      "raw_sha256": "2723a19351b0cb1da0ab10e4eb7fd0bb1de4671cc13316ffa3eb2fae2dba43e6",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/BiliBili.list"
     },
     "upstream_china": {
       "format": "domainset",
       "path": "Rules/China.list",
-      "raw_sha256": "1172d23f6fb354869c9519132db42c136e8a3a87852c8df5994882e36f1824e7",
+      "raw_sha256": "179e86a6006a939f16db368be80eca57c70729e2a7e5a415da91cb198bf85b4f",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/China.list"
     },
     "upstream_chinacidr": {
       "format": "surge",
       "path": "Rules/ChinaCIDR.list",
-      "raw_sha256": "4be99101b0eff1499757234efb34b0abee0b5aeb27029cd2822b203d0b7f7312",
+      "raw_sha256": "b54c74fe1d140202e76e89629ee24d7014f90c6019e195b8daea0f33f601239d",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/ChinaCIDR.list"
     },
     "upstream_chinamedia": {
       "format": "surge",
       "path": "Rules/ChinaMedia.list",
-      "raw_sha256": "945e4bcd7b4db3204e19cd7b324a2a25487fbfce6360648b5408b7ec4250e6ac",
+      "raw_sha256": "8c3d1fbe2c7784678f5d79345ff04cad75ad39ca76e20c652308aca86fbdf8c7",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/ChinaMedia.list"
     },
     "upstream_disney": {
       "format": "surge",
       "path": "Rules/Disney.list",
-      "raw_sha256": "1d88c90266d1dc1aa5edc7deaaf580d9b7bf96a67fbcdd09d97e738691e50065",
+      "raw_sha256": "c524f2388029eccaa5698cd14477eae36a6e0c8f4d22254798d9fa27177f138e",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Disney.list"
     },
     "upstream_game": {
       "format": "surge",
       "path": "Rules/Game.list",
-      "raw_sha256": "430b7d31d93555859f23b35d767288d9673fda9fa541a0f26815b0578e1e6735",
+      "raw_sha256": "e59f57b7e55432c80b34fa2c9f2ca2af6b82d3c0a02157b759bc733a95eb19ca",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Game.list"
     },
@@ -1406,14 +1406,14 @@
     "upstream_globalmedia": {
       "format": "surge",
       "path": "Rules/GlobalMedia.list",
-      "raw_sha256": "dae67235e54f260d68af5f1955f43d9e7f92c5bc6963d0f41ad8ed3df4dbdb01",
+      "raw_sha256": "910ccccdaf67026d730f4e6b8db1ee8542f2dd71851d76548c27d5ef31080b59",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/GlobalMedia.list"
     },
     "upstream_google": {
       "format": "surge",
       "path": "Rules/Google.list",
-      "raw_sha256": "08f3c67f1235bab8480108598fba3c95db592e0be6f2f1f896890fc78d0f5a1a",
+      "raw_sha256": "b6191d443de28b140c9250c977b9e22207bc7db5a9a3eed8c37d1137edb6dcf3",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Google.list"
     },
@@ -1428,14 +1428,14 @@
     "upstream_microsoft": {
       "format": "surge",
       "path": "Rules/Microsoft.list",
-      "raw_sha256": "14220efb654a9259a6c9a722f8c13cc378a3b0144e9fdfa52ecd60c890201b08",
+      "raw_sha256": "709d346b65d2bf30a5ca88cc3f718e744d29aa4f54b1548a2ea418b457cbf793",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Microsoft.list"
     },
     "upstream_netflix": {
       "format": "surge",
       "path": "Rules/Netflix.list",
-      "raw_sha256": "fbaafe37ed37b93ef2b39711ee2926e50e9f877b9e728b5247d6ff56306ba856",
+      "raw_sha256": "319b7920ca10981382c4eab2e9db68f22dfad4a13dc58e7764f2bc0a83e2ff81",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Netflix.list"
     },
@@ -1450,14 +1450,14 @@
     "upstream_proxy": {
       "format": "surge",
       "path": "Rules/Proxy.list",
-      "raw_sha256": "84462df8b99be3d9cbedca3d5113a7c849a84edde9aeed4703aa0afcd038e5ec",
+      "raw_sha256": "87e04750b1664ff4b5d330a7d6119a34863385951b2d427d3f52dd27c8eb0f35",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Proxy.list"
     },
     "upstream_reject_domains": {
       "format": "domainset",
       "license_url": "https://github.com/SukkaW/Surge/blob/master/LICENSE",
-      "raw_sha256": "a5c198c47fb99f61c8b9465afa573ffddb5bde761f530df57dd891249bcd8a6f",
+      "raw_sha256": "5366e9a89272a5906c5c81f8b771210189bead2a9829c4ab32211eb760a5eeef",
       "repository": "SukkaW/Surge",
       "url": "https://ruleset.skk.moe/List/domainset/reject.conf"
     },
@@ -1471,7 +1471,7 @@
     "upstream_spotify": {
       "format": "surge",
       "path": "Rules/Spotify.list",
-      "raw_sha256": "93776f9ed1a5f4699dd927110ab43301c5251ae2aae9a5c2d91998e17d4eb25f",
+      "raw_sha256": "624100e2643b45b71f40e5d67b9624370ebdbebac2ede589cac3676c89176855",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Spotify.list"
     },
@@ -1485,14 +1485,14 @@
     "upstream_telegram": {
       "format": "surge",
       "path": "Rules/Telegram.list",
-      "raw_sha256": "9a8a076f29f1961b82faac1b656dbb54af1cbdedb079ae069a53cf6e908dc12f",
+      "raw_sha256": "7bb124365422bbfb1af5bf125950918d6b4e1a8978f68795f467ef77dcf83d3b",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Telegram.list"
     },
     "upstream_telegram_asn": {
       "format": "surge",
       "path": "Rules/TelegramASN.list",
-      "raw_sha256": "ee43bb6ebd6b05271d4de4426c1ec65737c753a2484b0222dd225786d5b73455",
+      "raw_sha256": "574ed8574bcc3d39b070399cdefc0f373017a39792ba119967e8dc8755a4e945",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/TelegramASN.list"
     },
@@ -1507,7 +1507,7 @@
     "upstream_youtube": {
       "format": "surge",
       "path": "Rules/YouTube.list",
-      "raw_sha256": "63c34d7c31c6547072e132deb8fb26e638226349f9c6dff36c8c9d93a169c13d",
+      "raw_sha256": "f54ca191da14d99f5a94cbbce587bbc27a0101c873dc8a08c1d8a7595dc4af23",
       "repository": "Rabbit-Spec/Surge",
       "url": "https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/YouTube.list"
     }
