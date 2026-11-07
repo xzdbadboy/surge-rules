@@ -1,7 +1,7 @@
 # 名称：Google
-# 更新时间：2026-11-03 10:00:19 +08:00
+# 更新时间：2026-11-07 13:54:26 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Google.list
-# 内容校验：sha256:17044304a30d6a75a845bf6e63e77c0bbbcc932c61620483d4e995d44c13128a
+# 内容校验：sha256:bbcce42fc57fb96144f3f3c3269e90623f52b1bbe4f016cd73f0b2807fb0c209
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -710,7 +710,6 @@ DOMAIN-KEYWORD,googlesource
 DOMAIN-KEYWORD,recaptcha
 IP-CIDR,173.194.0.0/16,no-resolve
 IP-CIDR,74.125.0.0/16,no-resolve
-PROCESS-NAME,GoogleDriveFS.exe
 PROCESS-NAME,com.android.vending
 PROCESS-NAME,com.google.android.gms
 PROCESS-NAME,com.google.android.gsf

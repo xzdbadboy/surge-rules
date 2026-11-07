@@ -1,7 +1,7 @@
 # 名称：Proxy
-# 更新时间：2026-11-05 14:40:50 +08:00
+# 更新时间：2026-11-07 13:54:26 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Proxy.list
-# 内容校验：sha256:944c7bcce430434dd019456a92322b488276c62f7d049edd5077f6bfc0be410e
+# 内容校验：sha256:4bf48da90f97e4d2d0448a55a5de605603713347f52427bda29e1d34b5253cb0
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -267,7 +267,6 @@ DOMAIN,cacerts.digicert.com
 DOMAIN,cache-05.filehippo.net
 DOMAIN,cache.hackedfreegames.com
 DOMAIN,cache.industry.siemens.com
-DOMAIN,cache.ip-api.com
 DOMAIN,cache.mapcomplete.org
 DOMAIN,cache.omnicalculator.com
 DOMAIN,cached.rebuyengine.com
@@ -8500,7 +8499,6 @@ DOMAIN-SUFFIX,editorx.com
 DOMAIN-SUFFIX,edmontonservice.com
 DOMAIN-SUFFIX,edninfo.com
 DOMAIN-SUFFIX,edns.biz
-DOMAIN-SUFFIX,edns.ip-api.com
 DOMAIN-SUFFIX,edoors.com
 DOMAIN-SUFFIX,edu
 DOMAIN-SUFFIX,edu-research.org
@@ -12745,6 +12743,7 @@ DOMAIN-SUFFIX,iosinthecar.com
 DOMAIN-SUFFIX,iotinactionevents.com
 DOMAIN-SUFFIX,iownyour.biz
 DOMAIN-SUFFIX,iownyour.org
+DOMAIN-SUFFIX,ip-api.com
 DOMAIN-SUFFIX,ip-scan.adspower.net
 DOMAIN-SUFFIX,ip73.com
 DOMAIN-SUFFIX,ipa-iphone.net
@@ -14041,6 +14040,9 @@ DOMAIN-SUFFIX,lilaoshibushinilaoshi.com
 DOMAIN-SUFFIX,lilhumpers.com
 DOMAIN-SUFFIX,liliav.com
 DOMAIN-SUFFIX,lilith-soft.com
+DOMAIN-SUFFIX,limbuscompany.global
+DOMAIN-SUFFIX,limbuscompanyapi.com
+DOMAIN-SUFFIX,limbuscompanycdn.org
 DOMAIN-SUFFIX,limelight.com
 DOMAIN-SUFFIX,limertw.cc
 DOMAIN-SUFFIX,limeteensex.com
@@ -19598,7 +19600,7 @@ DOMAIN-SUFFIX,skillbox.pro
 DOMAIN-SUFFIX,skillshare.com
 DOMAIN-SUFFIX,skimtube.com
 DOMAIN-SUFFIX,skinstrip.net
-DOMAIN-SUFFIX,skk.moe
+DOMAIN-SUFFIX,skinswap.com
 DOMAIN-SUFFIX,skokka.com
 DOMAIN-SUFFIX,sksarab.top
 DOMAIN-SUFFIX,skunkgirl.cc

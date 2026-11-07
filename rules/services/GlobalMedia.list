@@ -1,13 +1,12 @@
 # 名称：GlobalMedia
-# 更新时间：2026-11-03 10:00:19 +08:00
+# 更新时间：2026-11-07 13:54:26 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/GlobalMedia.list
-# 内容校验：sha256:97b905bd3516e4f0bcb2998dea06fe62e349cafab31bfc18983d0f243dc9b0b4
+# 内容校验：sha256:7eb731dc7f4a60f6f4c9edff19dbd43a8234a865c336ffaf9fe649f3b8069488
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
 # 证据：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/GlobalMedia.list
 
-DOMAIN,7h15.ru1353t.1s.m4d3.by.5ukk4w.skk.moe
 DOMAIN,ai.google.dev
 DOMAIN,aistudio.google.com
 DOMAIN,aod-dash-uk-live.akamaized.net
