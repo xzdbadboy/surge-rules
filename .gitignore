@@ -9,3 +9,27 @@ CLAUDE.md
 # Python sync tooling
 __pycache__/
 *.py[cod]
+
+# Share only official ai-memory skills; keep Claude local settings private.
+!.claude/
+.claude/*
+!.claude/skills/
+.claude/skills/*
+!.claude/skills/ai-memory-retrieval/
+.claude/skills/ai-memory-retrieval/*
+!.claude/skills/ai-memory-retrieval/SKILL.md
+!.claude/skills/ai-memory-handoff/
+.claude/skills/ai-memory-handoff/*
+!.claude/skills/ai-memory-handoff/SKILL.md
+!.claude/skills/ai-memory-messaging/
+.claude/skills/ai-memory-messaging/*
+!.claude/skills/ai-memory-messaging/SKILL.md
+!.claude/skills/ai-memory-durable-pages/
+.claude/skills/ai-memory-durable-pages/*
+!.claude/skills/ai-memory-durable-pages/SKILL.md
+!.claude/skills/ai-memory-learning-maintenance/
+.claude/skills/ai-memory-learning-maintenance/*
+!.claude/skills/ai-memory-learning-maintenance/SKILL.md
+!.claude/skills/ai-memory-routing-install/
+.claude/skills/ai-memory-routing-install/*
+!.claude/skills/ai-memory-routing-install/SKILL.md
