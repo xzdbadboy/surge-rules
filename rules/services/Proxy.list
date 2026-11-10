@@ -1,7 +1,7 @@
 # 名称：Proxy
-# 更新时间：2026-11-07 13:54:26 +08:00
+# 更新时间：2026-11-10 15:12:42 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Proxy.list
-# 内容校验：sha256:4bf48da90f97e4d2d0448a55a5de605603713347f52427bda29e1d34b5253cb0
+# 内容校验：sha256:7b0de2944d3e14d338f00904d59586e1d0fdb8f6184cae7c2a85deeaefc41440
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -905,6 +905,7 @@ DOMAIN,heroicons.com
 DOMAIN,hips.hearstapps.com
 DOMAIN,home.integrate.com
 DOMAIN,hpstore.corpmerchandise.com
+DOMAIN,http-intake.logs.us5.datadoghq.com
 DOMAIN,hub-assets.displaycal.net
 DOMAIN,hub.slarker.me
 DOMAIN,hubspotonwebflow.com
@@ -10801,6 +10802,7 @@ DOMAIN-SUFFIX,got-game.org
 DOMAIN-SUFFIX,gotblop.com
 DOMAIN-SUFFIX,gotcosmos.com
 DOMAIN-SUFFIX,gotgeeks.com
+DOMAIN-SUFFIX,gotinder.com
 DOMAIN-SUFFIX,gotquestions.org
 DOMAIN-SUFFIX,gotraffic.net
 DOMAIN-SUFFIX,gotrusted.com
@@ -10879,6 +10881,7 @@ DOMAIN-SUFFIX,grep.app
 DOMAIN-SUFFIX,gridaware.app
 DOMAIN-SUFFIX,grindr.com
 DOMAIN-SUFFIX,grok.com
+DOMAIN-SUFFIX,grokbot.com
 DOMAIN-SUFFIX,grokipedia.com
 DOMAIN-SUFFIX,grooby.com
 DOMAIN-SUFFIX,groq.com
@@ -21072,6 +21075,7 @@ DOMAIN-SUFFIX,timsah.com
 DOMAIN-SUFFIX,timtales.com
 DOMAIN-SUFFIX,tinc-vpn.org
 DOMAIN-SUFFIX,tinder.com
+DOMAIN-SUFFIX,tindersparks.com
 DOMAIN-SUFFIX,tindie.com
 DOMAIN-SUFFIX,tindiemedia.com
 DOMAIN-SUFFIX,tiney.com
