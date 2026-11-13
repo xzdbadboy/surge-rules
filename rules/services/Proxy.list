@@ -1,7 +1,7 @@
 # 名称：Proxy
-# 更新时间：2026-11-12 23:11:56 +08:00
+# 更新时间：2026-11-13 14:38:46 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Proxy.list
-# 内容校验：sha256:4a93e5c9f2405bbec1583caf3319d1b8a213f1f2722d176cd9aa5e5182db3d19
+# 内容校验：sha256:9517fd78da0e60b8d7d758e8328cc67d2a061db1ce1fef923ad7fcd5016f9e85
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -1130,6 +1130,7 @@ DOMAIN,info.knak.com
 DOMAIN,instafeed.nfcube.com
 DOMAIN,int.mwbbiz.com
 DOMAIN,interwiki.scpwikicn.com
+DOMAIN,iprsoftwaremedia.com
 DOMAIN,ipxy.io
 DOMAIN,irp-cdn.multiscreensite.com
 DOMAIN,isitmaintained.com
