@@ -1,7 +1,7 @@
 # 名称：Proxy
-# 更新时间：2026-11-13 14:38:46 +08:00
+# 更新时间：2026-11-14 14:16:11 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Proxy.list
-# 内容校验：sha256:9517fd78da0e60b8d7d758e8328cc67d2a061db1ce1fef923ad7fcd5016f9e85
+# 内容校验：sha256:7d928be6a763d10956d78d37f1192f912d32daeec1a2b493c376dd1ea1e3d6c2
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -1400,6 +1400,7 @@ DOMAIN,public-us-pingsx.api.clonoth.com
 DOMAIN,public.hare200.com
 DOMAIN,public.komiic.com
 DOMAIN,public.mocortech.com
+DOMAIN,public.popclip.app
 DOMAIN,public.zoorix.com
 DOMAIN,q676790b.pmhcjk.com
 DOMAIN,qualcomm.sc.omtrdc.net
