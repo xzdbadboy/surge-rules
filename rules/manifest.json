@@ -741,20 +741,20 @@
       ],
       "local_rule_count": 0,
       "mode": "mirror",
-      "rule_count": 149804,
+      "rule_count": 149832,
       "rule_types": {
         "DOMAIN": 1156,
-        "DOMAIN-SUFFIX": 148648
+        "DOMAIN-SUFFIX": 148676
       },
       "service": "mirror_reject_domains",
-      "sha256": "97104a58e6c7f706b76d2218c20f32901c8e0d1cde4f2820acc59e5cdf3b83be",
+      "sha256": "90202f5b5a421af4252c696cae62936dd5d27067fca79bff793fcce8aa6e9ff7",
       "source_ids": [
         "upstream_reject_domains"
       ],
       "source_urls": [
         "https://ruleset.skk.moe/List/domainset/reject.conf"
       ],
-      "updated_at": "2026-11-14 14:16:11 +08:00"
+      "updated_at": "2026-11-14 21:35:29 +08:00"
     },
     "rules/services/Apple.list": {
       "evidence": [
@@ -1457,7 +1457,7 @@
     "upstream_reject_domains": {
       "format": "domainset",
       "license_url": "https://github.com/SukkaW/Surge/blob/master/LICENSE",
-      "raw_sha256": "736a9257e3e23553df316f30295dda795873509312ae05cdcbd62417b1291120",
+      "raw_sha256": "978649a855454db64f9e2047a15b7ecd060637239107e743e8444004c9739a74",
       "repository": "SukkaW/Surge",
       "url": "https://ruleset.skk.moe/List/domainset/reject.conf"
     },
