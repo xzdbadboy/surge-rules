@@ -365,7 +365,8 @@
       "rule_sources": {
         "DOMAIN,aicode.googleapis.com": [
           "meta_google_ai",
-          "rabbit_ai"
+          "rabbit_ai",
+          "sukka_ai"
         ],
         "DOMAIN,aida.googleapis.com": [
           "meta_google_ai",
@@ -741,20 +742,20 @@
       ],
       "local_rule_count": 0,
       "mode": "mirror",
-      "rule_count": 149967,
+      "rule_count": 150143,
       "rule_types": {
         "DOMAIN": 1156,
-        "DOMAIN-SUFFIX": 148811
+        "DOMAIN-SUFFIX": 148987
       },
       "service": "mirror_reject_domains",
-      "sha256": "bcaedb956b6e2a779fe66885d5c13d11ea8eeaede42983bcb7a39483c3c473f7",
+      "sha256": "7b4464ff9fe0d95e3c6acb78c7a34437a05c0332d50d5ef9a804f2fd4d7762f0",
       "source_ids": [
         "upstream_reject_domains"
       ],
       "source_urls": [
         "https://ruleset.skk.moe/List/domainset/reject.conf"
       ],
-      "updated_at": "2026-11-15 06:20:42 +08:00"
+      "updated_at": "2026-11-16 02:48:25 +08:00"
     },
     "rules/services/Apple.list": {
       "evidence": [
@@ -1335,7 +1336,7 @@
       "format": "surge",
       "license_url": "https://github.com/SukkaW/Surge/blob/master/LICENSE",
       "path": "Source/non_ip/ai.conf",
-      "raw_sha256": "fdd9b5bebf65d755cefff467d151386d8e6fce74a7f706f564c6b1fbbee48375",
+      "raw_sha256": "0690ba991e66ca42cea4c4104d6d2af27cf1dccebdba9dd13d20ac6f117b7380",
       "repository": "SukkaW/Surge",
       "url": "https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf"
     },
@@ -1457,7 +1458,7 @@
     "upstream_reject_domains": {
       "format": "domainset",
       "license_url": "https://github.com/SukkaW/Surge/blob/master/LICENSE",
-      "raw_sha256": "cd76a5e10d2fbea1485b57e5c943a7092497683ec2182ac89a708ebb6c9669ff",
+      "raw_sha256": "f1c2285fa065c0a88029a4b47936309902cc201030240ddb6916d8280ed4ac6e",
       "repository": "SukkaW/Surge",
       "url": "https://ruleset.skk.moe/List/domainset/reject.conf"
     },
