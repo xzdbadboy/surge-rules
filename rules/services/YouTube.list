@@ -1,7 +1,7 @@
 # 名称：YouTube
-# 更新时间：2026-11-03 10:00:19 +08:00
+# 更新时间：2026-11-18 15:22:41 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/YouTube.list
-# 内容校验：sha256:47ed7b3606235f7dea61113a5886c45675dd2343de775087962cbd524ac03f3a
+# 内容校验：sha256:10f0024ac33dc2dac6249f5b47863fbc381f51b78fe65f9ffb1e94dd447dbb1b
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -17,7 +17,6 @@ DOMAIN-SUFFIX,video.google.com
 DOMAIN-SUFFIX,wide-youtube.l.google.com
 DOMAIN-SUFFIX,withyoutube.com
 DOMAIN-SUFFIX,youtu.be
-DOMAIN-SUFFIX,youtube
 DOMAIN-SUFFIX,youtube-nocookie.com
 DOMAIN-SUFFIX,youtube-ui.l.google.com
 DOMAIN-SUFFIX,youtube.ae

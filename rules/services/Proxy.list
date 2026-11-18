@@ -1,7 +1,7 @@
 # 名称：Proxy
-# 更新时间：2026-11-15 14:23:51 +08:00
+# 更新时间：2026-11-18 15:22:41 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Proxy.list
-# 内容校验：sha256:1bdb2fe09e5cce14aa52cfc7cf8ba5e84825fba641039991234e06f7c1a4fe7d
+# 内容校验：sha256:a09d6333cc13381aea771162beec988bba22eb3ebc41abbb30b31fe19c933c24
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -245,6 +245,7 @@ DOMAIN,brand-sdk.kmsmep.com
 DOMAIN,brandwidgets.outtra.com
 DOMAIN,bucket.noy.asia
 DOMAIN,bucket1.notaku.so
+DOMAIN,builds.dotnet.microsoft.com
 DOMAIN,bundle.5gtb.com
 DOMAIN,bundle.9gtb.com
 DOMAIN,bundle.dyn-rev.app
@@ -1218,6 +1219,7 @@ DOMAIN,media.cleanshot.cloud
 DOMAIN,media.convertkit.com
 DOMAIN,media.currys.biz
 DOMAIN,media.daily.dev
+DOMAIN,media.datacamp.com
 DOMAIN,media.datacenterdynamics.com
 DOMAIN,media.e4le.me
 DOMAIN,media.fidoalliance.org
@@ -1658,6 +1660,7 @@ DOMAIN,static.j51.net
 DOMAIN,static.javhd.com
 DOMAIN,static.jup.ag
 DOMAIN,static.k2s.cc
+DOMAIN,static.karousell.com
 DOMAIN,static.klaviyo.com
 DOMAIN,static.licdn.com
 DOMAIN,static.lwn.net
@@ -7202,6 +7205,7 @@ DOMAIN-SUFFIX,cyberghostvpn.com
 DOMAIN-SUFFIX,cybermondaybeats4sale.com
 DOMAIN-SUFFIX,cyberpunk.net
 DOMAIN-SUFFIX,cyberx.com
+DOMAIN-SUFFIX,cygames.com
 DOMAIN-SUFFIX,cygwin.com
 DOMAIN-SUFFIX,cylink.pro
 DOMAIN-SUFFIX,cylink0122.icu
@@ -18456,6 +18460,7 @@ DOMAIN-SUFFIX,releaseinternational.org
 DOMAIN-SUFFIX,religionnews.com
 DOMAIN-SUFFIX,religioustolerance.org
 DOMAIN-SUFFIX,remirepo.net
+DOMAIN-SUFFIX,remna.dev
 DOMAIN-SUFFIX,renchead.com
 DOMAIN-SUFFIX,render.com
 DOMAIN-SUFFIX,renderingtoolkit.org

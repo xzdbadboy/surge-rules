@@ -1,7 +1,7 @@
 # 名称：Game
-# 更新时间：2026-11-07 13:54:26 +08:00
+# 更新时间：2026-11-18 15:22:41 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Game.list
-# 内容校验：sha256:0cede8885be3f0f62145c766e09ccd834b24df9153947fcc5f2840812b40d872
+# 内容校验：sha256:46d2a8502010187aab76af12f24ac53367a3a9a5b9020ade4cf7966a75ad730b
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -204,6 +204,7 @@ DOMAIN-SUFFIX,cubicodyssey.game
 DOMAIN-SUFFIX,curseforge.com
 DOMAIN-SUFFIX,cyberpunk.net
 DOMAIN-SUFFIX,cygames.co.jp
+DOMAIN-SUFFIX,cygames.com
 DOMAIN-SUFFIX,cygames.jp
 DOMAIN-SUFFIX,daoc.net
 DOMAIN-SUFFIX,darkageofcamelot.com
@@ -866,8 +867,6 @@ DOMAIN-SUFFIX,xboxstudios.com
 DOMAIN-SUFFIX,xbx.lv
 DOMAIN-SUFFIX,xdsummit.com
 DOMAIN-SUFFIX,xenoblade.com
-DOMAIN-SUFFIX,xn--mts47c3w9b1qr.cn
-DOMAIN-SUFFIX,xn--mts47c3w9b1qr.net
 DOMAIN-SUFFIX,ylands.com
 DOMAIN-SUFFIX,ynoproject.net
 DOMAIN-SUFFIX,yo-star.com

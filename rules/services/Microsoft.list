@@ -1,7 +1,7 @@
 # 名称：Microsoft
-# 更新时间：2026-11-05 14:40:50 +08:00
+# 更新时间：2026-11-18 15:22:41 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Microsoft.list
-# 内容校验：sha256:635d6b6b481a6e00b2594f6e4baab6f05e047cfce1b5c912b342b4c9db2e70d1
+# 内容校验：sha256:b441fadbebb460e37768a461c4a02e2082e54dd59d2921971f348b60952ba544
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -62,7 +62,6 @@ DOMAIN-SUFFIX,azcrmc.cn
 DOMAIN-SUFFIX,azk8s.cn
 DOMAIN-SUFFIX,aznbcontent.cn
 DOMAIN-SUFFIX,aztask.cn
-DOMAIN-SUFFIX,azure
 DOMAIN-SUFFIX,azure-api.cn
 DOMAIN-SUFFIX,azure-api.net
 DOMAIN-SUFFIX,azure-apihub.cn
@@ -147,7 +146,6 @@ DOMAIN-SUFFIX,biing.com
 DOMAIN-SUFFIX,binads.com
 DOMAIN-SUFFIX,binb.com
 DOMAIN-SUFFIX,binf.com
-DOMAIN-SUFFIX,bing
 DOMAIN-SUFFIX,bing.com
 DOMAIN-SUFFIX,bing.com.cn
 DOMAIN-SUFFIX,bing.net
@@ -199,6 +197,7 @@ DOMAIN-SUFFIX,cloudapp.net
 DOMAIN-SUFFIX,cloudappsecurity.com
 DOMAIN-SUFFIX,codethemicrobit.com
 DOMAIN-SUFFIX,copilot-stg.com
+DOMAIN-SUFFIX,copilot.cloud.microsoft
 DOMAIN-SUFFIX,copilot.com
 DOMAIN-SUFFIX,cortana.ai
 DOMAIN-SUFFIX,cortanaanalytics.com
@@ -258,7 +257,6 @@ DOMAIN-SUFFIX,here.net
 DOMAIN-SUFFIX,heremaps.cn
 DOMAIN-SUFFIX,hockeyapp.net
 DOMAIN-SUFFIX,hololens.com
-DOMAIN-SUFFIX,hotmail
 DOMAIN-SUFFIX,hotmail.co
 DOMAIN-SUFFIX,hotmail.com
 DOMAIN-SUFFIX,hotmail.eu
@@ -314,7 +312,6 @@ DOMAIN-SUFFIX,mepn.com
 DOMAIN-SUFFIX,mesh.com
 DOMAIN-SUFFIX,mgmt-azure-api.cn
 DOMAIN-SUFFIX,microbit.org
-DOMAIN-SUFFIX,microsoft
 DOMAIN-SUFFIX,microsoft-falcon.io
 DOMAIN-SUFFIX,microsoft-give.com
 DOMAIN-SUFFIX,microsoft-int.com
@@ -536,7 +533,6 @@ DOMAIN-SUFFIX,o365weve-dev.com
 DOMAIN-SUFFIX,o365weve-ppe.com
 DOMAIN-SUFFIX,o365weve.com
 DOMAIN-SUFFIX,oaspapps.com
-DOMAIN-SUFFIX,office
 DOMAIN-SUFFIX,office.com
 DOMAIN-SUFFIX,office.net
 DOMAIN-SUFFIX,office365-net.cn
@@ -615,7 +611,6 @@ DOMAIN-SUFFIX,sharepoint.cn
 DOMAIN-SUFFIX,sharepoint.com
 DOMAIN-SUFFIX,sharepointonline.com
 DOMAIN-SUFFIX,signalr.net
-DOMAIN-SUFFIX,skype
 DOMAIN-SUFFIX,skype.com
 DOMAIN-SUFFIX,skype.net
 DOMAIN-SUFFIX,skypeassets.com
