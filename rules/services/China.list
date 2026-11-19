@@ -1,7 +1,7 @@
 # 名称：China
-# 更新时间：2026-11-18 15:22:41 +08:00
+# 更新时间：2026-11-19 15:20:06 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/China.list
-# 内容校验：sha256:9728ee6a50dc1b32823e06de1efa0c55c2b8773744edde713de5831acca53909
+# 内容校验：sha256:81452ec879c3addb29fe56877181c409fd4167b141640e000ffeaf5fda0f76be
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -134,6 +134,8 @@ DOMAIN-SUFFIX,1password.com
 DOMAIN-SUFFIX,1passwordusercontent.com
 DOMAIN-SUFFIX,1ppt.com
 DOMAIN-SUFFIX,1ting.com
+DOMAIN-SUFFIX,1y.com
+DOMAIN-SUFFIX,1ycdn.com
 DOMAIN-SUFFIX,1zhe.com
 DOMAIN-SUFFIX,20130123.com
 DOMAIN-SUFFIX,21cn.com
