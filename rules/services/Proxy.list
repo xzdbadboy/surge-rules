@@ -1,7 +1,7 @@
 # 名称：Proxy
-# 更新时间：2026-11-18 15:22:41 +08:00
+# 更新时间：2026-11-21 15:00:35 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Proxy.list
-# 内容校验：sha256:a09d6333cc13381aea771162beec988bba22eb3ebc41abbb30b31fe19c933c24
+# 内容校验：sha256:74b8b4e83cb173e0a9368352eb51ec401d89710ca5408425f61b16dedaadca6d
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -131,6 +131,7 @@ DOMAIN,assets.maxon.net
 DOMAIN,assets.mcp.corespeed.io
 DOMAIN,assets.media-platform.com
 DOMAIN,assets.monei.com
+DOMAIN,assets.monetizationos.com
 DOMAIN,assets.msn.com
 DOMAIN,assets.nationbuilder.com
 DOMAIN,assets.northflank.com
@@ -5799,6 +5800,7 @@ DOMAIN-SUFFIX,bustysammieblack.com
 DOMAIN-SUFFIX,busu.org
 DOMAIN-SUFFIX,busybox.net
 DOMAIN-SUFFIX,busytrade.com
+DOMAIN-SUFFIX,butterfly-effect-cdn.dev
 DOMAIN-SUFFIX,buugaa.com
 DOMAIN-SUFFIX,buy-from-shanghai.com
 DOMAIN-SUFFIX,buyaapl.com
@@ -8559,6 +8561,7 @@ DOMAIN-SUFFIX,elephanttube.com
 DOMAIN-SUFFIX,elephanttubenew.com
 DOMAIN-SUFFIX,elevenlabs.com
 DOMAIN-SUFFIX,elevenlabs.io
+DOMAIN-SUFFIX,elevenlabsusercontent.com
 DOMAIN-SUFFIX,elgaronline.com
 DOMAIN-SUFFIX,elgoog.im
 DOMAIN-SUFFIX,elifesciences.org
@@ -23905,7 +23908,6 @@ DOMAIN-SUFFIX,yandexcom.net
 DOMAIN-SUFFIX,yandexdataschool.com
 DOMAIN-SUFFIX,yandexgo.com
 DOMAIN-SUFFIX,yandexwebcache.net
-DOMAIN-SUFFIX,yandexwebcache.org
 DOMAIN-SUFFIX,yanghengjun.com
 DOMAIN-SUFFIX,yangjianli.com
 DOMAIN-SUFFIX,yango-b2b.com

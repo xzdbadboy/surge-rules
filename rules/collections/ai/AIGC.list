@@ -1,5 +1,5 @@
 # 名称：AI兼容合集
-# 更新时间：2026-11-03 10:00:30 +08:00
+# 更新时间：2026-11-21 15:00:37 +08:00
 # 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.list
 # 上游：https://raw.githubusercontent.com/SukkaW/Surge/master/Source/non_ip/ai.conf
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/AIGC.list
@@ -11,7 +11,7 @@
 # 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/windsurf.list
 # 上游：https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/perplexity.list
 # 维护位置：rules/ai/ChatGPT.list, rules/ai/Claude.list, rules/ai/Grok.list, rules/ai/Gemini.list, rules/ai/GoogleAIStudio.list, rules/ai/NotebookLM.list, rules/ai/Antigravity.list, rules/ai/GoogleAIShared.list, rules/ai/Copilot.list, rules/ai/Cursor.list, rules/ai/Windsurf.list, rules/ai/Perplexity.list, rules/ai/OpenRouter.list, rules/ai/Sora.list, rules/ai/MetaAI.list, rules/ai/Dify.list, rules/ai/Groq.list
-# 内容校验：sha256:452882de3206646c1e16b05113498e911e1eda349e3736cd5eb46cfcb0c7ddcd
+# 内容校验：sha256:77b2f30657fea7026d71248bca41e3bfe18d73cbdc5894387629475241e819c1
 
 # 策略：按需；新配置优先使用独立服务
 # 来源类型：生成合并（同一策略使用）
@@ -43,7 +43,6 @@ DOMAIN,openaiassets.blob.core.windows.net
 DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
 DOMAIN,openaicom.imgix.net
 DOMAIN,openaicomproductionae4b.blob.core.windows.net
-DOMAIN,openrouter.ai
 DOMAIN,proactivebackend-pa.googleapis.com
 DOMAIN,production-openaicom-storage.azureedge.net
 DOMAIN,robinfrontend-pa.googleapis.com
@@ -89,6 +88,7 @@ DOMAIN-SUFFIX,oaiusercontent.com
 DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net
 DOMAIN-SUFFIX,openai.org
+DOMAIN-SUFFIX,openrouter.ai
 DOMAIN-SUFFIX,perplexity.ai
 DOMAIN-SUFFIX,perplexity.com
 DOMAIN-SUFFIX,pplx.ai
