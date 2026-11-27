@@ -1,7 +1,7 @@
 # 名称：China
-# 更新时间：2026-11-21 15:00:35 +08:00
+# 更新时间：2026-11-27 16:22:14 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/China.list
-# 内容校验：sha256:3d1f2d0bc47ac6c52af5122d07222a01ac3f138d5513bb5d827bee7b1f9f85c3
+# 内容校验：sha256:2fef7535130982836e035e58e8bbaac89b126ac256243fd0ebb42a9c40f30386
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -1371,6 +1371,7 @@ DOMAIN-SUFFIX,chuimg.com
 DOMAIN-SUFFIX,chujingapp.com
 DOMAIN-SUFFIX,chunbo.com
 DOMAIN-SUFFIX,chunboimg.com
+DOMAIN-SUFFIX,chunithm.wahlap.com
 DOMAIN-SUFFIX,chunyu.mobi
 DOMAIN-SUFFIX,chunyuyisheng.com
 DOMAIN-SUFFIX,chushi.cool
@@ -2022,6 +2023,7 @@ DOMAIN-SUFFIX,ebscn.com
 DOMAIN-SUFFIX,ebtrust.com
 DOMAIN-SUFFIX,eceshi.com
 DOMAIN-SUFFIX,echargenet.com
+DOMAIN-SUFFIX,echooai.com
 DOMAIN-SUFFIX,ecitic.com
 DOMAIN-SUFFIX,ecitic.net
 DOMAIN-SUFFIX,ecjobhome.com
@@ -2127,7 +2129,9 @@ DOMAIN-SUFFIX,fastcdn.com
 DOMAIN-SUFFIX,favonis.cloud
 DOMAIN-SUFFIX,favonis.com
 DOMAIN-SUFFIX,favonis.space
+DOMAIN-SUFFIX,faw-vw.com
 DOMAIN-SUFFIX,faxingbao.com
+DOMAIN-SUFFIX,fazhipro.com
 DOMAIN-SUFFIX,fbank.com
 DOMAIN-SUFFIX,fcapp.run
 DOMAIN-SUFFIX,fcbox.com
@@ -2836,6 +2840,7 @@ DOMAIN-SUFFIX,icbcstandard.com
 DOMAIN-SUFFIX,icbcstandardbank.com
 DOMAIN-SUFFIX,icbcstandardresources.com
 DOMAIN-SUFFIX,icbcstandardsecurities.com
+DOMAIN-SUFFIX,icc.link
 DOMAIN-SUFFIX,iccvlog.com
 DOMAIN-SUFFIX,icedropper.com
 DOMAIN-SUFFIX,ichangtou.com
@@ -3749,6 +3754,7 @@ DOMAIN-SUFFIX,mahjongcup.net
 DOMAIN-SUFFIX,mai.tn
 DOMAIN-SUFFIX,maiche.com
 DOMAIN-SUFFIX,mail4399.com
+DOMAIN-SUFFIX,maimai.wahlap.com
 DOMAIN-SUFFIX,maimemo.com
 DOMAIN-SUFFIX,maimemostatus.com
 DOMAIN-SUFFIX,maindown4399.com
@@ -4578,6 +4584,7 @@ DOMAIN-SUFFIX,ruubypay.com
 DOMAIN-SUFFIX,rwkv.com
 DOMAIN-SUFFIX,rzrc114.com
 DOMAIN-SUFFIX,s-reader.com
+DOMAIN-SUFFIX,saasfz.com
 DOMAIN-SUFFIX,saasops.tech
 DOMAIN-SUFFIX,saayaa.com
 DOMAIN-SUFFIX,saduck.top
@@ -5098,6 +5105,7 @@ DOMAIN-SUFFIX,tfogc.com
 DOMAIN-SUFFIX,tfzq.com
 DOMAIN-SUFFIX,tgbus.com
 DOMAIN-SUFFIX,tggfl.com
+DOMAIN-SUFFIX,tgk-wcaime.wahlap.com
 DOMAIN-SUFFIX,tgovcloud.com
 DOMAIN-SUFFIX,tgpro.top
 DOMAIN-SUFFIX,tgprocs.net
@@ -5615,6 +5623,7 @@ DOMAIN-SUFFIX,vvstc.com
 DOMAIN-SUFFIX,vxhcm.com
 DOMAIN-SUFFIX,vxo7tu.com
 DOMAIN-SUFFIX,vzuu.com
+DOMAIN-SUFFIX,wahlap.net
 DOMAIN-SUFFIX,waifushangcheng.com
 DOMAIN-SUFFIX,wali.com
 DOMAIN-SUFFIX,wallstcn.com
@@ -5909,7 +5918,6 @@ DOMAIN-SUFFIX,xiezuocat.com
 DOMAIN-SUFFIX,xiguaapp.com
 DOMAIN-SUFFIX,xiguashipin.net
 DOMAIN-SUFFIX,xiguavideo.net
-DOMAIN-SUFFIX,xihuan
 DOMAIN-SUFFIX,xilu.com
 DOMAIN-SUFFIX,ximalaya.com
 DOMAIN-SUFFIX,xin.xin
