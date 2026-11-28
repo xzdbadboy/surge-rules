@@ -1,12 +1,13 @@
 # 名称：Microsoft
-# 更新时间：2026-11-18 15:22:41 +08:00
+# 更新时间：2026-11-29 03:57:55 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Microsoft.list
-# 内容校验：sha256:b441fadbebb460e37768a461c4a02e2082e54dd59d2921971f348b60952ba544
+# 内容校验：sha256:7ff20a11dbb289aa5ad340c9d2b275407b3ff0cfeb5a78ba12273fef927293c4
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
 # 证据：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Microsoft.list
 
+DOMAIN,aurora-customization-usw2.lithium.com
 DOMAIN,vsmarketplacebadge.apphb.com
 DOMAIN-SUFFIX,1drv.com
 DOMAIN-SUFFIX,1drv.ms

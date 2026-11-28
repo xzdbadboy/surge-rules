@@ -1,7 +1,7 @@
 # 名称：Google
-# 更新时间：2026-11-15 14:23:51 +08:00
+# 更新时间：2026-11-29 03:57:55 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Google.list
-# 内容校验：sha256:a48e0d7580324928e751f689b826209717552bc42d8b44c4f497209993a7fa62
+# 内容校验：sha256:243ca9e483d2a17f3d5f1d2d757fbf65e77c5d2b517f231f7a077aecad21dff7
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -242,6 +242,7 @@ DOMAIN-SUFFIX,gateway.dev
 DOMAIN-SUFFIX,gcp.gvt2.com
 DOMAIN-SUFFIX,gcr.io
 DOMAIN-SUFFIX,gemini.google
+DOMAIN-SUFFIX,gemma.ai
 DOMAIN-SUFFIX,generativeai.google
 DOMAIN-SUFFIX,gerritcodereview.com
 DOMAIN-SUFFIX,get.app

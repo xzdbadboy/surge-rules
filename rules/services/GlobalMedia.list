@@ -1,25 +1,18 @@
 # 名称：GlobalMedia
-# 更新时间：2026-11-18 15:22:41 +08:00
+# 更新时间：2026-11-29 03:57:55 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/GlobalMedia.list
-# 内容校验：sha256:afe19a96190f3abd80c886229c7911c503d3b5b14fd637f5f405323e61c43899
+# 内容校验：sha256:2e9dd1fc09edf3bc27d4021ce2138cc300b180799ca1da6668c21762a2cdcd3e
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
 # 证据：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/GlobalMedia.list
 
-DOMAIN,ai.google.dev
-DOMAIN,aistudio.google.com
 DOMAIN,aod-dash-uk-live.akamaized.net
 DOMAIN,aod-hls-uk-live.akamaized.net
-DOMAIN,api.githubcopilot.com
-DOMAIN,api.groq.com
-DOMAIN,api.together.xyz
 DOMAIN,as-dash-uk-live.akamaized.net
 DOMAIN,as-hls-uk-live.akamaized.net
 DOMAIN,bahamut.akamaized.net
 DOMAIN,bcbolt446c5271-a.akamaihd.net
-DOMAIN,console.groq.com
-DOMAIN,copilot-proxy.githubusercontent.com
 DOMAIN,cwtv-amd-akamai.akamaized.net
 DOMAIN,d17lx9ucc6k9fc.cloudfront.net
 DOMAIN,d1v5ir2lpwr8os.cloudfront.net
@@ -33,19 +26,16 @@ DOMAIN,dmqdd6hw24ucf.cloudfront.net
 DOMAIN,edge.cwtv-vod-ext.top.comcast.net
 DOMAIN,gamer-cds.cdn.hinet.net
 DOMAIN,gamer2-cds.cdn.hinet.net
-DOMAIN,generativelanguage.googleapis.com
 DOMAIN,gspe1-ssl.ls.apple.com
 DOMAIN,hamifans.emome.net
 DOMAIN,itvpnpmobile-a.akamaihd.net
 DOMAIN,ktpx.amazon.com
 DOMAIN,litvfreemobile-hichannel.cdn.hinet.net
-DOMAIN,notebooklm.google.com
 DOMAIN,np-edge.itunes.apple.com
 DOMAIN,p16-tiktokcdn-com.akamaized.net
 DOMAIN,play-edge.itunes.apple.com
 DOMAIN,rthklive2-lh.akamaihd.net
 DOMAIN,sonyliveevents-nonssai.akamaized.net
-DOMAIN,sydney.bing.com
 DOMAIN,vod-dash-uk-live.akamaized.net
 DOMAIN,vod-dash-ww-live.akamaized.net
 DOMAIN,vod-hls-uk-live.akamaized.net
@@ -70,7 +60,6 @@ DOMAIN-SUFFIX,adx.promo
 DOMAIN-SUFFIX,afewmomentswith.com
 DOMAIN-SUFFIX,afp.com
 DOMAIN-SUFFIX,afpforum.com
-DOMAIN-SUFFIX,ai.azure.com
 DOMAIN-SUFFIX,aiv-cdn.net
 DOMAIN-SUFFIX,aiv-delivery.net
 DOMAIN-SUFFIX,amazon.jobs
@@ -95,7 +84,6 @@ DOMAIN-SUFFIX,amerikayidzayn.com
 DOMAIN-SUFFIX,amerikiskhma.com
 DOMAIN-SUFFIX,amlg.io
 DOMAIN-SUFFIX,anidom.com
-DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,api.tv.colnv.com
 DOMAIN-SUFFIX,assetshuluimcom-a.akamaihd.net
 DOMAIN-SUFFIX,att.tv
@@ -103,14 +91,12 @@ DOMAIN-SUFFIX,atttvnow.com
 DOMAIN-SUFFIX,attwatchtv.com
 DOMAIN-SUFFIX,atv-ps.amazon.com
 DOMAIN-SUFFIX,audio-ak-spotify-com.akamaized.net
-DOMAIN-SUFFIX,auth0.com
 DOMAIN-SUFFIX,avodmp4s3ww-a.akamaihd.net
 DOMAIN-SUFFIX,babble.com
 DOMAIN-SUFFIX,babyzone.com
 DOMAIN-SUFFIX,bahamut.com.tw
 DOMAIN-SUFFIX,bam.nr-data.net
 DOMAIN-SUFFIX,bamgrid.com
-DOMAIN-SUFFIX,bard.google.com
 DOMAIN-SUFFIX,bbc.co
 DOMAIN-SUFFIX,bbc.co.uk
 DOMAIN-SUFFIX,bbc.com
@@ -167,13 +153,10 @@ DOMAIN-SUFFIX,cbstelevisioncity.com
 DOMAIN-SUFFIX,cdn-fox-networks-group-green.akamaized.net
 DOMAIN-SUFFIX,cdn.optimizely.com
 DOMAIN-SUFFIX,cf-images.ap-southeast-1.prod.boltdns.net
-DOMAIN-SUFFIX,challenges.cloudflare.com
 DOMAIN-SUFFIX,channel4.com
 DOMAIN-SUFFIX,channel5.com
-DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,chocotv.com.tw
 DOMAIN-SUFFIX,cinemax.com
-DOMAIN-SUFFIX,client-api.arkoselabs.com
 DOMAIN-SUFFIX,cnbc.com
 DOMAIN-SUFFIX,cnbcfm.com
 DOMAIN-SUFFIX,cnn.com
@@ -189,8 +172,6 @@ DOMAIN-SUFFIX,cognito-identity.us-east-1.amazonaws.com
 DOMAIN-SUFFIX,content.jwplatform.com
 DOMAIN-SUFFIX,control.kochava.com
 DOMAIN-SUFFIX,conviva.com
-DOMAIN-SUFFIX,copilot.cloud.microsoft
-DOMAIN-SUFFIX,copilot.microsoft.com
 DOMAIN-SUFFIX,coronavirusnow.com
 DOMAIN-SUFFIX,cstatic.net
 DOMAIN-SUFFIX,curbed.com
@@ -360,13 +341,11 @@ DOMAIN-SUFFIX,espn.net
 DOMAIN-SUFFIX,espncdn.com
 DOMAIN-SUFFIX,espndotcom.tt.omtrdc.net
 DOMAIN-SUFFIX,espnqa.com
-DOMAIN-SUFFIX,events.statsigapi.net
 DOMAIN-SUFFIX,execute-api.ap-southeast-1.amazonaws.com
 DOMAIN-SUFFIX,execute-api.us-east-1.amazonaws.com
 DOMAIN-SUFFIX,exhentai.org
 DOMAIN-SUFFIX,ext-twitch.tv
 DOMAIN-SUFFIX,fast.com
-DOMAIN-SUFFIX,featuregates.org
 DOMAIN-SUFFIX,fetnet.net
 DOMAIN-SUFFIX,findyourlimits.com
 DOMAIN-SUFFIX,fls-na.amazon.com
@@ -557,7 +536,6 @@ DOMAIN-SUFFIX,fxn.ws
 DOMAIN-SUFFIX,fxnetwork.com
 DOMAIN-SUFFIX,fxnetworks.com
 DOMAIN-SUFFIX,gamer.com.tw
-DOMAIN-SUFFIX,gemini.google.com
 DOMAIN-SUFFIX,geraldoatlarge.com
 DOMAIN-SUFFIX,getblueshift.com
 DOMAIN-SUFFIX,ggpht.cn
@@ -570,8 +548,6 @@ DOMAIN-SUFFIX,golosameriki.com
 DOMAIN-SUFFIX,gooddaychicago.com
 DOMAIN-SUFFIX,googlevideo.com
 DOMAIN-SUFFIX,gorin.jp
-DOMAIN-SUFFIX,grazie.ai
-DOMAIN-SUFFIX,grazie.aws.intellij.net
 DOMAIN-SUFFIX,gvt2.com
 DOMAIN-SUFFIX,haiwaikan.com
 DOMAIN-SUFFIX,happyon.jp
@@ -658,7 +634,6 @@ DOMAIN-SUFFIX,huluusa.com
 DOMAIN-SUFFIX,i-cable.com
 DOMAIN-SUFFIX,ibytedtos.com
 DOMAIN-SUFFIX,ibyteimg.com
-DOMAIN-SUFFIX,identrust.com
 DOMAIN-SUFFIX,iflix-images.akamaized.net
 DOMAIN-SUFFIX,iflix.com
 DOMAIN-SUFFIX,imkan.tv
@@ -667,7 +642,6 @@ DOMAIN-SUFFIX,indaznlab.com
 DOMAIN-SUFFIX,insidevoa.com
 DOMAIN-SUFFIX,inter.iqiyi.com
 DOMAIN-SUFFIX,intercom.io
-DOMAIN-SUFFIX,intercomcdn.com
 DOMAIN-SUFFIX,intl-rcd.iqiyi.com
 DOMAIN-SUFFIX,intl-subscription.iqiyi.com
 DOMAIN-SUFFIX,intl.iqiyi.com
@@ -687,7 +661,6 @@ DOMAIN-SUFFIX,japronx.com
 DOMAIN-SUFFIX,japronx.net
 DOMAIN-SUFFIX,japronx.tv
 DOMAIN-SUFFIX,japronx.vip
-DOMAIN-SUFFIX,jetbrains.ai
 DOMAIN-SUFFIX,joeswall.com
 DOMAIN-SUFFIX,joinmaidez.com
 DOMAIN-SUFFIX,joox.com
@@ -722,7 +695,6 @@ DOMAIN-SUFFIX,llnwd.net
 DOMAIN-SUFFIX,logx.optimizely.com
 DOMAIN-SUFFIX,londonreal.tv
 DOMAIN-SUFFIX,m-content-viki.s.llnwi.net
-DOMAIN-SUFFIX,makersuite.google.com
 DOMAIN-SUFFIX,manifest.prod.boltdns.net
 DOMAIN-SUFFIX,marvel.com
 DOMAIN-SUFFIX,marvel10thanniversary.com
@@ -737,10 +709,8 @@ DOMAIN-SUFFIX,maskedsingerfox.com
 DOMAIN-SUFFIX,maxgo.com
 DOMAIN-SUFFIX,media-amazon.com
 DOMAIN-SUFFIX,meridian.net
-DOMAIN-SUFFIX,meta.ai
 DOMAIN-SUFFIX,mewatch.sg
 DOMAIN-SUFFIX,mickey.tv
-DOMAIN-SUFFIX,mistral.ai
 DOMAIN-SUFFIX,mobile-collector.newrelic.com
 DOMAIN-SUFFIX,mobileanalytics.us-east-1.amazonaws.com
 DOMAIN-SUFFIX,moov.hk
@@ -859,8 +829,6 @@ DOMAIN-SUFFIX,nytimes.com
 DOMAIN-SUFFIX,nytimg.com
 DOMAIN-SUFFIX,nytlog.com
 DOMAIN-SUFFIX,nytstyle.com
-DOMAIN-SUFFIX,oaistatic.com
-DOMAIN-SUFFIX,oaiusercontent.com
 DOMAIN-SUFFIX,ocnttv.com
 DOMAIN-SUFFIX,olehd.com
 DOMAIN-SUFFIX,olelive.com
@@ -868,8 +836,6 @@ DOMAIN-SUFFIX,olevod.com
 DOMAIN-SUFFIX,olevod.io
 DOMAIN-SUFFIX,olevod.tv
 DOMAIN-SUFFIX,olevodtv.com
-DOMAIN-SUFFIX,openai.com
-DOMAIN-SUFFIX,openaiapi-site.azureedge.net
 DOMAIN-SUFFIX,originalhulu.com
 DOMAIN-SUFFIX,orlandohurricane.com
 DOMAIN-SUFFIX,oxygen.com
@@ -883,7 +849,6 @@ DOMAIN-SUFFIX,pashtovoa.com
 DOMAIN-SUFFIX,payhulu.com
 DOMAIN-SUFFIX,pbs.org
 DOMAIN-SUFFIX,peacocktv.com
-DOMAIN-SUFFIX,perplexity.ai
 DOMAIN-SUFFIX,persagg.com
 DOMAIN-SUFFIX,phncdn.com
 DOMAIN-SUFFIX,phprcdn.com
@@ -968,7 +933,6 @@ DOMAIN-SUFFIX,sndcdn.com
 DOMAIN-SUFFIX,snssdk.com
 DOMAIN-SUFFIX,soccermatchpass.com
 DOMAIN-SUFFIX,socdm.com
-DOMAIN-SUFFIX,sora.com
 DOMAIN-SUFFIX,sorcerersarena.com
 DOMAIN-SUFFIX,soundcloud.com
 DOMAIN-SUFFIX,spaindisney.com
@@ -996,7 +960,6 @@ DOMAIN-SUFFIX,static-qobuz.com
 DOMAIN-SUFFIX,staticasiafox.akamaized.net
 DOMAIN-SUFFIX,streaks.jp
 DOMAIN-SUFFIX,streamingdisney.net
-DOMAIN-SUFFIX,stripe.com
 DOMAIN-SUFFIX,syfy.com
 DOMAIN-SUFFIX,teenchoice.com
 DOMAIN-SUFFIX,telemundo.com
@@ -1126,7 +1089,6 @@ DOMAIN-SUFFIX,wofl.tv
 DOMAIN-SUFFIX,woflthenewsstation.com
 DOMAIN-SUFFIX,wogx.com
 DOMAIN-SUFFIX,wwwhuluplus.com
-DOMAIN-SUFFIX,x.ai
 DOMAIN-SUFFIX,yb.uncn.jp
 DOMAIN-SUFFIX,youboranqs01.com
 DOMAIN-SUFFIX,youtu.be
@@ -1155,7 +1117,6 @@ DOMAIN-KEYWORD,-spotify-
 DOMAIN-KEYWORD,-spotify-com
 DOMAIN-KEYWORD,-tiktokcdn-com
 DOMAIN-KEYWORD,abematv.akamaized.net
-DOMAIN-KEYWORD,anthropic
 DOMAIN-KEYWORD,apiproxy-device-prod-nlb-
 DOMAIN-KEYWORD,avoddashs
 DOMAIN-KEYWORD,bbcfmt
@@ -1170,7 +1131,6 @@ DOMAIN-KEYWORD,netflixdnstest
 DOMAIN-KEYWORD,nivod
 DOMAIN-KEYWORD,nowtv100
 DOMAIN-KEYWORD,olevod
-DOMAIN-KEYWORD,openai
 DOMAIN-KEYWORD,rthklive
 DOMAIN-KEYWORD,spotify.com
 DOMAIN-KEYWORD,tiktokcdn

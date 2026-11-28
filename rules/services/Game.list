@@ -1,7 +1,7 @@
 # 名称：Game
-# 更新时间：2026-11-18 15:22:41 +08:00
+# 更新时间：2026-11-29 03:57:55 +08:00
 # 上游：https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Rules/Game.list
-# 内容校验：sha256:46d2a8502010187aab76af12f24ac53367a3a9a5b9020ade4cf7966a75ad730b
+# 内容校验：sha256:f05071feb34b77191ac849e166c88d130c4f65a7c60c2c522e75d4de7f7e5af4
 
 # FORMAT: Surge RULE-SET
 # 说明：Normalized upstream mirror; assign policy in the main Surge profile. Preserve upstream service scope.
@@ -286,6 +286,7 @@ DOMAIN-SUFFIX,fabricmc.net
 DOMAIN-SUFFIX,faceit-cdn.net
 DOMAIN-SUFFIX,faceit.com
 DOMAIN-SUFFIX,fanatical.com
+DOMAIN-SUFFIX,fce.gg
 DOMAIN-SUFFIX,ficgs.com
 DOMAIN-SUFFIX,fifastreet.com
 DOMAIN-SUFFIX,fifastreet3.com
